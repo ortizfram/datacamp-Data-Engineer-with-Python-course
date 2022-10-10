@@ -1,7 +1,10 @@
-# Introduction-to-Data-Engineering
-CAREER TRACK
+# datacamp-Data-Engineer-with-Python-course
+- CAREER TRACK
 
 **Data Engineer with Python**
+---
+![logo](https://user-images.githubusercontent.com/51888893/194946662-fc6eea27-e064-481f-855e-7a78a5147f43.png)
+
 
 In this track, you’ll discover how to build an effective data architecture, streamline data processing, and maintain large-scale data systems. In addition to working
 
