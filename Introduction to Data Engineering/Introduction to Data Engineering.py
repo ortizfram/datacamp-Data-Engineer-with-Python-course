@@ -32,3 +32,18 @@ ok  1 Data scientists are querying the online store databases directly and slowi
 (data engineer should make sure there's a separate database for analytics.)                            """
 #---
 #///TOOLS///
+#Kinds of databases
+"""identify the database in the schematics
+
+    1 All database nodes are on the left.
+    2 All nodes on the left and the analytics node on the right are databases.
+ok  3 Accounting, Online Store, Product Catalog, and Analytics are databases.                         """
+#---
+#Processing tasks
+"""select the most correct statement
+
+    1 Data processing is often done on a single, very powerful machine.
+ok  2 Data processing is distributed over clusters of virtual machines.
+    3 Data processing is often very complicated because you have to manually distribute workload over several computers.
+
+( join, clean, or organize data is done in the data processing)                       """
