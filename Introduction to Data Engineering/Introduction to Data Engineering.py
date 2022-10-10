@@ -47,3 +47,10 @@ ok  2 Data processing is distributed over clusters of virtual machines.
     3 Data processing is often very complicated because you have to manually distribute workload over several computers.
 
 ( join, clean, or organize data is done in the data processing)                       """
+#---
+#Scheduling tools
+""" which one is not a responsibility of the scheduler?
+
+    1 Make sure jobs run in a specific order and all dependencies are resolved correctly.
+    2 Make sure the jobs run at midnight UTC each day.
+ok  3 Scale up the number of nodes when there's lots of data to be processed.                     """
