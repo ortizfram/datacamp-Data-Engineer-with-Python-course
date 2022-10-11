@@ -62,4 +62,31 @@ print(data.id)
 *option b """
 
 #---
-#
+#Why parallel computing?
+"""Which of these statements is not correct?
+
+ok    1 Parallel computing can be used to speed up any task.
+      2 computing can optimize the use of multiple processing units.
+      3 Parallel computing can optimize the use of memory between several machines. 
+      
+(ome tasks might be too small to benefit from parallel computing due to the communication overhead.)"""
+
+#---
+#From task to subtasks 
+"""You will be using the multiprocessor.Pool API which allows you to distribute your workload over several processes. """
+# to apply a function over multiple cores
+@print_timing
+def parallel_apply(apply_func, groups, nb_cores):
+    with Pool(nb_cores) as p:
+        results = p.map(apply_func, groups)
+    return pd.concat(results)
+
+# Parallel apply using 1 core
+parallel_apply(take_mean_age, athlete_events.groupby('Year'), 1)
+
+# Parallel apply using 2 cores
+parallel_apply(take_mean_age, athlete_events.groupby('Year'), 2)
+
+# Parallel apply using 4 cores
+parallel_apply(take_mean_age, athlete_events.groupby('Year'), 4)
+
