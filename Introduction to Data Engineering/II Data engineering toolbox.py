@@ -101,3 +101,18 @@ athlete_events_dask = dd.from_pandas(athlete_events, npartitions=4)
 
 # Calculate the mean Age per Year .compute()
 print(athlete_events_dask.groupby('Year').Age.mean().compute())
+
+#---
+#Spark, Hadoop and Hive
+"""Classify the cards to the corresponding software project.
+- Hadoop
+      HDFS is part of it
+      MapReduce is part of it
+      Collection of Open-source packages for BigData
+- PySpark
+      Python interface for Spark Framework
+      Uses Dataframe Abstraction
+- Hive
+      Built from need to use structures queries for pararell processing
+      Initially used Hadoop MapReduce                                                        """                                                                                                                                                                                                                                                         
+      
