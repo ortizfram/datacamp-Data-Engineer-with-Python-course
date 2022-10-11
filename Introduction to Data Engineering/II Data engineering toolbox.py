@@ -147,3 +147,23 @@ spark-submit \
             1 An error.
       ok    2 A DataFrame with average Olympian heights by year.
             3 A DataFrame with Olympian ages.                                                                                                                                 """
+
+
+#---
+# Airflow, Luigi and cron
+"""There's a lot of useful features in Airflow, but can you select the feature from the list below which is also provided by cron?
+
+            1 You can program your workflow in Python.
+            2 You can use a directed acyclic graph as a model for dependency resolving.                                                                    
+     ok     3 You have exact control over the time at which jobs run.                                                                """                                                                                                                        
+
+
+#---
+#Airflow DAGs
+"""{In Airflow, a pipeline} :
+is represented as a Directed Acyclic Graph or DAG.
+The nodes of the graph represent tasks that are executed. The directed connections
+between nodes represent dependencies between the tasks.
+*
+First, the DAG needs to run on every hour at minute 0. Fill in the schedule_interval keyword
+argument using the crontab notation. For example, every hour at minute N would be N * * * *. Remember, you need to run at minute 0.
