@@ -73,7 +73,7 @@ ok    1 Parallel computing can be used to speed up any task.
 
 #---
 #From task to subtasks 
-"""You will be using the multiprocessor.Pool API which allows you to distribute your workload over several processes. """
+"""multiprocessor.Pool API which allows you to distribute your workload over several processes. """
 # to apply a function over multiple cores
 @print_timing
 def parallel_apply(apply_func, groups, nb_cores):
@@ -90,3 +90,14 @@ parallel_apply(take_mean_age, athlete_events.groupby('Year'), 2)
 # Parallel apply using 4 cores
 parallel_apply(take_mean_age, athlete_events.groupby('Year'), 4)
 
+#---
+#Using a DataFrame . dask from pandas
+""" parallelize an apply over several groups, is using the dask framework and its abstraction of the pandas DataFrame"""
+# import dask.dataframe 
+import dask.dataframe as dd 
+
+# Set the number of partitions
+athlete_events_dask = dd.from_pandas(athlete_events, npartitions=4)
+
+# Calculate the mean Age per Year .compute()
+print(athlete_events_dask.groupby('Year').Age.mean().compute())
