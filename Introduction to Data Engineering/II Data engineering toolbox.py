@@ -136,4 +136,14 @@ print(athlete_events_spark.groupBy('Year').mean('Age'))
 print(athlete_events_spark.groupBy('Year').mean('Age').show())
 
 #---
-#
+#Running PySpark files
+"""spark-submit. This tool can help you submit your application to a spark cluster.
+
+spark-submit \
+  --master local[4] \
+  /home/repl/spark-script.py
+  
+    
+            1 An error.
+      ok    2 A DataFrame with average Olympian heights by year.
+            3 A DataFrame with Olympian ages.                                                                                                                                 """
