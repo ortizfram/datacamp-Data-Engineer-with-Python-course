@@ -3,6 +3,7 @@ explore the data engineer's toolbox! Learn in detail about different types of da
 how parallel computing is a cornerstone of the data engineer's toolkit, and how to schedule data processing
 jobs using scheduling frameworks.
 **************************************************************************************************************"""
+
 #---
 #SQL vs NoSQL
 """Classify the cards into the correct bucket 
@@ -16,6 +17,7 @@ jobs using scheduling frameworks.
       Schemaless
       Caching layer in distributed web server  
       """
+
 #---
 #The database schema
 # Complete the SELECT statement
@@ -53,6 +55,11 @@ ON "Order"."customer_id"="Customer"."id"
 
 # Show the id column of data
 print(data.id)
+
+#---
+#Star schema diagram
+"""Which of the following images is a star schema?
+*option b """
 
 #---
 #
