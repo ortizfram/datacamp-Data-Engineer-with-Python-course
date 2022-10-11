@@ -54,3 +54,12 @@ ok  2 Data processing is distributed over clusters of virtual machines.
     1 Make sure jobs run in a specific order and all dependencies are resolved correctly.
     2 Make sure the jobs run at midnight UTC each day.
 ok  3 Scale up the number of nodes when there's lots of data to be processed.                     """
+#///CLOUD PROVIDERS///
+#Why cloud computing?
+"""benefits of using cloud computing as opposed to self-hosting data centers. Can you select the most correct statement about cloud computing?
+
+    1 Cloud computing is always cheaper.
+ok  2 The cloud can provide you with the resources you need, when you need them.
+    3 On premise machines give me full control over the situation when things break.
+   
+ (cloud elasticity)                                                                              """
