@@ -14,6 +14,7 @@ actionable insights, and load it into relevant databases ready for consumption!
 
 
 #---
+#///EXTRACT///////////////
 #Fetch from an API
 """Hacker News is a social news aggregation website, 
 specifically for articles related to computer science or the tech world in general. 
@@ -48,3 +49,7 @@ extract_table_to_pandas("film", db_engine)
 
 # Extract the customer table into a pandas DataFrame
 extract_table_to_pandas("customer", db_engine)
+
+
+#---
+#////TRANSFORM///
