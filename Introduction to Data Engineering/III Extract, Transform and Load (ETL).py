@@ -94,4 +94,4 @@ film_df_with_ratings = film_df.join(
     film_df.film_id==ratings_per_film_df.film_id
 )
 # Show the 5 first results
-print(film_df_with_ratings.head(5))
+print(film_df_with_ratings.show(5))
