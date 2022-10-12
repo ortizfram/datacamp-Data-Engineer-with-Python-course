@@ -95,3 +95,32 @@ film_df_with_ratings = film_df.join(
 )
 # Show the 5 first results
 print(film_df_with_ratings.show(5))
+
+
+#///////////////////LOADING///////////////////////////////////
+"""*********************************************************************
+analytics DB: agregate queries, column oriented
+app DB: lots of transactions, row oriented
+MMP: massively pararell processing, split subtasks distributed among several nodes
+*********************************************************************"""
+""" OLAP: Online analytical processing, OLTP: Online transaction processing"""
+# OLAP or OLTP 
+""" find the most appropriate statement that is true
+
+        1 Typically, analytical databases are column-oriented.
+        2 Massively parallel processing (MPP) databases are usually column-oriented.
+        3 Databases optimized for OLAP are usually not great at OLTP operations.
+        4 Analytical and application databases have different use cases and should be separated if possible.
+        5 None of the above.
+  ok    6 All of the above."""
+
+
+#---
+#Writing to a file
+""" Apache Parquet file format.
+There's a PySpark DataFrame called film_sdf and a pandas DataFrame called film_pdf in your workspace."""
+# Write the pandas DataFrame to parquet
+film_pdf.parquet("films_pdf.parquet")
+
+# Write the PySpark DataFrame to parquet
+film_sdf.write.parquet("films_sdf.parquet")
