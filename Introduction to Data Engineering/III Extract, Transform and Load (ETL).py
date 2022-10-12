@@ -97,7 +97,8 @@ film_df_with_ratings = film_df.join(
 print(film_df_with_ratings.show(5))
 
 
-#///////////////////LOADING///////////////////////////////////
+
+#///////////////////LOADING///////////////////////////////////////////////
 """*********************************************************************
 analytics DB: agregate queries, column oriented
 app DB: lots of transactions, row oriented
@@ -124,3 +125,22 @@ film_pdf.to_parquet("films_pdf.parquet")
 
 # Write the PySpark DataFrame to parquet
 film_sdf.write.parquet("films_sdf.parquet")
+
+
+
+
+#---
+#Load into Postgres
+# Finish the connection URI
+"""write out some data to a PostgreSQL data warehouse"""
+connection_uri = "postgresql://repl:password@localhost:5432/dwh"
+db_engine_dwh = sqlalchemy.create_engine(connection_uri)
+
+# Transformation step, join with recommendations data
+film_pdf_joined = film_pdf.join(recommendations)
+
+# Finish the .to_sql() call to write to store.film
+film_pdf_joined.to_sql("film", db_engine_dwh, schema="store", if_exists="replace")
+
+# Run the query to fetch the data
+pd.read_sql("SELECT film_id, recommended_film_ids FROM store.film", db_engine_dwh)
