@@ -14,7 +14,7 @@ actionable insights, and load it into relevant databases ready for consumption!
 
 
 #---
-#///EXTRACT///////////////
+#////////////////////////EXTRACT///////////////////////////////
 #Fetch from an API
 """Hacker News is a social news aggregation website, 
 specifically for articles related to computer science or the tech world in general. 
@@ -52,7 +52,8 @@ extract_table_to_pandas("customer", db_engine)
 
 
 #---
-#////TRANSFORM///
+#///////////////////////TRANSFORM///////////////////////////
+
 #Splitting the rental rate
 # Get the rental_rate column as str
 rental_rate_str = film_df.rental_rate.astype("str")
@@ -68,8 +69,9 @@ film_df = film_df.assign(
 print(film_df)
 
 
+
 #---
-# transformations using PySpark
+# Transformations using PySpark
 # option B
 spark.read.jdbc("jdbc:postgresql://localhost:5432/pagila",
                 "customer", 
@@ -79,4 +81,17 @@ spark.read.jdbc("jdbc:postgresql://localhost:5432/pagila",
 *******************"""
 
 
+
 #---
+# Joining using Pyspark 
+""" PySpark DataFrame with films, film_df and the PySpark DataFrame with ratings, rating_df"""
+# Use groupBy and mean to aggregate the column
+ratings_per_film_df = rating_df.groupBy('film_id').mean('rating')
+
+# Join the tables using the film_id column
+film_df_with_ratings = film_df.join(
+    ratings_per_film_df,
+    film_df.film_id==ratings_per_film_df.film_id
+)
+# Show the 5 first results
+print(film_df_with_ratings.head(5))
