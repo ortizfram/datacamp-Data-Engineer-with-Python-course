@@ -120,7 +120,7 @@ MMP: massively pararell processing, split subtasks distributed among several nod
 """ Apache Parquet file format.
 There's a PySpark DataFrame called film_sdf and a pandas DataFrame called film_pdf in your workspace."""
 # Write the pandas DataFrame to parquet
-film_pdf.parquet("films_pdf.parquet")
+film_pdf.to_parquet("films_pdf.parquet")
 
 # Write the PySpark DataFrame to parquet
 film_sdf.write.parquet("films_sdf.parquet")
