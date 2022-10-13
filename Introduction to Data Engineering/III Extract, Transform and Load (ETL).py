@@ -163,3 +163,43 @@ etl_task = PythonOperator(task_id='etl_film',
 # Set the upstream to wait_for_table and sample run etl()
 etl_task.set_upstream(wait_for_table)
 etl()
+
+
+#--- Setting up Airflow dag"
+"""CONSOLE :
+repl:~$ echo $AIRFLOW_HOME
+#~/airflow
+repl:~$ ls
+# airflow  config  datasets   requirements.txt  startup
+# chown    dag.py  repl:repl  start.sh          workspace
+repl:~$ cd airflow/
+repl:~/airflow$ ls
+# airflow.cfg      airflow.db             dags  unittests.cfg
+# airflow.cfg.bak  airflow-webserver.pid  logs
+repl:~/airflow$ head airflow.cfg
+[core]
+# The home folder for airflow, default is ~/airflow
+airflow_home = /home/repl/airflow
+
+# The folder where your airflow pipelines live, most likely a
+# subfolder in a code repository
+# This path must be absolute
+dags_folder = /home/repl/airflow/dags
+
+# The folder where airflow should store its log files
+repl:~/airflow$ cd
+
+#find the folder and move the dag.py file there: mv ./dag.py <dags_folder>.
+mv ./dag.py /home/repl/airflow/dags
+
+cd airflow/dags/
+
+ls
+# dag.py  dag_recommendations.py  __pycache__
+    """
+# >>>
+"""Which files does the DAGs folder have after you moved the file?
+
+        1 It has one DAG file: dag.py.
+ ok     2 It has two DAG files: dag.py and dag_recommendations.py.
+        3 It has three DAG files: dag.py, you_wont_guess_this_dag.py, and super_secret_dag.py."""
