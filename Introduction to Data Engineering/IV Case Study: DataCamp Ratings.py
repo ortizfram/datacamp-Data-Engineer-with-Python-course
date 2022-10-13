@@ -107,5 +107,15 @@ def transform_recommendations(avg_course_ratings, courses_to_recommend):
 recommendations = transform_recommendations(avg_course_ratings, courses_to_recommend)
 #`````````````````````````````````````````````````````````````````````````````````````````````
 """//////////////SCHEDULING/////////////////////////////"""
+""" put this table into a database so that it can be used by several products like a recommendation engine or an emailing system"""
+
 #--- The target table
+#connect to DB as pandas.DataFrame method 
+connection_uri = "postgresql://repl:password@localhost:5432/dwh"
+db_engine = sqlalchemy.create_engine(connection_uri)
+
+#funtion to load to a Data Warehouse using .to_sql()
+def load_to_dwh(recommendations):
+    recommendations.to_sql("recommendations", db_engine, if_exists="replace")
+#`````````````````````````````````````````````````````````````````````````````````````````````
 
