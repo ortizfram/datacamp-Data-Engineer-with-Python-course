@@ -13,7 +13,7 @@ raw course rating data, into actionable course recommendations for DataCamp stud
   ok  3 The course_id column.
       4 The combination of user_id and course_id columns."""
 #````````````````````````````````````````````````````````````````````````````````````````````
-#//////////////QUERY/////////////////////////////
+"""//////////////QUERY/////////////////////////////"""
 #--- Querying the table
 """You'll get the rating data for three sample users
 and then use a predefined helper function,
@@ -43,7 +43,7 @@ User 1 and User 2 overlap: {32, 96, 36, 6, 7, 44, 95}
 User 1 and User 3 overlap: set()
 User 2 and User 3 overlap: set()"""
 #`````````````````````````````````````````````````````````````````````````````````````````````
-#//////////////TRANSFORM/////////////////////////////
+"""//////////////TRANSFORM/////////////////////////////"""
 #--- Average rating per course
 """In this exercise, you'll complete a transformation function transform_avg_rating() 
 that aggregates the rating data using the pandas DataFrame's .groupby() method.
@@ -85,6 +85,7 @@ transformed = transform_fill_programming_language(course_data)
 # Print out the number of missing values per column of transformed
 print(transformed.isnull().sum())
 #`````````````````````````````````````````````````````````````````````````````````````````````
+"""//////////////QUERY/////////////////////////////"""
 #--- recommender transformation
 """to produce the final recommendations, you will use the average course ratings, and the list of eligible
 recommendations per user, stored in avg_course_ratings and courses_to_recommend respectively. You will do this 
@@ -105,4 +106,6 @@ def transform_recommendations(avg_course_ratings, courses_to_recommend):
 # Use the function with the predefined DataFrame objects
 recommendations = transform_recommendations(avg_course_ratings, courses_to_recommend)
 #`````````````````````````````````````````````````````````````````````````````````````````````
-#--- 
+"""//////////////SCHEDULING/////////////////////////////"""
+#--- The target table
+
