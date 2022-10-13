@@ -203,3 +203,14 @@ ls
         1 It has one DAG file: dag.py.
  ok     2 It has two DAG files: dag.py and dag_recommendations.py.
         3 It has three DAG files: dag.py, you_wont_guess_this_dag.py, and super_secret_dag.py."""
+
+
+
+#--- Interpreting the DAG
+"""can you find the scheduled interval of the sample DAG?  
+recommendations	0 0 * * *		
+sample	0 0 * * *	
+
+     ok 1 Daily at midnight.
+        2 Hourly at 0 minutes and 0 seconds.
+        3 It runs once at midnight."""
