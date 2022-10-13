@@ -128,3 +128,46 @@ per course and creates recommendations based on the decision rules for producing
 
 """As you might remember from the video, etl() accepts a single argument: db_engines. You can pass this to the task using op_kwargs in the PythonOperator.
 You can pass it a dictionary that will be filled in as kwargs in the callable."""
+
+# Define the DAG so it runs on a daily basis
+dag = DAG(dag_id="recommendations",
+          schedule_interval="0 0 * * *") #every day at 00
+
+# Make sure `etl()` is called in the operator. Pass the correct kwargs.
+task_recommendations = PythonOperator(
+    task_id="recommendations_task",
+    python_callable= etl,
+    op_kwargs={"db_engines": db_engines},
+)
+#`````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Enable the DAG
+"""Can you find how to enable the DAG?
+
+    ok      1 By switching the left-hand slide from `Off` to `On`.
+            2 It's already enabled!
+            3 By clicking the play icon on the right-hand side."""
+#`````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Querying the recommendations
+"""Now that this recommendations table is in the data warehouse, you could also quickly join it with other tables in order
+to produce important features for DataCamp students such as customized marketing emails, intelligent recommendations for students and other features."""
+
+"""get a taste of how the newly created recommendations table could be utilized by creating a function recommendations_for_user() which automatically gets
+the top recommended courses based per user ID for a particular rating threshold."""
+
+def recommendations_for_user(user_id, threshold=4.5):
+    # Join with the courses table
+    query = """
+    SELECT title, rating FROM recommendations
+    INNER JOIN courses ON courses.course_id = recommendations.course_id
+    WHERE user_id=%(user_id)s AND rating>%(threshold)s
+    ORDER BY rating DESC
+    """
+    # Add the threshold parameter
+    predictions_df = pd.read_sql(query, db_engine, params = {"user_id": user_id, 
+                                                             "threshold": threshold})
+    return predictions_df.title.values
+
+# Try the function you created
+print(recommendations_for_user(12, 4.65))
