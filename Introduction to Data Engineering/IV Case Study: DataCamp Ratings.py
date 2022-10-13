@@ -12,8 +12,7 @@ raw course rating data, into actionable course recommendations for DataCamp stud
       2 There is no relationship.
   ok  3 The course_id column.
       4 The combination of user_id and course_id columns."""
-
-
+#````````````````````````````````````````````````````````````````````````````````````````````
 #--- Querying the table
 """You'll get the rating data for three sample users
 and then use a predefined helper function,
@@ -42,8 +41,7 @@ Course id overlap between users:
 User 1 and User 2 overlap: {32, 96, 36, 6, 7, 44, 95}
 User 1 and User 3 overlap: set()
 User 2 and User 3 overlap: set()"""
-
-
+#`````````````````````````````````````````````````````````````````````````````````````````````
 #--- Average rating per course
 """In this exercise, you'll complete a transformation function transform_avg_rating() 
 that aggregates the rating data using the pandas DataFrame's .groupby() method.
@@ -66,6 +64,21 @@ rating_data = extract_rating_data(db_engines)
 # Use transform_avg_rating on the extracted data and print results
 avg_rating_data = transform_avg_rating(rating_data)
 print(avg_rating_data) 
+#`````````````````````````````````````````````````````````````````````````````````````````````
+#--- Filter out corrupt data, count null, fill null
+course_data = extract_course_data(db_engines)
 
+# Print out the number of missing values per column
+#isnull()
+print(course_data.isnull().sum())
 
-#--- 
+# transformation: fill in the missing values
+#fillna()
+def transform_fill_programming_language(course_data):
+    imputed = course_data.fillna({"programming_language": "R"})
+    return imputed
+#apply transformation to table
+transformed = transform_fill_programming_language(course_data)
+
+# Print out the number of missing values per column of transformed
+print(transformed.isnull().sum())
