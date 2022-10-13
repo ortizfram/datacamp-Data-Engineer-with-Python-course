@@ -67,6 +67,7 @@ rating_data = extract_rating_data(db_engines)
 avg_rating_data = transform_avg_rating(rating_data)
 print(avg_rating_data) 
 #`````````````````````````````````````````````````````````````````````````````````````````````
+
 #--- Filter out corrupt data, count null, fill null
 course_data = extract_course_data(db_engines)
 
@@ -85,7 +86,7 @@ transformed = transform_fill_programming_language(course_data)
 # Print out the number of missing values per column of transformed
 print(transformed.isnull().sum())
 #`````````````````````````````````````````````````````````````````````````````````````````````
-"""//////////////QUERY/////////////////////////////"""
+
 #--- recommender transformation
 """to produce the final recommendations, you will use the average course ratings, and the list of eligible
 recommendations per user, stored in avg_course_ratings and courses_to_recommend respectively. You will do this 
@@ -106,6 +107,7 @@ def transform_recommendations(avg_course_ratings, courses_to_recommend):
 # Use the function with the predefined DataFrame objects
 recommendations = transform_recommendations(avg_course_ratings, courses_to_recommend)
 #`````````````````````````````````````````````````````````````````````````````````````````````
+
 """//////////////SCHEDULING/////////////////////////////"""
 """ put this table into a database so that it can be used by several products like a recommendation engine or an emailing system"""
 
