@@ -121,3 +121,10 @@ def load_to_dwh(recommendations):
     recommendations.to_sql("recommendations", db_engine, if_exists="replace")
 #`````````````````````````````````````````````````````````````````````````````````````````````
 
+#--- Defining the DAG
+"""In the previous exercises, you've completed the extract, transform and load phases separately. Now all of this is put together in one neat etl()"""
+"""The etl() function extracts raw course and ratings data from relevant databases, cleans corrupt data and fills in missing value, computes average rating
+per course and creates recommendations based on the decision rules for producing recommendations, and finally loads the recommendations into a database."""
+
+"""As you might remember from the video, etl() accepts a single argument: db_engines. You can pass this to the task using op_kwargs in the PythonOperator.
+You can pass it a dictionary that will be filled in as kwargs in the callable."""
