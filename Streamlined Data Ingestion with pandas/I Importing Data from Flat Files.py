@@ -50,7 +50,8 @@ Modifying flat file imports:
                            
                            # choose columns to load by name:
                            tax_data_v1 = pd.read_csv("us_tax_data_2016.csv", usecols=col_names)
-             - Limit rows import IN CHUNKS >>>>>>>>> nrows
+             - Limit rows import IN CHUNKS 
+                           >>>>>>>>> nrows -------- select how many rows
                            tax_data_first100 = pd.read_csv("us_tax_data_2016.csv", nrows=100)
                            >>>>>>>>> skiprows -----accepts a list of row n, funtion to filter rows 
                            >>>>>>>>> header=None ----------pandas knows there are no column names
@@ -80,3 +81,18 @@ data = pd.read_csv("vt_tax_data_2016.csv", usecols=cols)
 
 # View counts of dependents and tax returns by income level
 print(data.groupby("agi_stub").sum())
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Import a file in chunks
+# make a list of first 500 to get those column names
+col_names = list(vt_data_first500)
+# Create dataframe of next 500 rows with labeled columns
+vt_data_next500 = pd.read_csv("vt_tax_data_2016.csv", 
+                       		  nrows=500,
+                       		  skiprows=500,
+                       		  header=None,
+                       		  names=col_names)
+
+# View the Vermont dataframes to confirm they're different
+print(vt_data_first500.head())
+print(vt_data_next500.head())
