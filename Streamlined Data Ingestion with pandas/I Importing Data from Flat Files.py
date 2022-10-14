@@ -149,3 +149,16 @@ data = pd.read_csv("vt_tax_data_2016.csv",
 
 # View rows with NA ZIP codes
 print(data[data.zipcode.isna()])
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Skip bad data
+try:
+  # Import the CSV without any keyword arguments
+  data = pd.read_csv("vt_tax_data_2016_corrupt.csv")
+  
+  # View first 5 records
+  print(data.head(5))
+  # if corrupted print message
+except pd.errors.ParserError:
+    print("Your data contained rows that could not be parsed.")
+    print("Your data contained rows that could not be parsed.")
