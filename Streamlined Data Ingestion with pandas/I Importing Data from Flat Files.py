@@ -151,7 +151,7 @@ data = pd.read_csv("vt_tax_data_2016.csv",
 print(data[data.zipcode.isna()])
 #```````````````````````````````````````````````````````````````````````````````````````````````
 
-#--- Skip bad data
+#--- Skip bad data 1
 try:
   # Import the CSV without any keyword arguments
   data = pd.read_csv("vt_tax_data_2016_corrupt.csv")
@@ -161,4 +161,31 @@ try:
   # if corrupted print message
 except pd.errors.ParserError:
     print("Your data contained rows that could not be parsed.")
+    print("Your data contained rows that could not be parsed.")
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Skip bad data 2
+try:
+  # Import CSV with error_bad_lines set to skip bad records
+  data = pd.read_csv("vt_tax_data_2016_corrupt.csv", 
+                     error_bad_lines=False)
+  
+  # View first 5 records
+  print(data.head())
+  
+except pd.errors.ParserError:
+    print("Your data contained rows that could not be parsed.")
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Skip bad data 3
+try:
+  # Set warn_bad_lines to issue warnings about bad records
+  data = pd.read_csv("vt_tax_data_2016_corrupt.csv", 
+                     error_bad_lines=False, 
+                     warn_bad_lines=True)
+  
+  # View first 5 records
+  print(data.head())
+  
+except pd.errors.ParserError:
     print("Your data contained rows that could not be parsed.")
