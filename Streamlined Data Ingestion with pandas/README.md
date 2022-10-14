@@ -1,3 +1,5 @@
+
+ Instructor : Amany Mahfouz
 # This course teaches you 
 
 how to build pipelines to import data kept in common storage formats.
