@@ -96,3 +96,22 @@ vt_data_next500 = pd.read_csv("vt_tax_data_2016.csv",
 # View the Vermont dataframes to confirm they're different
 print(vt_data_first500.head())
 print(vt_data_next500.head())
+"""****************************************************************************************************
+Handling errors and missing data: 
+================================
+// Wrong Types, Missing Values, records Can't be Read by Pandas
+              - Specify column DataTypes 
+                           >>>>>>>>> dtype------ takes dictionary of columns names and data types
+                           tax_data_first100 = pd.read_csv("us_tax_data_2016.csv", dtype={"zipcode": str})
+                           # obj type is a Pandas str
+              - See column Type
+                           >>>>>>>>> dtypes--------- in print option, takes table name.dtypes
+              - Customizing Miissing Data
+                           # 0 in zipcode is invalid and missing
+                           >>>>>>>>> na_values------- pass single value, list, dict of column and values 
+                           tax_data_first100 = pd.read_csv("us_tax_data_2016.csv", na_values={"zipcode":0})
+                           print(tax_data[tax_data.zipcode.isna()])
+              - See Null values
+                           >>>>>>>> isna()
+****************************************************************************************************"""
+                  
