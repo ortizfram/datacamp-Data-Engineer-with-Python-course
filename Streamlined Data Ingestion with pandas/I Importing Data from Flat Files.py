@@ -113,5 +113,9 @@ Handling errors and missing data:
                            print(tax_data[tax_data.zipcode.isna()])
               - See Null values
                            >>>>>>>> isna()
+              - Lines with Errors
+                           >>>>>>>> error_bad_lines= False------ to skip unparseable records intead of error
+                           >>>>>>>> warn_bad_lines= True------ see messages when records are skipped & why
+                           tax_data_first100 = pd.read_csv("us_tax_data_2016.csv", error_bad_lines= False, warn_bad_lines= True)
 ****************************************************************************************************"""
                   
