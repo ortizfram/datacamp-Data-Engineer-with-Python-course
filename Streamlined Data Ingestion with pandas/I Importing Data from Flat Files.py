@@ -50,7 +50,7 @@ Modifying flat file imports:
                            
                            # choose columns to load by name:
                            tax_data_v1 = pd.read_csv("us_tax_data_2016.csv", usecols=col_names)
-             - Limit rows >>>>>>>>> nrows
+             - Limit rows import IN CHUNKS >>>>>>>>> nrows
                            tax_data_first100 = pd.read_csv("us_tax_data_2016.csv", nrows=100)
                            >>>>>>>>> skiprows -----accepts a list of row n, funtion to filter rows 
                            >>>>>>>>> header=None ----------pandas knows there are no column names
