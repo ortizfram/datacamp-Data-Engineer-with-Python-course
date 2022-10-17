@@ -149,3 +149,17 @@ setting custom True/False values
                   
 #---Set Boolean columns
 """Count NA values in each column of survey_data with isna() and sum(). Note which columns besides ID.x, if any, have zero NAs."""
+# Load the data
+survey_data = pd.read_excel("fcc_survey_subset.xlsx")
+
+# Count NA values in each column
+print(survey_data.isna().sum())
+
+"""output:
+ID.x                        0
+HasDebt                     0
+HasFinancialDependents      7
+HasHomeMortgage           499
+HasStudentDebt            502
+dtype: int64"""
+#```````````````````````````````````````````````````````````````````````````````````````````````
