@@ -47,3 +47,10 @@ survey_responses = pd.read_excel("fcc_survey_headers.xlsx",
 
 # View the names of the columns selected
 print(survey_responses.columns)
+#```````````````````````````````````````````````````````````````````````````````````````````````
+"""***************************************************************************************
+Getting data from multiple worksheets
+=========================
+          import pandas as pd
+***************************************************************************************"""
+
