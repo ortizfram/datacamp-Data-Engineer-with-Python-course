@@ -52,7 +52,7 @@ print(survey_responses.columns)
 Getting data from multiple worksheets
 ========================= pd
            >>>>>>>>> read_excel()--------- loads first sheet 
-           >>>>>>>>> sheet_name--------- load other sheets (sheet_name/ position zero-index) in the read argument
+           >>>>>>>>> sheet_name--------- load other sheets (sheet_name/[sheet_name_list]/ position zero-index) in the read argument
            >>>>>>>>> sheet_name = None--------- read all sheets in workbook. returns a Dict where keys are sheetnames
 
            
@@ -87,3 +87,12 @@ responses_2017 = pd.read_excel("fcc_survey.xlsx",
 job_prefs = responses_2017.groupby("JobPref").JobPref.count()
 job_prefs.plot.barh()
 plt.show()
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#---Select multiple sheets === sheet_name a list of names
+# Load both the 2016 and 2017 sheets by name
+all_survey_data = pd.read_excel("fcc_survey.xlsx",
+                                sheet_name=["2016",""])
+
+# View the data type of all_survey_data
+print(type(all_survey_data))
