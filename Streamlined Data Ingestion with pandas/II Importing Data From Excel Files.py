@@ -213,10 +213,11 @@ Modifying imports: parsing dates
     
             parse_dates >>>>>>>>>  specify that columns have datetime === accepts list[colum_names, listOfLists] or number to parse
             
-            # list of columns and dates to parse
+            parse date standard format
+            ==========================
+            # List of columns and dates to parse
             date_cols = ["Part1StartTime","Part1EndTime"]
-            
-            # load file, parsing standard datetime cols
+            # Load file, parsing standard datetime cols
             survey_df = pd.read_excel("fcc_survey.xlsx",
                                        parse_dates=date_cols)
             
