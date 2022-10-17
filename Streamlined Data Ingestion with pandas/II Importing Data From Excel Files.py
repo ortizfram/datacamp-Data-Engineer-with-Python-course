@@ -136,6 +136,7 @@ Modifying imports: true/false data  bools
            >>>>>>>>> bootcamp_data.isna().sum()--------- count NAs
            >>>>>>>>> dtype={}--------- specify boolean columns in argument
                   bool_data = pd.read_excel("fcc_survey_booleans.xlsx", dtype= {column_name : bool}) 
+                  
 setting custom True/False values
 ================================== 
            >>>>>>>>> true_values=["Yes"]
@@ -163,3 +164,20 @@ HasHomeMortgage           499
 HasStudentDebt            502
 dtype: int64"""
 #```````````````````````````````````````````````````````````````````````````````````````````````
+
+#---Set Boolean columns
+"""1 == TRUE, 0 == FALSE"""
+
+"""Set read_excel()'s dtype argument to load the HasDebt column as Boolean data.
+Supply the Boolean column name to the print statement to view financial burdens by group."""
+# Set dtype to load appropriate column(s) as Boolean data
+survey_data = pd.read_excel("fcc_survey_subset.xlsx",
+                            dtype={"HasDedt" : bool})
+
+# View financial burdens by Boolean group
+print(survey_data.groupby("HasDebt").sum())
+"""output:
+         HasFinancialDependents  HasHomeMortgage  HasStudentDebt
+HasDebt                                                         
+0                         112.0              0.0             0.0
+1                         205.0            151.0           281.0"""
