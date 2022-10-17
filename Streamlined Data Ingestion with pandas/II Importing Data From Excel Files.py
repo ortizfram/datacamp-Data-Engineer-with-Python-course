@@ -135,6 +135,15 @@ Modifying imports: true/false data  bools
            >>>>>>>>> bootcamp_data.sum()--------- count True values
            >>>>>>>>> bootcamp_data.isna().sum()--------- count NAs
            >>>>>>>>> dtype={}--------- specify boolean columns in argument
-                  bool_data = pd.read_excel("fcc_survey_booleans.xlsx", dtype= {column_name : bool})                                   
+                  bool_data = pd.read_excel("fcc_survey_booleans.xlsx", dtype= {column_name : bool}) 
+setting custom True/False values
+================================== 
+           >>>>>>>>> true_values=["Yes"]
+           >>>>>>>>> false_values=["No"]
+                  # load data with Boolean dtypes and custom T/F values
+                  bool_data = pd.read_excel("fcc_survey_booleans.xlsx", dtype= {column_name : bool,
+                                                                                 AttendBootcamp : bool},
+                                                                                 true_values= ["Yes"],
+                                                                                 false_values= ["No"])
 ****************************************************************************************"""
                   
