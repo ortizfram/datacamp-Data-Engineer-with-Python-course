@@ -50,7 +50,18 @@ print(survey_responses.columns)
 #```````````````````````````````````````````````````````````````````````````````````````````````
 """***************************************************************************************
 Getting data from multiple worksheets
-=========================
-          import pandas as pd
+========================= pd
+           >>>>>>>>> read_excel()--------- loads first sheet 
+           >>>>>>>>> sheet_name--------- load other sheets (sheet_name/ position zero-index) in the read argument
+           >>>>>>>>> sheet_name = None--------- read all sheets in workbook. returns a Dict where keys are sheetnames
+
+           
+           #Get data from 2nd sheet 2017 data
+           survey_data_sheet2 = pd.read_excel("fcc_survey.xslx", sheetname = 1)
+           survey_data_sheet2 = pd.read_excel("fcc_survey.xslx", sheetname = "2017")
+           #Get all data from workbook all sheets
+           survey_data_sheet2 = pd.read_excel("fcc_survey.xslx", sheetname = None)
+
+           
 ***************************************************************************************"""
 
