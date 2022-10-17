@@ -147,3 +147,5 @@ setting custom True/False values
                                                                                  false_values= ["No"])
 ****************************************************************************************"""
                   
+#---Set Boolean columns
+"""Count NA values in each column of survey_data with isna() and sum(). Note which columns besides ID.x, if any, have zero NAs."""
