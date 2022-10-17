@@ -165,19 +165,24 @@ HasStudentDebt            502
 dtype: int64"""
 #```````````````````````````````````````````````````````````````````````````````````````````````
 
-#---Set Boolean columns
+#---Set Boolean columns 2
 """1 == TRUE, 0 == FALSE"""
 
 """Set read_excel()'s dtype argument to load the HasDebt column as Boolean data.
 Supply the Boolean column name to the print statement to view financial burdens by group."""
+## Set Boolean columns
+
 # Set dtype to load appropriate column(s) as Boolean data
 survey_data = pd.read_excel("fcc_survey_subset.xlsx",
-                            dtype={"HasDedt" : bool})
+                            dtype={'HasDebt':bool})
 
 # View financial burdens by Boolean group
-print(survey_data.groupby("HasDebt").sum())
+print(survey_data.groupby('HasDebt').sum())
 """output:
-         HasFinancialDependents  HasHomeMortgage  HasStudentDebt
+        HasFinancialDependents  HasHomeMortgage  HasStudentDebt
 HasDebt                                                         
-0                         112.0              0.0             0.0
-1                         205.0            151.0           281.0"""
+False                     112.0              0.0             0.0
+True                      205.0            151.0           281.0"""
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+
