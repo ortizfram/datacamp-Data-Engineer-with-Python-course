@@ -64,7 +64,7 @@ Getting data from multiple worksheets
            survey_data_sheet2 = pd.read_excel("fcc_survey.xslx", sheetname = None)   
 ***************************************************************************************"""
 
-#---Select a single sheet
+#---Select a single sheet 1== providing sheet index
 #plot of job Dev. job preferences in 2017
 # Create df from second worksheet by referencing its position, 2016 was already done
 responses_2017 = pd.read_excel("fcc_survey.xlsx",
@@ -77,4 +77,13 @@ plt.show()
 """people prefer working for a medium size company over anythin else, followed by own business"""
 #```````````````````````````````````````````````````````````````````````````````````````````````
 
-#---
+#---Select a single sheet 2 ==providing sheet name
+#plot of job Dev. job preferences in 2017
+# Create df from second worksheet by referencing its name
+responses_2017 = pd.read_excel("fcc_survey.xlsx",
+                               sheet_name= "2017")
+
+# Graph where people would like to get a developer job
+job_prefs = responses_2017.groupby("JobPref").JobPref.count()
+job_prefs.plot.barh()
+plt.show()
