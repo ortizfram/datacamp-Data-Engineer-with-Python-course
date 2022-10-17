@@ -129,3 +129,7 @@ for df in responses.values():
 counts = all_responses.groupby("EmploymentStatus").EmploymentStatus.count()
 counts.plot.barh()
 plt.show()
+"""***************************************************************************************
+Modifying imports: true/false data
+==================================
+                  
