@@ -105,3 +105,10 @@ all_survey_data = pd.read_excel("fcc_survey.xlsx",
 # View the sheet names in all_survey_data
 print(all_survey_data.keys())
 #```````````````````````````````````````````````````````````````````````````````````````````````
+#---Select multiple sheets 3=== all whitout listing
+# Load all sheets in the Excel file
+all_survey_data = pd.read_excel("fcc_survey.xlsx",
+                                sheet_name= None)
+
+# View the sheet names in all_survey_data
+print(all_survey_data.keys())
