@@ -130,6 +130,11 @@ counts = all_responses.groupby("EmploymentStatus").EmploymentStatus.count()
 counts.plot.barh()
 plt.show()
 """***************************************************************************************
-Modifying imports: true/false data
+Modifying imports: true/false data  bools
 ==================================
+           >>>>>>>>> bootcamp_data.sum()--------- count True values
+           >>>>>>>>> bootcamp_data.isna().sum()--------- count NAs
+           >>>>>>>>> dtype={}--------- specify boolean columns in argument
+                  bool_data = pd.read_excel("fcc_survey_booleans.xlsx", dtype= {column_name : bool})                                   
+****************************************************************************************"""
                   
