@@ -141,3 +141,27 @@ Refining imports with Queries
            print(bx_plumbing_calls.shape)
            (2016, 8)
 ****************************************************************************************************""" 
+          
+# Create database engine for data.db
+engine = create_engine("sqlite:///data.db")
+
+# Write query to get date, tmax, and tmin from weather
+query = """
+SELECT tmax, 
+       tmin, 
+       date
+  FROM weather;
+"""
+# Make a dataframe by passing query and engine to read_sql()
+temperatures = pd.read_sql(query, engine)
+
+# View the resulting dataframe
+print(temperatures.head(3))
+"""output:
+  tmax  tmin        date
+0    52    42  12/01/2017
+1    48    39  12/02/2017
+2    48    42  12/03/2017"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#---
