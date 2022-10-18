@@ -23,12 +23,12 @@ This chapter features introductory SQL topics like WHERE clauses, aggregate func
                   SQL Alchemy library
                   ====================
                   ## db connection with engine
-                  create_engine()            >>>>>>>> makes engine to handle db connections ==== takes string URL of db to connect to 
-                  sqlite:///filename.db      >>>>>>>> SQLite URL Format 
+           >>>>>>>> create_engine()  ===makes engine to handle db connections ==== takes string URL of db to connect to 
+           >>>>>>>> sqlite:///filename.db ===SQLite URL Format 
                   ## Query db
-                  pd.read_sql(query, engine) >>>>>>>> to pull data/ load in data
-                  query->table name          >>>>>>>> to load whole table
-                  
+           >>>>>>>> pd.read_sql(query, engine) ===to pull data/ load in data
+           >>>>>>>> query->table name  ===to load whole table
+
                   SQL Syntax (Line ENds with ;)
                   ==========
                   ## Basic SQL Syntax
