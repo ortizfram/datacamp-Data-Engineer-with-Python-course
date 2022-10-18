@@ -402,3 +402,33 @@ unique_key created_date agency  complaint_type incident_zip  ... prcp snow tavg 
 2   38066653   01/01/2018    HPD  HEAT/HOT WATER        10452  ...  0.0  0.0        19    7
 3   38070264   01/01/2018    HPD  HEAT/HOT WATER        10032  ...  0.0  0.0        19    7
 4   38072466   01/01/2018    HPD  HEAT/HOT WATER        11213  ...  0.0  0.0        19    7"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#---Joining and filtering 1
+# Query to get hpd311calls and precipitation values
+query = """
+SELECT hpd311calls.*, weather.prcp
+  FROM hpd311calls
+  JOIN weather
+  ON hpd311calls.created_date = weather.date;"""
+
+# Load query results into the leak_calls dataframe
+leak_calls = pd.read_sql(query,engine)
+
+# View the dataframe
+print(leak_calls.head())
+
+#---Joining and filtering 2 === filter WHERE 'WATER LEAK
+# Query to get water leak calls and daily precipitation
+query = """
+SELECT hpd311calls.*, weather.prcp
+  FROM hpd311calls
+  JOIN weather
+    ON hpd311calls.created_date = weather.date
+  WHERE hpd311calls.complaint_type = 'WATER LEAK';"""
+
+# Load query results into the leak_calls dataframe
+leak_calls = pd.read_sql(query, engine)
+
+# View the dataframe
+print(leak_calls.head())
