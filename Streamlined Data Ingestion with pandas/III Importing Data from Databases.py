@@ -68,4 +68,24 @@ print(engine.table_names())
 ['boro_census', 'hpd311calls', 'weather']"""
 #``````````````````````````````````````````````````````````````````````````````````````````````````````
 
-#---
+#--- Load entire tables
+# Load libraries
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Create the database engine
+engine = create_engine('sqlite:///data.db')
+
+# Load hpd311calls without any SQL
+hpd_calls = pd.read_sql("hpd311calls", engine)
+
+# View the first few rows of data
+print(hpd_calls.head())
+"""output:
+unique_key created_date agency  complaint_type incident_zip      incident_address community_board    borough
+0   38070822   01/01/2018    HPD  HEAT/HOT WATER        10468    2786 JEROME AVENUE        07 BRONX      BRONX
+1   38065299   01/01/2018    HPD        PLUMBING        10003  323 EAST   12 STREET    03 MANHATTAN  MANHATTAN
+2   38066653   01/01/2018    HPD  HEAT/HOT WATER        10452  1235 GRAND CONCOURSE        04 BRONX      BRONX"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Load entire tables 2 
