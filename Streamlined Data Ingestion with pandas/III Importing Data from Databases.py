@@ -374,4 +374,9 @@ Loading multiple tables with joins
 		JOIN 	boro_census
 		ON hdp311calls.borough = boro_census_borough	
 	GROUP BY  hdp311calls.borough;
+	
+		
+		SQL Order of Keywords
+		=====================
+		>>>>>>>>> SELECT,  >>>>>>>>>FROM,  >>>>>>>>>JOIN,  >>>>>>>>>WHERE, >>>>>>>>>GROUP BY
 ****************************************************************************************************"""
