@@ -23,11 +23,11 @@ This chapter features introductory SQL topics like WHERE clauses, aggregate func
                   SQL Alchemy library
                   ====================
                   ## db connection with engine
-                  create_engine()       >>>>>>>> makes engine to handle db connections ==== takes string URL of db to connect to 
-                  sqlite:///filename.db >>>>>>>> SQLite URL Format 
+                  create_engine()            >>>>>>>> makes engine to handle db connections ==== takes string URL of db to connect to 
+                  sqlite:///filename.db      >>>>>>>> SQLite URL Format 
                   ## Query db
                   pd.read_sql(query, engine) >>>>>>>> to pull data/ load in data
-                  query->table name >>>>>>>> to load whole table
+                  query->table name          >>>>>>>> to load whole table
                   
                   SQL Syntax (Line ENds with ;)
                   ==========
@@ -113,7 +113,12 @@ station                         name  latitude  longitude  elevation  ... prcp s
 Refining imports with Queries
 =============================
     WHERE, AND,OR filtering text, and filtering numbers
-        
+            
+            describe() >>>>>>>>> view summary statistics
+            (query) WHERE >>>>>>>>
+            (query) OR >>>>>>>>>
+            (query) AND >>>>>>>>>
+            
            # Load pandas  and alchemy's create_engine
            import pandas as pd
            from alchemy import create_engine
@@ -180,3 +185,18 @@ call_counts = safety_calls.groupby('borough').unique_key.count()
 call_counts.plot.barh()
 plt.show()
 #``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Filtering on multiple conditions
+# Create query for records with max temps <= 32 or snow >= 1
+query = """
+SELECT *
+  FROM weather
+  WHERE tmax <= 32
+  OR snow >= 1;
+"""
+
+# Query database and assign result to wintry_days
+wintry_days = pd.read_sql(query, engine)
+
+# View summary stats about the temperatures
+print(wintry_days.describe())
