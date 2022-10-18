@@ -78,7 +78,7 @@ try:
 except ValueError:
     print("pandas could not parse the JSON.")
   
-  """---unlike orient, split throws a graph"""\
+  """---without orient kward, pipeline wouldn't throw a graph"""\
   #``````````````````````````````````````````````````````````````````````````````````````````````````````
 
   #---
