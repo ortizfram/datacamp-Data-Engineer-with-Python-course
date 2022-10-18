@@ -213,12 +213,45 @@ Modifying imports: parsing dates
     
             parse_dates >>>>>>>>>  specify that columns have datetime === accepts list[colum_names, listOfLists] or number to parse
             
-            parse date standard format
+      @@@   parse date standard format
             ==========================
             # List of columns and dates to parse
             date_cols = ["Part1StartTime","Part1EndTime"]
+            
             # Load file, parsing standard datetime cols
             survey_df = pd.read_excel("fcc_survey.xlsx",
                                        parse_dates=date_cols)
+                                       
+            # checking dtypes === it passes from object to datetime
+            print(survey_df[["Part1StartTime","Part1EndTime","Part2StartDate","Part2StartTime","Part2EndTime"]].dtypes)  
             
+             combined datetime column (listOfLists)
+            ======================================
+             date_cols = ["Part1StartTime","Part1EndTime",
+                          [["Part1StartDate","Part2StartTime"]]]
+                          
+             survey_df = pd.read_excel("fcc_survey.xlsx",
+                                       parse_dates=date_cols)
+             
+             control column names
+            ======================
+            # List columns of dates to parse
+            date_cols = {"Part1Start" : "Part1StartTime",
+                          "Part1End" : "Part1EndTime",
+                          "Part2Start" : ["Part1StartDate","Part2StartTime"]}
+            
+            # Load file, parsing standard & split datetime columns
+            survey_df = pd.read_excel("fcc_survey.xlsx",
+                                       parse_dates=date_cols)
+                                       
+       @@@   parse date Non-standard format
+             ==========================
+                           pd.to_datetime() >>>>>>>
+                           format >>>>>>>>
+                           - takes dataframe and column to convert + format string argument
+                           # Month,day,year    hour,minutes,seconds
+                           format_string = "%m%d%Y  %H:%M:%S"  
+                           survey_df["Part2EndTime"]= pd.to_datetime(survey_df["Part2EndTime"],
+                                                                        format=format_string)
+                                       
 ****************************************************************************************"""
