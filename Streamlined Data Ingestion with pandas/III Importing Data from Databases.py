@@ -43,10 +43,29 @@ This chapter features introductory SQL topics like WHERE clauses, aggregate func
            from alchemy import create_engine
            
            # create engine to manage db connection
-           engine = create_engine("sqlite:///"data.db")
+           engine = create_engine("sqlite:///data.db")
            
            # Load entire table 2 ways (just table_name, or SELECT)
            weather = pd.read_sql("weather", engine)
            weather = pd.read_sql("SELECT * FROM weather", engine)
 ****************************************************************************************************"""
-                  
+
+#--- Connect to a database 1
+# Import sqlalchemy's create_engine() function
+from sqlalchemy import create_engine      
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Connect to a database 2
+# Import sqlalchemy's create_engine() function
+from sqlalchemy import create_engine
+
+# Create the database engine
+engine = create_engine("sqlite:///data.db")
+
+# View the tables in the database
+print(engine.table_names())
+"""output:
+['boro_census', 'hpd311calls', 'weather']"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#---
