@@ -212,6 +212,7 @@ Modifying imports: parsing dates
                         by default  - Pandas load datetime column AS objects
     
             parse_dates >>>>>>>>>  specify that columns have datetime === accepts list[colum_names, listOfLists] or number to parse
+            describe() >>>>>>>>> view summary statistics
             
       @@@   parse date standard format
             ==========================
@@ -251,6 +252,7 @@ Modifying imports: parsing dates
                            - takes dataframe and column to convert + format string argument
                            # Month,day,year    hour,minutes,seconds
                            format_string = "%m%d%Y  %H:%M:%S"  
+                           
                            survey_df["Part2EndTime"]= pd.to_datetime(survey_df["Part2EndTime"],
                                                                         format=format_string)
                                        
@@ -269,3 +271,53 @@ print(survey_data.Part1StartTime.head())
     2   2016-03-29 21:25:37
     3   2016-03-29 21:21:37
     4   2016-03-29 21:26:22"""
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Get datetimes from multiple columns == parse_dates argument to combine them into one datetime column with a new name.
+# Create dict of columns to combine into new datetime column
+datetime_cols = {"Part2Start": ["Part2StartDate","Part2StartTime"]}
+
+
+# Load file, supplying the dict to parse_dates
+survey_data = pd.read_excel("fcc_survey_dts.xlsx",
+                            parse_dates= datetime_cols)
+
+# View summary statistics about Part2Start
+print(survey_data.Part2Start.describe())
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Parse non-standard date formats
+"""In the console, examine survey_data's Part2EndTime column to see the data type and date format.
+Choose the code that describes the date format in Part2EndTime.
+
+         995    03302016 09:04:49
+         996    03302016 09:05:06
+         997    03302016 09:06:21
+         998    03302016 09:08:29
+         
+ Correct : number 3 -> %m%d%Y %H:%M:%S """
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Parse non-standard date formats 2
+"""Parse Part2EndTime using pd.to_datetime(), the format keyword argument,
+and the format string you just identified. Assign the result back to the Part2EndTime column."""
+# Parse datetimes and assign result back to Part2EndTime
+survey_data["Part2EndTime"] = pd.to_datetime(survey_data["Part2EndTime"],
+                                   format= "%m%d%Y %H:%M:%S")
+#```````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Parse non-standard date formats 3
+"""Print the head of Part2EndTime to confirm the column now contains datetime values."""
+# Parse datetimes and assign result back to Part2EndTime
+survey_data["Part2EndTime"] = pd.to_datetime(survey_data["Part2EndTime"], 
+                                             format="%m%d%Y %H:%M:%S")
+
+# Print first few values of Part2EndTime
+print(survey_data["Part2EndTime"].head())
+"""output:
+0   2016-03-29 21:27:25
+1   2016-03-29 21:29:10
+2   2016-03-29 21:28:21
+3   2016-03-29 21:30:51
+4   2016-03-29 21:31:54
+Name: Part2EndTime, dtype: datetime64[ns]"""
