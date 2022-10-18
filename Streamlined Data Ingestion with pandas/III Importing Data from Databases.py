@@ -351,3 +351,27 @@ print(weather_by_month)
     1  February         78         16       5.83
     2   January         61          5       2.18
     3     March         62         27       5.17"""
+"""****************************************************************************************************
+Loading multiple tables with joins
+==================================
+	>>>>>>>>(query) JOIN ====== on table.table_name
+	
+	# joining weather and filtering complaints
+	SELECT *
+	FROM hdp311calls
+		JOIN weather
+		ON hdp311calls.created_date = weather.date;
+	WHERE hdp311calls.complaint_type = 'HEAT/HOT WATER';
+	
+	joining and aggregating
+	========================
+	# Get call counts by borough and join population and housing counts
+	SELECT  hdp311calls.borough,
+		COUNT(*),
+		boro_census.total_pupulation,
+		boro_census.housing_units
+	FROM 	hdp311calls
+		JOIN 	boro_census
+		ON hdp311calls.borough = boro_census_borough	
+	GROUP BY  hdp311calls.borough;
+****************************************************************************************************"""
