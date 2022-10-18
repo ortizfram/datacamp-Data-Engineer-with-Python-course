@@ -380,3 +380,25 @@ Loading multiple tables with joins
 		=====================
 		>>>>>>>>> SELECT,  >>>>>>>>>FROM,  >>>>>>>>>JOIN,  >>>>>>>>>WHERE, >>>>>>>>>GROUP BY
 ****************************************************************************************************"""
+
+#---Joining tables
+# Query to join weather to call records by date columns
+query = """
+SELECT * 
+  FROM hpd311calls
+  JOIN weather 
+  ON hpd311calls.created_date = weather.date;
+"""
+
+# Create dataframe of joined tables
+calls_with_weather = pd.read_sql(query, engine)
+
+# View the dataframe to make sure all columns were joined
+print(calls_with_weather.head())
+"""output:
+unique_key created_date agency  complaint_type incident_zip  ... prcp snow tavg tmax tmin
+0   38070822   01/01/2018    HPD  HEAT/HOT WATER        10468  ...  0.0  0.0        19    7
+1   38065299   01/01/2018    HPD        PLUMBING        10003  ...  0.0  0.0        19    7
+2   38066653   01/01/2018    HPD  HEAT/HOT WATER        10452  ...  0.0  0.0        19    7
+3   38070264   01/01/2018    HPD  HEAT/HOT WATER        10032  ...  0.0  0.0        19    7
+4   38072466   01/01/2018    HPD  HEAT/HOT WATER        11213  ...  0.0  0.0        19    7"""
