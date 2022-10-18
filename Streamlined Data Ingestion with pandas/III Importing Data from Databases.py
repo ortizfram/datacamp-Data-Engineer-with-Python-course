@@ -114,10 +114,10 @@ Refining imports with Queries
 =============================
     WHERE, AND,OR filtering text, and filtering numbers
             
-            describe() >>>>>>>>> view summary statistics
-            (query) WHERE >>>>>>>>
-            (query) OR >>>>>>>>>
-            (query) AND >>>>>>>>>
+            >>>>>>>>> describe()======= view summary statistics
+            >>>>>>>>> (query) WHERE 
+            >>>>>>>>> (query) OR 
+            >>>>>>>>> (query) AND 
             
            # Load pandas  and alchemy's create_engine
            import pandas as pd
@@ -200,3 +200,47 @@ wintry_days = pd.read_sql(query, engine)
 
 # View summary stats about the temperatures
 print(wintry_days.describe())
+"""***************************************************************************************************
+more complex Queries
+====================
+            getting DISTINT Values
+            =======================
+            >>>>>>>>> SELECT DISTINCT
+            SELECT DISTINCT [column_names] FROM [table];
+            >>>>>>>> SELECT DISTINCT * FROM table;===== Remove duplicate records/ leave uniques
+            
+            # Get unique street addresess and boroughs
+            SELECT DISTINCT incidents_address,
+                            borough
+                  FROM hpd311calls;
+            
+            Aggregate funcitons (query db for descriptive statistics)
+            ===================
+           >>>>>>>>> SUM,  >>>>>>>>>AVG,  >>>>>>>>>MAX,  >>>>>>>>>MIN, 
+           >>>>>>>>>COUNT
+             # get num of rows that meet query conditions
+             SELECT COUNT(*) FROM [table_name]
+             # get num of unique values in column 
+             SELECT COUNT(DISTINCT [col_names] FROM [table_name];
+             
+           >>>>>>>>>GROUP BY
+             ### Counting by groups
+             # create engine to manage db connection
+              engine = create_engine("sqlite:///data.db")
+              
+             # Counting by groups
+              query= '''SELECT borough,
+                       COUNT(*)
+               FROM hpd311calls
+               WHERE complaint_type = 'PLUMBING'
+               GROUP BY borough;'''
+               
+             # Query db
+              plumbing_call_counts = pd.read_sql(query, engine)
+              print(plumbing_call_counts)
+              
+             #output:
+                  borough   COUNT(*)
+              0   BRONX     2016
+              1   BROOKLYN  2702......
+****************************************************************************************************"""
