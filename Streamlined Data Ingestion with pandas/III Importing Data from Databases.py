@@ -205,7 +205,7 @@ more complex Queries
 ====================
             getting DISTINT Values
             =======================
-            >>>>>>>>> SELECT DISTINCT
+            >>>>>>>>> SELECT DISTINCT ====remove duplicates
             SELECT DISTINCT [column_names] FROM [table];
             >>>>>>>> SELECT DISTINCT * FROM table;===== Remove duplicate records/ leave uniques
             
@@ -244,3 +244,26 @@ more complex Queries
               0   BRONX     2016
               1   BROOKLYN  2702......
 ****************************************************************************************************"""
+
+#--- Getting distinct values
+# Create query for unique combinations of borough and complaint_type
+"""hpd311calls contains data about housing issues, we would expect most records to have a borough(city) listed.
+Let's test this assumption by querying unique complaint_type/borough combinations."""
+
+query = """
+SELECT DISTINCT borough, 
+       complaint_type
+  FROM hpd311calls;
+"""
+
+# Load results of query to a dataframe
+issues_and_boros = pd.read_sql(query,engine)
+
+# Check assumption about issues and boroughs
+print(issues_and_boros)
+"""output:
+          borough    complaint_type
+    0           BRONX    HEAT/HOT WATER
+    1       MANHATTAN          PLUMBING
+    2       MANHATTAN    HEAT/HOT WATER
+    3        BROOKLYN    HEAT/HOT WATER"""
