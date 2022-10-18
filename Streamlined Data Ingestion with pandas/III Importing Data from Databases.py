@@ -89,3 +89,22 @@ unique_key created_date agency  complaint_type incident_zip      incident_addres
 #``````````````````````````````````````````````````````````````````````````````````````````````````````
 
 #--- Load entire tables 2 
+# Create the database engine
+engine = create_engine("sqlite:///data.db")
+
+# Create a SQL query to load the entire weather table
+query = """
+SELECT * 
+  FROM weather;
+"""
+
+# Load weather with the SQL query
+weather = pd.read_sql(query, engine)
+
+# View the first few rows of data
+print(weather.head())
+"""output:
+station                         name  latitude  longitude  elevation  ... prcp snow  tavg  tmax  tmin
+0  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          52    42
+1  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          48    39
+2  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          48    42"""
