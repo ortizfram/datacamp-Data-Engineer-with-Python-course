@@ -108,3 +108,36 @@ station                         name  latitude  longitude  elevation  ... prcp s
 0  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          52    42
 1  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          48    39
 2  USW00094728  NY CITY CENTRAL PARK, NY US    40.779    -73.969       42.7  ...  0.0  0.0          48    42"""
+
+"""****************************************************************************************************
+Refining imports with Queries
+=============================
+    WHERE, AND,OR filtering text, and filtering numbers
+        
+           # Load pandas  and alchemy's create_engine
+           import pandas as pd
+           from alchemy import create_engine
+           
+           # create engine to manage db connection
+           engine = create_engine("sqlite:///data.db")
+           # Write query to get records from brookling
+           quey= """SELECT *
+                    FROM hpd311calls
+                    WHERE borough = 'BROOKLYN'; """
+           
+           # Query db
+           brooklyn_calls = pd.read_sql(query, engine)
+           print(brooklyn_calls.borough.unique())
+           #````````````````````````````````````````````
+     
+           # Write query to get records from brookling
+           and_query= """SELECT *
+                    FROM hpd311calls
+                    WHERE borough = 'BRONX'
+                    AND complaint_type = 'PLUMBING'; """
+           # Get calls about plumbing issues in the Bronx
+           bx_plumbing_calls = pd.read_sql(and_query, engine)
+           # Check redord count
+           print(bx_plumbing_calls.shape)
+           (2016, 8)
+****************************************************************************************************""" 
