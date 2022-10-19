@@ -289,3 +289,18 @@ print(list(bookstores))
                        meta_prefix ="biz_")
                        # <-- business and categories have both alias column, so set a meta_prefix to differentiate
  ****************************************************************************************************"""
+
+#--- Flatten nested JSONs
+"""Your job is to flatten out the next level of data in the coordinates and location columns."""
+# Load json_normalize()
+from pandas.io.json import json_normalize
+
+# Isolate the JSON data from the API response
+data = response.json()
+
+# Flatten business data into a dataframe, replace separator
+cafes = json_normalize(data["businesses"],
+                     sep="_")
+
+# View data
+print(cafes.head())
