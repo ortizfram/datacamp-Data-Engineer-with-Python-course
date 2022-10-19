@@ -304,3 +304,10 @@ cafes = json_normalize(data["businesses"],
 
 # View data
 print(cafes.head())
+"""output:
+ location_display_address price  
+0        [71 Smith St, Brooklyn, NY 11201]   NaN  
+1  [276 Livingston St, Brooklyn, NY 11201]    $$  
+2       [239 E 5th St, New York, NY 10003]    $$  
+3     [116 Suffolk St, New York, NY 10002]     $  
+4       [163 Plymouth St, Dumbo, NY 11201]    $$ """
