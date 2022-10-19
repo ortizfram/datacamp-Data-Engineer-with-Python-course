@@ -311,3 +311,52 @@ print(cafes.head())
 2       [239 E 5th St, New York, NY 10003]    $$  
 3     [116 Suffolk St, New York, NY 10002]     $  
 4       [163 Plymouth St, Dumbo, NY 11201]    $$ """
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Handle deeply nested data 1
+# Flatten businesses records and set underscore separators
+flat_cafes = json_normalize(data["businesses"],
+                  sep="_")
+
+# View the data
+print(flat_cafes.head())
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Handle deeply nested data 2
+# Specify record path to get categories data
+flat_cafes = json_normalize(data["businesses"],
+                            sep="_",
+                    		record_path= "categories")
+
+# View the data
+print(flat_cafes.head())
+"""output:
+           alias              title
+0            coffee       Coffee & Tea
+1            coffee       Coffee & Tea
+2  coffeeroasteries  Coffee Roasteries
+3             cafes              Cafes
+4            coffee       Coffee & Tea"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Handle deeply nested data 3
+# Load other business attributes and set meta prefix
+flat_cafes = json_normalize(data["businesses"],
+                            sep="_",
+                    		record_path="categories",
+                    		meta=["name", 
+                                  "alias",  
+                                  "rating",
+                          		  ["coordinates", "latitude"], 
+                          		  ["coordinates", "longitude"]],
+                    		meta_prefix="biz_")
+
+# View the data
+print(flat_cafes.head())
+"""output:
+       alias              title           biz_name                   biz_alias         biz_rating biz_coordinates_latitude biz_coordinates_longitude
+0            coffee       Coffee & Tea        White Noise      white-noise-brooklyn-2        4.5                   40.689                   -73.988
+1            coffee       Coffee & Tea           Devocion         devocion-brooklyn-3        4.0                   40.689                   -73.983
+2  coffeeroasteries  Coffee Roasteries           Devocion         devocion-brooklyn-3        4.0                   40.689                   -73.983
+3             cafes              Cafes           Devocion         devocion-brooklyn-3        4.0                   40.689                   -73.983
+4            coffee       Coffee & Tea  Coffee Project NY  coffee-project-ny-new-york        4.5  """
