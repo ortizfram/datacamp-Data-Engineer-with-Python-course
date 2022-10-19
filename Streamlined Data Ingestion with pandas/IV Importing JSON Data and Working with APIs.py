@@ -269,5 +269,23 @@ data = response.json()
 # Flatten data and load to df, with _ separators
 bookstores = json_normalize(data["businesses"], sep = "_")
 print(list(bookstores))
-                       
+ 
+ DEEPLY Nested data
+===================
+   >>>>>>>> json_normalize()
+        >>>>>>>> record_path ====== String/List of String Attributes To Nested data
+        >>>>>>>> meta ====== list of attributes to load to df
+        >>>>>>>> meta_prefix ===== (diffenciate columns) string to prefix to meta column names
+        
+   # Flatten categories data, bring in business details 
+   df = json_normalize(data["businesses"],
+                       sep = "_",
+                       record_path ="categories",
+                       meta = ["name",
+                               "alias",
+                               "rating",
+                               ["coordinates", "latitude"],
+                               ["coordinates", "longitude"]],
+                       meta_prefix ="biz_")
+                       # <-- business and categories have both alias column, so set a meta_prefix to differentiate
  ****************************************************************************************************"""
