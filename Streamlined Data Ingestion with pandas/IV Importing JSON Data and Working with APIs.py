@@ -412,3 +412,54 @@ Pandas method for combining data sets
                                    left_on="created_date",
                                    right_on="date")
 ****************************************************************************************************"""
+
+#--- Append dataframes
+# Add an offset parameter to get cafes 51-100
+params = {"term": "cafe", 
+          "location": "NYC",
+          "sort_by": "rating", 
+          "limit": 50,
+          "offset": 50} #ommit 50
+
+result = requests.get(api_url, headers=headers, params=params)
+next_50_cafes = json_normalize(result.json()["businesses"])
+
+# Append the results, setting ignore_index to renumber rows
+cafes = top_50_cafes.append(next_50_cafes, ignore_index=True)
+
+# Print shape of cafes
+print(cafes.shape)
+# (100, 24)
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Merge dataframes
+"""Question
+Explore the cafes and crosswalk dataframes in the console. Which columns should be used as join keys?
+
+
+        1 location_zip_code in cafes and zcta5 in crosswalk
+        2 zipcode in both
+        3 location.zipcode in cafes and zipcode in crosswalk
+  ok    4 location_zip_code in cafes and zipcode in crosswalk
+  
+Explore the crosswalk and pop_data dataframes in the console. Which columns should be used as join keys?
+Possible Answers
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+        1 pumaname in crosswalk and puma in pop_dat
+    ok  2 puma in both
+        3 zipcode in both
+        4 pumaname in crosswalk and geog_name in pop_data
+#``````````````````````````````````````````````````````````````````````````````````````````````````````        
+Use the DataFrame method to merge cafes and crosswalk on location_zip_code and zipcode, respectively. Assign the result to cafes_with_pumas.
+Merge pop_data into cafes_with_pumas on their puma fields. Save the result as cafes_with_pop."""
+
+       # Merge crosswalk into cafes on their zip code fields
+       cafes_with_pumas = cafes.merge(crosswalk,
+                                      left_on="location_zip_code",
+                                      right_on="zipcode")
+
+       # Merge pop_data into cafes_with_pumas on puma field
+       cafes_with_pop = cafes_with_pumas.merge(pop_data, on='puma')
+
+       # View the data
+       print(cafes_with_pop.head())
