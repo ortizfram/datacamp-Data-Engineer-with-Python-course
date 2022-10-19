@@ -196,3 +196,78 @@ print(cafes.head())
 2  +12122287888  (212) 228-7888  2435.843    $$  
 3  +16465246353  (646) 524-6353  1657.233     $  
 4  +17188018037  (718) 801-8037   635.782    $$  """
+  #``````````````````````````````````````````````````````````````````````````````````````````````````````
+
+#--- Set request headers
+# Create dictionary that passes Authorization and key string
+headers = {"Authorization": "Bearer {}".format(api_key)}
+
+# Query the Yelp API with headers and params set
+response = requests.get(api_url,
+                        headers=headers,
+                        params=params)
+
+# Extract JSON data from response
+data = response.json()
+
+# Load "businesses" values to a dataframe and print names
+cafes = pd.DataFrame(data["businesses"])
+print(cafes.name)
+"""output:
+0             Coffee Project NY
+1                Urban Backyard
+2              Saltwater Coffee
+3                 Bird & Branch
+4                  Bibble & Sip
+5             Coffee Project NY
+6                        Burrow
+7                   Cafe Patoro
+8                     Sweatshop
+9                       Round K
+10               Kobrick Coffee
+11            Kaigo Coffee Room
+12              Absolute Coffee
+13                     Devocion
+14                The Uncommons
+15                      Butler 
+16              Cafe Hanamizuki
+17    Brooklyn Roasting Company
+18             Takahachi Bakery
+19              Happy Bones NYC
+Name: name, dtype: object"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````
+"""****************************************************************************************************
+Nested JSON (restructuring)
+============================
+ - JSON contains objects w/ {attribute/value pairs}
+ - Nested when values itself is an object
+ 
+     >>>>>>>> pandas.io.json ---(pd.submodule)
+     <->>>>>> json_normalize()======function to flatten nested JSONs.---takes Dict,[{}]----return DF
+     >>>>>>>> attribute.nestedattribute==== DEFAULT flattened column name pattern
+     >>>>>>>> sep ===== choose different separator
+    
+LOADING Nested JSON data
+========================
+
+import pandas as pd
+import requests
+from pandas.io.json import json_normalize
+
+# Create var for API endpoint, headers, params
+api_url = "https://api.yelp.com/v3/businesses/search"
+headers = {"Authorize" : "Bearer {}".format(api_key)}
+params = {"terms" : "bookstore",
+          "location" : "San Francisco"}
+          
+# Make API call , Extract JSON data 
+response = requests.get(api_url,
+                        headers=headers,
+                        params = params)
+data = response.json()
+
+# Flatten data and load to df, with _ separators
+bookstores = json_normalize(data["businesses"], sep = "_")
+print(list(bookstores))
+                       
+ ****************************************************************************************************"""
