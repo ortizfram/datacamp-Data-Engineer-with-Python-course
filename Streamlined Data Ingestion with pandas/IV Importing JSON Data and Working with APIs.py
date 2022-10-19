@@ -171,3 +171,28 @@ phone             object
 display_phone     object
 distance         float64
 price             object"""
+  #``````````````````````````````````````````````````````````````````````````````````````````````````````
+ 
+#--- Set API parameters
+# Create dictionary to query API for cafes in NYC
+parameters = {"term" : "cafe",
+          	  "location" : "NYC"}
+
+# Query the Yelp API with headers and params set
+response = requests.get(api_url,
+                headers=headers,
+                params=parameters)
+
+# Extract JSON data from response
+data = response.json()
+
+# Load "businesses" values to a dataframe and print head
+cafes = pd.DataFrame(data["businesses"])
+print(cafes.head())
+"""output:
+   phone   display_phone  distance price  
+0                                1856.127   NaN  
+1  +17182856180  (718) 285-6180  2087.817    $$  
+2  +12122287888  (212) 228-7888  2435.843    $$  
+3  +16465246353  (646) 524-6353  1657.233     $  
+4  +17188018037  (718) 801-8037   635.782    $$  """
