@@ -105,5 +105,52 @@ except ValueError:
            
               Yelp (Business Search API)
               ==========================
-  ****************************************************************************************************"""
+              - makes busines's reviews/ratings data available via its APIs
+ Making requests
+ ===============
+ import requests
+ import pandas as pd
+ 
+ # Create variable for API endpoint
+ api_url = "https://api.yelp.com/v3/businesses/search"
+ 
+ # Set up parameter Dictionary according documentation
+ params = {"term" : "bookstore",
+           "location" : "San Francisco"}
+           
+ # Set up header Dictionary w/ API key according documentation
+ headers = {"Authorization" : "Bearer {}".format(api_key)}
+ 
+ # Call API
+ response = requests.get(api_url,
+                         params=params,
+                         headers=headers)
   
+Parsing responses
+=================
+# Isolate JSON data from response object
+data = response.json()
+print(data)
+# returns tictionary
+
+# Load business to df
+bookstores = pd.DataFrame(data["businesses"])
+print(bookstores.head(2))
+ ****************************************************************************************************"""
+ 
+ #--- Get data from an API
+api_url = "https://api.yelp.com/v3/businesses/search"
+
+# Get data about NYC cafes from the Yelp API
+response = requests.get(api_url, 
+                headers=headers, 
+                params=params)
+
+# Extract JSON data from the response
+data = response.json()
+
+# Load data to a dataframe
+cafes = pd.DataFrame(data["businesses"])
+
+# View the data's dtypes
+print(cafes.dtypes)
