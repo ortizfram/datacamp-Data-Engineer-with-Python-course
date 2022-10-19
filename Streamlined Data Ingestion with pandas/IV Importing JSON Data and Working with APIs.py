@@ -102,5 +102,8 @@ except ValueError:
            >>>>>>>>> response.json() ====== to get just the JSON data--- returns Dictionary
            <-- read_json()=== expects Strings, not Dictionaries
            <-- pd.DataFrame() ====== Load the response JSON to a df.---read_json()--> will give an error
+           
+              Yelp (Business Search API)
+              ==========================
   ****************************************************************************************************"""
   
