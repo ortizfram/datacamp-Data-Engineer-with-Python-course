@@ -154,3 +154,20 @@ cafes = pd.DataFrame(data["businesses"])
 
 # View the data's dtypes
 print(cafes.dtypes)
+"""output:
+id                object
+alias             object
+name              object
+image_url         object
+is_closed           bool
+url               object
+review_count       int64
+categories        object
+rating           float64
+coordinates       object
+transactions      object
+location          object
+phone             object
+display_phone     object
+distance         float64
+price             object"""
