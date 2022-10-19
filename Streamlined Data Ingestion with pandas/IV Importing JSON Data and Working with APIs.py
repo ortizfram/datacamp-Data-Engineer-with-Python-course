@@ -14,8 +14,8 @@ JSON =
 ,{"adult_families_in_shelter":"1801","adults_in_families_with_children_in_shelter":"14650","children_in_families_with_children_in_shelter":"21343","date_of_census":"2013-08-24T00:00:00.000","families_with_children_in_shelter":"10291","individuals_in_adult_families_in_shelter":"3824","single_adult_men_in_shelter":"7110","single_adult_women_in_shelter":"2690","total_adults_in_shelter":"28274","total_children_in_shelter":"21343","total_individuals_in_families_with_children_in_shelter_":"35993","total_individuals_in_shelter":"49617","total_single_adults_in_shelter":"9800"}
 ,{"adult_families_in_shelter":"1804","adults_in_families_with_children_in_shelter":"14694","children_in_families_with_children_in_shelter":"21400","date_of_census":"2013-08-25T00:00:00.000","families_with_children_in_shelter":"10324","individuals_in_adult_families_in_shelter":"3830","single_adult_men_in_shelter":"7230","single_adult_women_in_shelter":"2704","total_adults_in_shelter":"28458","total_children_in_shelter":"21400","total_individuals_in_families_with_children_in_shelter_":"36094","total_individuals_in_shelter":"49858","total_single_adults_in_shelter":"9934"}
 
- Reading JSON Data
- =================
+ @ Reading JSON Data
+   =================
         >>>>>>>>> read_json()====== takes string path to JSON, or JSON data as string
         >>>>>>>>> dtype======== kward argument to specify data type in dictionary
         >>>>>>>>> orient======== kward argument to flag uncommon JSON data layouts
@@ -81,5 +81,26 @@ except ValueError:
   """---without orient kward, pipeline wouldn't throw a graph"""\
   #``````````````````````````````````````````````````````````````````````````````````````````````````````
 
-  #---
+ """****************************************************************************************************
+ @ Intro to APIs
+   =============
+   web application programming interfaces, most common source of JSON data.
+         - Defines how an app communicates with other programs
+         - Get data from app without having to know app db architecture
+         $$ it's like using a catalog to order products
+         - API provides endpoint to send requests to 
+         
+         Requests (Requests Library)
+         ===========================
+           - Requests and sends data from any URL
+           - Not tied to any particular API
+           
+           >>>>>>>>> requests.get(url_string) ===== get data from URL/ retrieve data
+           >>>>>>>>> params  (kward)====== takes dictionary of parameter names and values To customize request
+           >>>>>>>>> headers  (kward)====== takes dictionary, can be used to provide User Authentication to API
+           - Result: Response Object, containing data and metadata 
+           >>>>>>>>> response.json() ====== to get just the JSON data--- returns Dictionary
+           <-- read_json()=== expects Strings, not Dictionaries
+           <-- pd.DataFrame() ====== Load the response JSON to a df.---read_json()--> will give an error
+  ****************************************************************************************************"""
   
