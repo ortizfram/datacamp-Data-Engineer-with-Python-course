@@ -369,10 +369,11 @@ Pandas method for combining data sets
 
         Appending
         =========
-        - Use when adding rows to other df
-        >>>>>>> append() (df method) ==== takes df to add on as argument
-          >>>>>> ignore_index = True   (argument)==== to renumber rows
-          
+        Use case: adding rows to other df
+        
+          >>>>>>> append() (df method) ==== takes df to add on as argument
+          >>>>>>> ignore_index = True   (append argument)==== to renumber rows
+
         # Get first 20 bookstore results
         #*1
         params = {"term" : "bookstore",
@@ -398,5 +399,16 @@ Pandas method for combining data sets
        
        Merging
        =========
-       
+       USe case: adding related columns
+         - datasets have key colum(s) w/ common values, like SQL joins
+         - key columns should be same d.type to merge 
+         
+         >>>>>>> merge()==== (pandas) version of SQL JOIN---takes name of other df--srt of columns to merge on
+         >>>>>>> ON==== (pandas) specifty column match in both df
+         >>>>>>> left_on..right_on==== (pandas) if key_names differ
+         
+         # Merge weather into call_counts on date column
+         merged = call_count.merge(weather,
+                                   left_on="created_date",
+                                   right_on="date")
 ****************************************************************************************************"""
