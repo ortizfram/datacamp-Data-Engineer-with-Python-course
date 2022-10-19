@@ -362,9 +362,41 @@ print(flat_cafes.head())
 4            coffee       Coffee & Tea  Coffee Project NY  coffee-project-ny-new-york        4.5  """
 
 """****************************************************************************************************
+
 Combining multiple datasets
 ===========================
 Pandas method for combining data sets
+
         Appending
         =========
+        - Use when adding rows to other df
+        >>>>>>> append() (df method) ==== takes df to add on as argument
+          >>>>>> ignore_index = True   (argument)==== to renumber rows
+          
+        # Get first 20 bookstore results
+        #*1
+        params = {"term" : "bookstore",
+                  "location" : "San Francisco"}
+                  
+        first_results = requests.get(api_url,
+                                    headers=headers
+                                    params=params).json()
+        
+       first_20_bookstores = json_normalize(firs_results["businesses"],
+                                            sep="_") 
+                                            
+       print(first_20_bookstores.shape)   
+       #(20, 24)
+       #*1 
+       # Get next 20
+       params["offset"] = 20
+       
+       # put both together
+       bookstores = first_20_bookstores.append(next_20_bookstores,
+                                               ignore_index=True)
+       print(bookstores.name)
+       
+       Merging
+       =========
+       
 ****************************************************************************************************"""
