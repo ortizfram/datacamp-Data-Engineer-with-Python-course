@@ -360,3 +360,11 @@ print(flat_cafes.head())
 2  coffeeroasteries  Coffee Roasteries           Devocion         devocion-brooklyn-3        4.0                   40.689                   -73.983
 3             cafes              Cafes           Devocion         devocion-brooklyn-3        4.0                   40.689                   -73.983
 4            coffee       Coffee & Tea  Coffee Project NY  coffee-project-ny-new-york        4.5  """
+
+"""****************************************************************************************************
+Combining multiple datasets
+===========================
+Pandas method for combining data sets
+        Appending
+        =========
+****************************************************************************************************"""
