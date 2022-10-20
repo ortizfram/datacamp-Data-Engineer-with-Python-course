@@ -29,7 +29,7 @@ while i < len(names):
     i += 1
 print(new_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-# A taste of things to come 2== Pythonic
+# A taste of things to come 2== more Pythonic way
 
 # Print the list created by looping over the contents of names
 better_list = []
@@ -38,3 +38,10 @@ for name in names:
         better_list.append(name)
 print(better_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
+# A taste of things to come 3== The Pythoniest way
+
+# Print the list created by using list comprehension
+best_list = [name for name in names if len(name) >= 6]
+print(best_list)
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+
