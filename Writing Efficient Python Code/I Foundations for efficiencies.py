@@ -224,7 +224,34 @@ arrival_times_np = np.array(arrival_times)
 new_times = arrival_times_np - 3
 
 # Use list comprehension and enumerate to pair guests to new times
-guest_arrivals = [(names[name],time) for name,time in enumerate(new_times)]
+guest_arrivals = [(names[name],time) for name,time in enumerate(new_times)] 
+"""using enumerate(): cause we use every name as an index for arrival times"""
 
 print(guest_arrivals)
 # [('Jerry', 7), ('Kramer', 17), ('Elaine', 27), ('George', 37), ('Newman', 47)]
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+## Festivus 4
+
+# Create a list of arrival times
+arrival_times = [*range(10,60,10)]
+
+# Convert arrival_times to an array and update the times
+arrival_times_np = np.array(arrival_times)
+new_times = arrival_times_np - 3
+
+# Use list comprehension and enumerate to pair guests to new times
+guest_arrivals = [(names[i],time) for i,time in enumerate(new_times)]
+"""[('Jerry', 7), ('Kramer', 17), ('Elaine', 27), ('George', 37), ('Newman', 47)]"""
+
+# Map the welcome_guest function(preloaded),  to each (guest,time)pair -->guest_arrivals 
+welcome_map = map(welcome_guest, guest_arrivals)
+
+# unpack welcome_map in a list , asign it to gest_welcomes
+# unpuck previus var, sep with new line. print
+guest_welcomes = [*welcome_map]
+print(*guest_welcomes, sep='\n')
+""" Welcome to Festivus Jerry... You're 7 min late.
+    Welcome to Festivus Kramer... You're 17 min late.
+    Welcome to Festivus Elaine... You're 27 min late.
+    Welcome to Festivus George... You're 37 min late.
+    Welcome to Festivus Newman... You're 47 min late."""
