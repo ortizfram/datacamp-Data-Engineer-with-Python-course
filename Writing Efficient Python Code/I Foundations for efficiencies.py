@@ -44,4 +44,40 @@ print(better_list)
 best_list = [name for name in names if len(name) >= 6]
 print(best_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
+# What is the 7th idiom of the Zen of Python?
+import this
+#The Zen of Python, by Tim Peters
+        # Readability counts.
+"""*********************************************************************************************************************
+Built-in types
+===============
+    >>>>>> list, >>>>>> tuple, >>>>>> set, >>>>>> dict
+    
+Built-in functions
+=================    
+    >>>>>> print(), >>>>>> len(), >>>>>> range(), >>>>>> enumerate(), >>>>>> round(), >>>>>> map(), >>>>>> zip()
+    
+    map() === (returnedValue, toWhat)--- in iterables
+    
+Built-in modules
+================= 
+    >>>>>> os, >>>>>> sys, >>>>>> itertools, >>>>>> collections, >>>>>> math   
+******************************************************************************************************************"""
 
+## Built-in practice: range()
+# Create a range object that goes from 0 to 5
+nums = range(0,6)
+print(type(nums))
+
+# Convert nums to a list
+nums_list = list(nums)
+print(nums_list)
+
+# Create a new list of odd numbers from 1 to 11 by unpacking a range object
+nums_list2 = [*range(1,12,2)] # start , end(exclusive), step
+print(nums_list2)
+
+#$$$ unpacking a range object(*) same as using-----nums_list = list(nums) $$$
+# <class 'range'>
+# [0, 1, 2, 3, 4]
+# [1, 3, 5, 7, 9, 11]
