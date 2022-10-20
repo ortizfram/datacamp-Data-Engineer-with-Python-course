@@ -2,7 +2,7 @@
 ---------------------
     - Fast runtime(- time)
     - Minimal resource consumption(- memory)
-\\"""
+\\"""## example
   # Non pythonic
   doubled_numbers= []
   for i in range(len(numbers)):
@@ -11,12 +11,13 @@
   doubled_numbers= [x * 2 for x in numbers]
 #``````````````````````````````````````````````````````````````````````````````````````````````````
 """
-Pop quiz: what is efficient
+##Pop quiz: what is efficient
+
 In the context of this course, what is meant by efficient Python code?
 
     # Code that executes quickly for the task at hand, minimizes the memory footprint and follows Python's coding style principles."""
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-# A taste of things to come 1== Non-pythonic
+## A taste of things to come 1== Non-pythonic
 
  names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
     
@@ -29,7 +30,7 @@ while i < len(names):
     i += 1
 print(new_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-# A taste of things to come 2== more Pythonic way
+## A taste of things to come 2== more Pythonic way
 
 # Print the list created by looping over the contents of names
 better_list = []
@@ -38,13 +39,14 @@ for name in names:
         better_list.append(name)
 print(better_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-# A taste of things to come 3== The Pythoniest way
+## A taste of things to come 3== The Pythoniest way
 
 # Print the list created by using list comprehension
 best_list = [name for name in names if len(name) >= 6]
 print(best_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-# What is the 7th idiom of the Zen of Python?
+## What is the 7th idiom of the Zen of Python?
+
 import this
 #The Zen of Python, by Tim Peters
         # Readability counts.
@@ -63,8 +65,8 @@ Built-in modules
 ================= 
     >>>>>> os, >>>>>> sys, >>>>>> itertools, >>>>>> collections, >>>>>> math   
 ******************************************************************************************************************"""
-
 ## Built-in practice: range()
+
 # Create a range object that goes from 0 to 5
 nums = range(0,6)
 print(type(nums))
@@ -81,3 +83,24 @@ print(nums_list2)
 # <class 'range'>
 # [0, 1, 2, 3, 4]
 # [1, 3, 5, 7, 9, 11]
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+## Built-in practice: enumerate()
+
+# Non-Pythonic
+# Rewrite the for loop to use enumerate
+indexed_names = []
+for i,name in enumerate(names):
+    index_name = (i,name)
+    indexed_names.append(index_name) 
+print(indexed_names)
+
+# more Pythonic 
+# Rewrite the above for loop using list comprehension
+indexed_names_comp = [(i,name) for i,name in enumerate(names)]
+print(indexed_names_comp)
+
+# The Pythoniest
+# Unpack an enumerate object with a starting index of one
+indexed_names_unpack = [*enumerate(names, 1)] 
+print(indexed_names_unpack)
+"""read as: list, unpack & enumerate(names, startingWithOne)"""
