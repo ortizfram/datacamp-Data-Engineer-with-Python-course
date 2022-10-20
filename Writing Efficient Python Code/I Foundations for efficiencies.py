@@ -120,3 +120,48 @@ names_uppercase = [*names_map]
 
 # Print the list created above
 print(names_uppercase)
+"""******************************************************************************************************************
+NumPy arrays
+=================
+$$ Alternative to Python Lists
+
+    - np is homogeneous.same type
+    
+                    import numpy as np
+                    nums_np = ap.array(range(5))
+            
+    - np. array broadcasting (calculations for entire array)
+            
+                    nums_np = np.array([-2,-1,0,1,2])
+                    nums_np ** 2
+                    # array([4,2,0,1,4])
+            
+    - np 2D array best indexing
+    
+        -- basic python:
+                    nums2= [[1,2,3],[4,5,6]]
+                    nums2[0][1]
+                    # 2
+
+        -- np python is easier
+                    nums2[0,1]
+                    # 2
+
+                    # get both list first item
+                    nums2[:,0]
+                    # array([1,4])
+                    
+     - np boolean indexing
+                    
+                    nums= [-2, -1, 0, 1, 2]
+                    nums_np = np.array(nums)
+                    # boolean indexing
+                    nums_np > 0
+                    
+                    #. array([False,False,False,True,True])
+                    
+                    # indexing/returning this array <-
+                    
+                    nums_np[nums_np > 0]
+                    #. [1,2]
+******************************************************************************************************************"""
