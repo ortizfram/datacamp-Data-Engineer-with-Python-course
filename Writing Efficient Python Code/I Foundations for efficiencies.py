@@ -45,7 +45,7 @@ print(better_list)
 best_list = [name for name in names if len(name) >= 6]
 print(best_list)
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-## What is the 7th idiom of the Zen of Python?
+### What is the 7th idiom of the Zen of Python?
 
 import this
 #The Zen of Python, by Tim Peters
@@ -65,7 +65,7 @@ Built-in modules
 ================= 
     >>>>>> os, >>>>>> sys, >>>>>> itertools, >>>>>> collections, >>>>>> math   
 ******************************************************************************************************************"""
-## Built-in practice: range()
+### Built-in practice: range()
 
 # Create a range object that goes from 0 to 5
 nums = range(0,6)
@@ -84,7 +84,7 @@ print(nums_list2)
 # [0, 1, 2, 3, 4]
 # [1, 3, 5, 7, 9, 11]
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-## Built-in practice: enumerate()
+### Built-in practice: enumerate()
 
 # Non-Pythonic
 # Rewrite the for loop to use enumerate
@@ -105,7 +105,7 @@ indexed_names_unpack = [*enumerate(names, 1)]
 print(indexed_names_unpack)
 """read as: list, unpack & enumerate(names, startingWithOne)"""
 #``````````````````````````````````````````````````````````````````````````````````````````````````
-## Built-in practice: map()
+### Built-in practice: map()
 
 # names = ['Jerry', 'Kramer', 'Elaine', 'George', 'Newman']
 
@@ -165,7 +165,7 @@ $$ Alternative to Python Lists
                     nums_np[nums_np > 0]
                     #. [1,2]
 ******************************************************************************************************************"""
-## Practice with NumPy arrays 1
+### Practice with NumPy arrays 1
 
 # Print second row of nums
 print(nums[1,:])
@@ -193,3 +193,38 @@ When compared to a list object, what are two advantages of using a numpy array?
         
         #  A numpy array contains homogeneous data types (which reduces memory consumption) 
             and provides the ability to apply operations on all elements through broadcasting."""
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+### Bringing it all together: Festivus!
+
+# Create a list of arrival times, let them know how many minutes late they are to your party.
+arrival_times = [*range(10,60,10)]
+
+print(arrival_times)
+# [10, 20, 30, 40, 50]
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+## Festivus 2
+
+# Create a list of arrival times
+arrival_times = [*range(10,60,10)]
+
+# Convert arrival_times to an array and update the times. your clock is three minutes fast.
+arrival_times_np = np.array(arrival_times)
+new_times = arrival_times_np - 3
+
+print(new_times)
+# [ 7 17 27 37 47]
+#``````````````````````````````````````````````````````````````````````````````````````````````````
+## Festivus 3
+
+# Create a list of arrival times
+arrival_times = [*range(10,60,10)]
+
+# Convert arrival_times to an array and update the times
+arrival_times_np = np.array(arrival_times)
+new_times = arrival_times_np - 3
+
+# Use list comprehension and enumerate to pair guests to new times
+guest_arrivals = [(names[name],time) for name,time in enumerate(new_times)]
+
+print(guest_arrivals)
+# [('Jerry', 7), ('Kramer', 17), ('Elaine', 27), ('George', 37), ('Newman', 47)]
