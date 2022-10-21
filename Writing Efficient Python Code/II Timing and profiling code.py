@@ -246,6 +246,7 @@ Code profiling : memory
         >>>>>>>>> load_ext memory_profiler
         >>>>>>>>> %mprun -f convert_units_broadcast convert_units_broadcast(heroes,hts,wts)
 *******************************************************************************************************************************"""
+
 ## Pop quiz: steps for using %mprun
 """What are the necessary steps you need to take in order to profile the convert_units() function acting on your superheroes data if you'd like 
 to see the line-by-line memory consumption of convert_units()?
@@ -256,4 +257,31 @@ to see the line-by-line memory consumption of convert_units()?
    
    # all above
    
-   $$$$$ Remember that using %mprun requires one additional step compared to using %lprun (i.e., you need to import the function in order to use %mprun on it).
+   $$$$$ %mprun requires one additional step compared to using %lprun (i.e., you need to import the function in order to use %mprun on it). $$$$$"""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Using %mprun: Hero BMI
+
+%load_ext memory_profiler
+from bmi_lists import calc_bmi_lists
+%mprun -f calc_bmi_lists calc_bmi_lists(sample_indices,hts,wts)
+"""Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     1    110.6 MiB    110.6 MiB           1   def calc_bmi_lists(sample_indices, hts, wts):
+     2                                         
+     3                                             # Gather sample heights and weights as lists
+     4    110.6 MiB      0.0 MiB       25003       s_hts = [hts[i] for i in sample_indices]
+     5    110.6 MiB      0.0 MiB       25003       s_wts = [wts[i] for i in sample_indices]
+     6                                         
+     7                                             # Convert heights from cm to m and square with list comprehension
+     8    110.6 MiB      0.0 MiB       25003       s_hts_m_sqr = [(ht / 100) ** 2 for ht in s_hts]
+     9                                         
+    10                                             # Calculate BMIs as a list with list comprehension
+    11    110.6 MiB      0.0 MiB       25003       bmis = [s_wts[i] / s_hts_m_sqr[i] for i in range(len(sample_indices))]
+    12                                         
+    13    110.6 MiB      0.0 MiB           1       return bmis"""
+
+"""------  answer the following question:
+How much memory do the list comprehension lines of code consume in the calc_bmi_lists() function? 
+(i.e., what is the total sum of the Increment column for these four lines of code?)"""
+        
+      # answer = 0.1 MiB - 2.0 MiB---------------> cause 110.6 MiB
