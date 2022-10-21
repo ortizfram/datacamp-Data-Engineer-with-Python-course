@@ -232,7 +232,13 @@ of time spent in the convert_units_broadcast() function?"""
     
     #0% - 10%
 """*******************************************************************************************************************************
-Code profiling for memory usage
-================================
-
+Code profiling : memory
+========================
+# individual object
+        >>>>>>>>> import sys ----(built-in)====== Inspect memory conpsumption
+        >>>>>>>>> sys.getsizeof() ===== returns Individual object size in bytes
+# line-by-line (%mprun)
+        >>>>>>>>> pip install memory_profiler
+        >>>>>>>>> load_ext memory_profiler
+        >>>>>>>>> %mprun -f convert_units_broadcast convert_units_broadcast(heroes,hts,wts)
 *******************************************************************************************************************************"""
