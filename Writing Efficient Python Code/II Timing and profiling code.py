@@ -161,3 +161,51 @@ Code profiling .calculate runtime for big pieces of code
     
 
 *******************************************************************************************************************************"""
+## Pop quiz: steps for using %lprun
+
+
+"""What are the necessary steps you need to take in order to profile the convert_units() function acting on your superheroes data 
+if you'd like to see line-by-line runtimes?
+
+Use %load_ext line_profiler to load the line_profiler within your IPython session
+Use %lprun -f convert_units convert_units(heroes, hts, wts) to get line-by-line runtimes.
+
+     # The first and second options from above are necessary."""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````     
+## Using %lprun: spot bottlenecks
+
+def convert_units(heroes, heights, weights):
+
+    new_hts = [ht * 0.39370  for ht in heights]
+    new_wts = [wt * 2.20462  for wt in weights]
+
+    hero_data = {}
+
+    for i,hero in enumerate(heroes):
+        hero_data[hero] = (new_hts[i], new_wts[i])
+
+    return hero_data
+ """Load the line_profiler package into your IPython session. Then, use %lprun to profile the convert_units()
+ function acting on your superheroes data. Remember to use the special syntax for working with %lprun (you'll have to provide a 
+ -f flag specifying the function you'd like to profile)."""
+          
+          pip install line_profiler
+          %load_ext line_profiler
+          %lprun -f convert_units convert_units(heroes,hts,wts)
+"""output:
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def convert_units(heroes, heights, weights):
+     2                                           
+     3         1        171.0    171.0     16.3      new_hts = [ht * 0.39370  for ht in heights]
+     4         1        151.0    151.0     14.4      new_wts = [wt * 2.20462  for wt in weights]
+     5                                           
+     6         1          1.0      1.0      0.1      hero_data = {}
+     7                                           
+     8       481        375.0      0.8     35.8      for i,hero in enumerate(heroes):
+     9       480        349.0      0.7     33.3          hero_data[hero] = (new_hts[i], new_wts[i])
+    10                                                   
+    11         1          1.0      1.0      0.1      return hero_data"""
+
+# 11% - 20%
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
