@@ -3,6 +3,13 @@
 and memory_profiler packages to profile your code base and spot bottlenecks. Then, you'll put your learnings to practice by replacing
 these bottlenecks with efficient Python code.
 
+--------------------------
+ns	nanosecond	
+µs (us)	microsecond	
+ms	millisecond	
+s	second	
+--------------------------
+
     @ Why timing code?
     
       # Allows to pick 'optimal' code approach
@@ -57,3 +64,25 @@ these bottlenecks with efficient Python code.
      
      # l_time better than f_time by 51.9 ns
 *******************************************************************************************************************************"""
+## Using %timeit: your turn!
+
+# Create a list of integers (0-50) using list comprehension
+nums_list_comp = [num for num in range(0,51)]
+print(nums_list_comp)
+
+## your turn! 2 -----
+
+# Create a list of integers (0-50) by unpacking range
+nums_unpack = [*range(0,51)]
+print(nums_unpack)
+
+## your turn! 3 -----
+"""Use %timeit within your IPython console (i.e. not within the script.py window) to compare the runtimes for creating 
+a list of integers from 0 to 50 using list comprehension vs. unpacking the range object. Don't include the print() statements when timing.
+      
+      In [1]: %timeit [num for num in range(0,51)]
+      In [2]: %timeit [*range(0,51)]
+      
+      out 1: 4.28 us +- 785 ns per loop 
+      out 2: 678 ns +- 105 ns per loop 
+      # Unpacking the range object was faster than list comprehension."""
