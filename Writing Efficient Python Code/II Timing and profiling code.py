@@ -284,4 +284,5 @@ from bmi_lists import calc_bmi_lists
 How much memory do the list comprehension lines of code consume in the calc_bmi_lists() function? 
 (i.e., what is the total sum of the Increment column for these four lines of code?)"""
         
-      # answer = 0.1 MiB - 2.0 MiB---------------> cause 110.6 MiB
+      # answer = 0.1 MiB - 2.0 MiB---------------> cause 110.6 MiB / 0.6
+      # Correct! Using a list comprehension approach allocates anywhere from 0.1 MiB to 2 MiB of memory to calculate your BMIs.
