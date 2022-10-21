@@ -153,7 +153,7 @@ Code profiling .calculate runtime for big pieces of code
     
       >>>>>>> pip install line_profiler
       >>>>>>> %load_ext line_profiler =====load package
-      >>>>>>> %lprun -f function_name(include_args)======== line by line times----provides a table of stats
+      >>>>>>> %lprun -f function_name function_name(include_args)======== line by line times----provides a table of stats
                                                              # hits= ntimes executed, % = time function takes, line_content 
               
     
@@ -208,4 +208,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     11         1          1.0      1.0      0.1      return hero_data"""
 
 # 11% - 20%
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Using %lprun: fix the bottleneck 2
+"""What percentage of time is spent on the new_hts array broadcasting line of code relative to the total amount 
+of time spent in the convert_units_broadcast() function?"""
+
+      %load_ext line_profiler
+      %lprun -f convert_units_broadcast convert_units_broadcast(heroes,hts,wts)
+"""Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def convert_units_broadcast(heroes, heights, weights):
+     2                                           
+     3                                               # Array broadcasting instead of list comprehension
+     4         1         31.0     31.0      4.0      new_hts = heights * 0.39370
+     5         1          4.0      4.0      0.5      new_wts = weights * 2.20462
+     6                                           
+     7         1          1.0      1.0      0.1      hero_data = {}
+     8                                           
+     9       481        333.0      0.7     43.4      for i,hero in enumerate(heroes):
+    10       480        397.0      0.8     51.8          hero_data[hero] = (new_hts[i], new_wts[i])
+    11                                                   
+    12         1          1.0      1.0      0.1      return hero_data"""
+    
+    #0% - 10%
 #`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
