@@ -322,3 +322,105 @@ function? (i.e., what is the total sum of the Increment column for these four li
 #`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 ## Bringing it all together: Star Wars profiling
 
+# Use get_publisher_heroes() to gather Star Wars heroes
+star_wars_heroes = get_publisher_heroes(heroes, publishers, 'George Lucas')
+
+print(star_wars_heroes)
+print(type(star_wars_heroes))
+
+# Use get_publisher_heroes_np() to gather Star Wars heroes
+star_wars_heroes_np = get_publisher_heroes_np(heroes, publishers, 'George Lucas')
+
+print(star_wars_heroes_np)
+print(type(star_wars_heroes_np))
+
+"""['Darth Vader', 'Han Solo', 'Luke Skywalker', 'Yoda']
+<class 'list'>
+['Darth Vader' 'Han Solo' 'Luke Skywalker' 'Yoda']
+<class 'numpy.ndarray'>"""
+
+## Bringing it all together: Star Wars profiling 2
+
+"""Question
+Within your IPython console, load the line_profiler and use %lprun to profile the two functions for line-by-line runtime. 
+When using %lprun, use each function to gather the Star Wars heroes as you did in the previous step. After you've finished profiling, answer the following question:
+
+          def get_publisher_heroes_np(heroes, publishers, desired_publisher):
+              heroes_np = np.array(heroes)
+              pubs_np = np.array(publishers)
+
+              desired_heroes = heroes_np[pubs_np == desired_publisher]
+              return desired_heroes"""
+
+
+        %lprun -f get_publisher_heroes get_publisher_heroes(heroes, publishers, 'George Lucas')
+  """Function: get_publisher_heroes at line 1
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def get_publisher_heroes(heroes, publishers, desired_publisher):
+     2                                           
+     3         1          2.0      2.0      0.4      desired_heroes = []
+     4                                           
+     5       481        283.0      0.6     50.8      for i,pub in enumerate(publishers):
+     6       480        251.0      0.5     45.1          if pub == desired_publisher:
+     7         4         20.0      5.0      3.6              desired_heroes.append(heroes[i])
+     8                                           
+     9         1          1.0      1.0      0.2      return desired_heroes"""
+        %lprun -f get_publisher_heroes_np get_publisher_heroes_np(heroes, publishers, 'George Lucas')
+   """Function: get_publisher_heroes_np at line 12
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    12                                           def get_publisher_heroes_np(heroes, publishers, desired_publisher):
+    13                                           
+    14         1         87.0     87.0     36.1      heroes_np = np.array(heroes)
+    15         1        133.0    133.0     55.2      pubs_np = np.array(publishers)
+    16                                           
+    17         1         21.0     21.0      8.7      desired_heroes = heroes_np[pubs_np == desired_publisher]
+    18                                           
+    19         1          0.0      0.0      0.0      return desired_heroes"""
+
+       # get_publisher_heroes_np() is faster.
+    
+## Bringing it all together: Star Wars profiling 3
+
+      %load_ext memory_profiler
+      from hero_funcs import get_publisher_heroes, get_publisher_heroes_np
+      %mprun -f get_publisher_heroes get_publisher_heroes(heroes, publishers, 'George Lucas')
+      """Filename: /tmp/tmpt9jis3af/hero_funcs.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     4    109.3 MiB    109.3 MiB           1   def get_publisher_heroes(heroes, publishers, desired_publisher):
+     5                                         
+     6    109.3 MiB      0.0 MiB           1       desired_heroes = []
+     7                                         
+     8    109.3 MiB      0.0 MiB         481       for i,pub in enumerate(publishers):
+     9    109.3 MiB      0.0 MiB         480           if pub == desired_publisher:
+    10    109.3 MiB      0.0 MiB           4               desired_heroes.append(heroes[i])
+    11                                         
+    12    109.3 MiB      0.0 MiB           1       return desired_heroes"""
+      %mprun -f get_publisher_heroes_np get_publisher_heroes_np(heroes, publishers, 'George Lucas')
+      """Filename: /tmp/tmpt9jis3af/hero_funcs.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    15    109.3 MiB    109.3 MiB           1   def get_publisher_heroes_np(heroes, publishers, desired_publisher):
+    16                                         
+    17    109.3 MiB      0.0 MiB           1       heroes_np = np.array(heroes)
+    18    109.3 MiB      0.0 MiB           1       pubs_np = np.array(publishers)
+    19                                         
+    20    109.3 MiB      0.0 MiB           1       desired_heroes = heroes_np[pubs_np == desired_publisher]
+    21                                         
+    22    109.3 MiB      0.0 MiB           1       return desired_heroes"""
+
+    """----- Which function uses the least amount of memory?...."""
+    # Both functions have the same memory consumption.
+
+## Bringing it all together: Star Wars profiling 4
+
+    """----- Based on your runtime profiling and memory allocation profiling, which function would you choose to gather Star Wars heroes?...."""
+    # I could use either function since their runtimes, and memory usage were identical.
+
+
