@@ -86,3 +86,13 @@ a list of integers from 0 to 50 using list comprehension vs. unpacking the range
       out 1: 4.28 us +- 785 ns per loop 
       out 2: 678 ns +- 105 ns per loop 
       # Unpacking the range object was faster than list comprehension."""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Using %timeit: specifying number of runs and loops
+
+"""analyze the runtime for converting this heroes list into a set. Instead of relying on the default settings for %timeit,
+you'd like to only use 5 runs and 25 loops per each run.
+
+--What is the correct syntax when using %timeit and only using 5 runs with 25 loops per each run?
+    
+    # %timeit -r5 -n25 set(heroes)"""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
