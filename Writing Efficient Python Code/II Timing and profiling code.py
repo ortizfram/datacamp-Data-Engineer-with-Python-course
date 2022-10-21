@@ -129,3 +129,19 @@ Use %timeit in your IPython console to compare runtimes between creating a list 
 Don't include the print() statements when timing.
 
       # Using the literal syntax ([]) to create a list is faster."""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Using cell magic mode (%%timeit)
+
+%%timeit
+wts_np = np.array(wts)
+hero_wts_lbs_np = wts_np * 2.20462
+#33.7 us +- 3.68 us per loop
+
+%%timeit
+hero_wts_lbs = []
+for wt in wts:
+    hero_wts_lbs.append(wt * 2.20462)
+#1.59 ms +- 125 us per loop
+
+    # The numpy technique was faster.
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
