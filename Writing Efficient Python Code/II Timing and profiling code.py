@@ -234,8 +234,9 @@ of time spent in the convert_units_broadcast() function?"""
 """*******************************************************************************************************************************
 Code profiling : memory
 ========================
-  
-    $$$$ CAN'T BE USED IN IPYTHON session, just in PHYSICAL FILES
+      ------------------------------------------------------------------------------------------------------------------------------------...
+    $$$$---CAN'T BE USED IN IPYTHON session, just in PHYSICAL FILES. So create another py file with the code you want to test memory of----$$$$
+     $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     
 # individual object
         >>>>>>>>> import sys ----(built-in)====== Inspect memory conpsumption
@@ -286,3 +287,38 @@ How much memory do the list comprehension lines of code consume in the calc_bmi_
         
       # answer = 0.1 MiB - 2.0 MiB---------------> cause 110.6 MiB / 0.6
       # Correct! Using a list comprehension approach allocates anywhere from 0.1 MiB to 2 MiB of memory to calculate your BMIs.
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Using %mprun: Hero BMI 2.0
+
+"""Each hero's height and weight is stored in a numpy array. That means you can use NumPy's handy array indexing capabilities and broadcasting to perform your
+calculations.A function named calc_bmi_arrays has been created and saved to a file titled bmi_arrays.py"""
+
+          %load_ext memory_profiler
+          from bmi_arrays import calc_bmi_arrays
+          %mprun -f calc_bmi_arrays calc_bmi_arrays(sample_indices,hts,wts)
+"""Filename: /tmp/tmpxni4ho9v/bmi_arrays.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+     1    109.5 MiB    109.5 MiB           1   def calc_bmi_arrays(sample_indices, hts, wts):
+     2                                         
+     3                                             # Gather sample heights and weights as arrays
+     4    109.5 MiB      0.0 MiB           1       s_hts = hts[sample_indices]
+     5    109.5 MiB      0.0 MiB           1       s_wts = wts[sample_indices]
+     6                                         
+     7                                             # Convert heights from cm to m and square with broadcasting
+     8    109.5 MiB      0.0 MiB           1       s_hts_m_sqr = (s_hts / 100) ** 2
+     9                                         
+    10                                             # Calculate BMIs as an array using broadcasting
+    11    109.5 MiB      0.0 MiB           1       bmis = s_wts / s_hts_m_sqr
+    12                                         
+    13    109.5 MiB      0.0 MiB           1       return bmis"""
+
+"""--------After you've finished coding, answer the following question:
+How much memory do the array indexing and broadcasting lines of code consume in the calc_bmi_array()
+function? (i.e., what is the total sum of the Increment column for these four lines of code?)"""
+
+      # answer: 0.1 MiB - 2.0 MiB-----> 9.5 MiB 
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Bringing it all together: Star Wars profiling
+
