@@ -234,6 +234,9 @@ of time spent in the convert_units_broadcast() function?"""
 """*******************************************************************************************************************************
 Code profiling : memory
 ========================
+  
+    $$$$ CAN'T BE USED IN IPYTHON session, just in PHYSICAL FILES
+    
 # individual object
         >>>>>>>>> import sys ----(built-in)====== Inspect memory conpsumption
         >>>>>>>>> sys.getsizeof() ===== returns Individual object size in bytes
