@@ -144,4 +144,20 @@ for wt in wts:
 #1.59 ms +- 125 us per loop
 
     # The numpy technique was faster.
-#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+"""*******************************************************************************************************************************
+Code profiling .calculate runtime for big pieces of code
+===============
+    - Detailed stats on freq. and duration of function calls
+    - Line-by-line analyses
+    $~ line_profiler ---- (package not standard library) 
+    
+      >>>>>>> pip install line_profiler
+      >>>>>>> %load_ext line_profiler =====load package
+      >>>>>>> %lprun -f function_name(include_args)======== line by line times----provides a table of stats
+                                                             # hits= ntimes executed, % = time function takes, line_content 
+              
+    
+    
+    
+
+*******************************************************************************************************************************"""
