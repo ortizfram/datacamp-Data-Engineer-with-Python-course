@@ -241,7 +241,19 @@ Code profiling : memory
         >>>>>>>>> import sys ----(built-in)====== Inspect memory conpsumption
         >>>>>>>>> sys.getsizeof() ===== returns Individual object size in bytes
 # line-by-line (%mprun)
+..      ....... from hero_funcs import convert_units
         >>>>>>>>> pip install memory_profiler
         >>>>>>>>> load_ext memory_profiler
         >>>>>>>>> %mprun -f convert_units_broadcast convert_units_broadcast(heroes,hts,wts)
 *******************************************************************************************************************************"""
+## Pop quiz: steps for using %mprun
+"""What are the necessary steps you need to take in order to profile the convert_units() function acting on your superheroes data if you'd like 
+to see the line-by-line memory consumption of convert_units()?
+
+   1   Use the command 'from hero_funcs import convert_units' to load the function you'd like to profile.
+   2   Use '%load_ext memory_profiler' to load the memory_profiler within your IPython session.
+   3   Use '%mprun -f convert_units convert_units(heroes, hts, wts)' to get line-by-line memory allocations.
+   
+   # all above
+   
+   $$$$$ Remember that using %mprun requires one additional step compared to using %lprun (i.e., you need to import the function in order to use %mprun on it).
