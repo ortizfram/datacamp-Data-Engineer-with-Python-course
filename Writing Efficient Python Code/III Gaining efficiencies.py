@@ -289,3 +289,8 @@ Since a set is defined as a collection of distinct elements, it is an efficient 
 from an existing object. Here you took advantage of a set to find the distinct Pokémon from the sample
 (eliminating duplicate Pokémon) and saw what unique Pokémon types and generations were included in the sample."""
 
+"""*********************************************************************************************************************
+Eliminating loops
+=================
+
+*********************************************************************************************************************"""
