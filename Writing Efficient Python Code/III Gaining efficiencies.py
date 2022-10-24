@@ -391,17 +391,35 @@ generation 6: count =  68 percentage = 9.44"""
 ## Holistic conversion loop
 
 # Collect all possible pairs using combinations()
-from itertools import combinations
 possible_pairs = [*combinations(pokemon_types, 2)]
 
 # Create an empty list called enumerated_tuples
 enumerated_tuples = []
 
-# Append each enumerated_pair_tuple to the empty list above
-for i,pair in enumerate(possible_pairs, 1):
+# Add a line to append each enumerated_pair_tuple to the empty list above
+for i, pair in enumerate(possible_pairs, 1):
     enumerated_pair_tuple = (i,) + pair
-    enumerated_tuples.append(enumerated_tuples)
+    enumerated_pair_list = list(enumerated_pair_tuple)
+    enumerated_tuples.append(enumerated_pair_list)
 
 # Convert all tuples in enumerated_tuples to a list
 enumerated_pairs = [*map(list, enumerated_tuples)]
 print(enumerated_pairs)
+"""[[1, 'Bug', 'Dark'], [2, 'Bug', 'Dragon'], [3, 'Bug', 'Electric'],....."""
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Bringing it all together: Pokémon z-scores 1
+
+# Calculate the total HP avg and total HP standard deviation
+hp_avg = hps.mean()
+hp_std = hps.std()
+"""standad deviation : to see how many standard deviations each Pokémon's HP is from the mean of all HPs.""" 
+
+# Use NumPy to eliminate the previous for loop
+z_scores = (hps - hp_avg)/hp_std
+
+# Combine names, hps, and z_scores
+poke_zscores2 = [*zip(names, hps, z_scores)]
+print(*poke_zscores2[:3], sep='\n')
+"""('Abomasnow', 80.0, 0.46797638117739043)
+    ('Abra', 60.0, -0.3271693284337512)
+    ('Absol', 131.0, 2.4955979406858013)"""
