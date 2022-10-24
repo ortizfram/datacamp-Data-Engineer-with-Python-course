@@ -59,5 +59,15 @@ print(*names_types[:5], sep='\n')
 
 ## Combining Pokémon names and types 3
 
+# Combine five items from names and three items from primary_types
+differing_lengths = [*zip(names[:5], primary_types[:3])]
+
+print(*differing_lengths, sep='\n')
+"""('Abomasnow', 'Grass')
+('Abra', 'Psychic')
+('Absol', 'Dark')"""
+
+# $$$$$ zip() with objects of differing lengths, it will only combine until the smallest lengthed object is exhausted $$$$$
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
 
