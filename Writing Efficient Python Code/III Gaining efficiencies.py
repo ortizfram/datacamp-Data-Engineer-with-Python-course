@@ -119,3 +119,17 @@ print(combos_4)
 combinations() allows you to specify any size of combinations by passing an integer
 as the second argument. Ash has 10 combination options when his Pokédex can store only two Pokémon.
 He has 5 combination options when his Pokédex can store four Pokémon."""
+
+"""*********************************************************************************************************************
+Set theory
+===========
+        - Applied to collections of objects
+        >>>>>>>>>> sets
+                1 >>>>>>>>>>intersection()  2 >>>>>>>>>>difference() 3 >>>>>>>>>>symmetric_difference()  4 >>>>>>>>>>union()
+                
+                1 -> all elements that are in both sets
+                2 -> all elements in one set but not in other 
+                3 -> all elems in exactly one set
+                4 -> all elems that are in either set
+                
+*********************************************************************************************************************"""
