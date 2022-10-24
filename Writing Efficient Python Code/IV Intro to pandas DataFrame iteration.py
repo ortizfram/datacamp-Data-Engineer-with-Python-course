@@ -34,3 +34,64 @@ $$$$ PANDAS: library used for data analysis $$$$
             win_perc_list.append(win_perc)
      baseball_df['WP'] = win_perc_list
 ********************************************************************************************************************************************************"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Iterating with .iterrows() 1
+
+# Iterate over pit_df and print each row
+for i,row in pit_df.iterrows():
+    print(row)
+"""Team         PIT
+League        NL
+Year        2012
+RS           651
+RA           674
+W             79
+G            162
+Playoffs       0
+....prints same for other teams"""
+
+## Iterating with .iterrows() 2
+ 
+# Iterate over pit_df and print each index variable and then each row
+for i,row in pit_df.iterrows():
+    print(i)
+    print(row)
+    print(type(row))
+"""0
+Team         PIT
+League        NL
+Year        2012
+RS           651
+RA           674
+W             79
+G            162
+Playoffs       0
+Name: 0, dtype: object
+<class 'pandas.core.series.Series'>
+..... prints same for other teams"""
+
+## Iterating with .iterrows() 3
+
+# Use one variable instead of two to store the result of .iterrows()
+for row_tuple in pit_df.iterrows():
+    print(row_tuple)
+      
+## Iterating with .iterrows() 4
+      
+# Print the row and type of each row
+for row_tuple in pit_df.iterrows():
+    print(row_tuple)
+    print(type(row_tuple)) 
+"""(0, Team         PIT
+League        NL
+Year        2012
+RS           651
+RA           674
+W             79
+G            162
+Playoffs       0
+Name: 0, dtype: object)
+<class 'tuple'>"""
+"""!!!
+If using i,row, you can access things from the row using square brackets (i.e., row['Team']). 
+If using row_tuple, you would have to specify which element of the tuple you'd like to access before grabbing the team name (i.e., row_tuple[1]['Team'])."""
