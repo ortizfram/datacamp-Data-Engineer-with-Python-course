@@ -290,7 +290,31 @@ from an existing object. Here you took advantage of a set to find the distinct P
 (eliminating duplicate Pokémon) and saw what unique Pokémon types and generations were included in the sample."""
 
 """*********************************************************************************************************************
-Eliminating loops
-=================
-
+Eliminating loops (w/ Built-in)
+==============================
+                #-- List HP, attack, deffence, speed
+                poke_stats = [[90,92,75,70],[25,20,15,90],[65,130,,60,75]]
+                
+                # List comprehension
+                totals_comp = [sum(row) for row in poke_stats]
+                
+                # Built-in map() function for adding
+    faster      totals_map = [*map(sum, poke_stats)]
+                #-------
+                # Built-in module approach for combination 
+                from itertools import combinations
+                combos2 = [*combinations(poke_types, 2)]
+                
+    
+                $$$$ FASTER MAP THAN LIST COMPREHENSION $$$$
+                $$$$ FASTER combinations(itertools) THAN FOR LOOP $$$$
+                
+Eliminating loops (w/ NUMPY)
+==============================
+                 #-- List HP, attack, deffence, speed
+                poke_stats = [[90,92,75,70],[25,20,15,90],[65,130,,60,75]]
+                
+                import numpy as np
+                poke_stats_np = np.array(poke_stats)
+                poke_mean_row1 = poke_stats_np.mean(axis= 1)
 *********************************************************************************************************************"""
