@@ -94,4 +94,24 @@ Counter({'S': 83, 'C': 46, 'D': 33, 'M': 32, 'L': 29, 'G': 29, 'B': 28, 'P': 23,
 The sample's most common Pokémon type was 'Water' and the sample's least common Pokémon
 types were 'Ghost' and 'Dark'. Did you also notice that most of the Pokémon in the sample came from generation 5 and had a starting letter of 'S'?"""
 #````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Combinations of Pokémon
 
+# Import combinations from itertools
+from itertools import combinations
+
+# Create a combination object with pairs of Pokémon
+combos_obj = combinations(pokemon, 2)
+print(type(combos_obj), '\n')
+
+# Convert combos_obj to a list by unpacking
+combos_2 = [*combos_obj]
+print(combos_2, '\n')
+
+# Collect all possible combinations of 4 Pokémon directly into a list
+combos_4 = [*combinations(pokemon,4)]
+print(combos_4)
+"""<class 'itertools.combinations'> 
+
+[('Geodude', 'Cubone'), ('Geodude', 'Lickitung'), ('Geodude', 'Persian'), ('Geodude', 'Diglett'), ('Cubone', 'Lickitung'), ('Cubone', 'Persian'), ('Cubone', 'Diglett'), ('Lickitung', 'Persian'), ('Lickitung', 'Diglett'), ('Persian', 'Diglett')] 
+
+[('Geodude', 'Cubone', 'Lickitung', 'Persian'), ('Geodude', 'Cubone', 'Lickitung', 'Diglett'), ('Geodude', 'Cubone', 'Persian', 'Diglett'), ('Geodude', 'Lickitung', 'Persian', 'Diglett'), ('Cubone', 'Lickitung', 'Persian', 'Diglett')]"""
