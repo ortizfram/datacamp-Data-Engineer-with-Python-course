@@ -125,8 +125,9 @@ Set theory
 ===========
         - Applied to collections of objects
         >>>>>>>>>> sets
-                1 >>>>>>>>>>intersection()  2 >>>>>>>>>>difference() 3 >>>>>>>>>>symmetric_difference()  4 >>>>>>>>>>union()
+               0 >>>>>>>>>in 1 >>>>>>>>>>intersection()  2 >>>>>>>>>>difference() 3 >>>>>>>>>>symmetric_difference()  4 >>>>>>>>>>union()
                 
+                0 -> if value exists in a sequence
                 1 -> all elements that are in both sets
                 2 -> all elements in one set but not in other 
                 3 -> all elems in exactly one set
