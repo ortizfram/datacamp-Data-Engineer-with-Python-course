@@ -318,3 +318,20 @@ Eliminating loops (w/ NUMPY)
                 poke_stats_np = np.array(poke_stats)
                 poke_mean_row1 = poke_stats_np.mean(axis= 1)
 *********************************************************************************************************************"""
+## Gathering Pokémon without a loop
+
+# Collect Pokémon that belong to generation 1 or generation 2
+gen1_gen2_pokemon = [name for name,gen in zip(
+    poke_names, poke_gens) if gen < 3]
+
+# Create a map object that stores the name lengths
+name_lengths_map = map(len,  gen1_gen2_pokemon)
+
+# Combine gen1_gen2_pokemon and name_lengths_map into a list
+gen1_gen2_name_lengths = [*zip(gen1_gen2_pokemon, name_lengths_map)]
+
+print(gen1_gen2_name_lengths_loop[:5])
+print(gen1_gen2_name_lengths[:5])
+"""[('Abra', 4), ('Aerodactyl', 10), ('Aipom', 5), ('Alakazam', 8), ('Ampharos', 8)]
+[('Abra', 4), ('Aerodactyl', 10), ('Aipom', 5), ('Alakazam', 8), ('Ampharos', 8)]"""
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
