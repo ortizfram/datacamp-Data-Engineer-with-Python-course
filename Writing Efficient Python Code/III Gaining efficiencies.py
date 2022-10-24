@@ -335,3 +335,30 @@ print(gen1_gen2_name_lengths[:5])
 """[('Abra', 4), ('Aerodactyl', 10), ('Aipom', 5), ('Alakazam', 8), ('Ampharos', 8)]
 [('Abra', 4), ('Aerodactyl', 10), ('Aipom', 5), ('Alakazam', 8), ('Ampharos', 8)]"""
 #````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Pokémon totals and averages without a loop
+
+# Create a total stats array
+total_stats_np = stats.sum(axis=1)
+
+# Create an average stats array
+avg_stats_np = stats.mean(axis=1)
+
+# Combine names, total_stats_np, and avg_stats_np into a list
+poke_list_np = [*zip(names, total_stats_np, avg_stats_np)]
+
+print(poke_list_np == poke_list, '\n')
+print(poke_list_np[:3])
+print(poke_list[:3], '\n')
+# $$$$ lambda effectively creates an inline function $$$$
+# mylist = [[7, 8], [1, 2, 3], [2, 5, 6]]
+# list(map(lambda x: x[1], mylist)) returns [8, 2 ,5]
+top_3 = sorted(poke_list_np, key=lambda x: x[1], reverse=True)[:3]
+print('3 strongest Pokémon:\n{}'.format(top_3))
+"""
+True 
+
+[('Abomasnow', 494, 82.33333333333333), ('Abra', 310, 51.666666666666664), ('Absol', 465, 77.5)]
+[('Abomasnow', 494, 82.33333333333333), ('Abra', 310, 51.666666666666664), ('Absol', 465, 77.5)] 
+
+3 strongest Pokémon:
+[('GroudonPrimal Groudon', 770, 128.33333333333334), ('KyogrePrimal Kyogre', 770, 128.33333333333334), ('Arceus', 720, 120.0)]"""
