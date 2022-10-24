@@ -33,3 +33,31 @@ Collections module
         print(combos)
         # [('Bug','Fire'),('Bug','Ghost'),('Bug','Grass')........
 ********************************************************************************************************************"""
+## Combining Pokémon names and types 1
+
+# Combine names and primary_types
+names_type1 = [*zip(names, primary_types)]
+
+print(*names_type1[:5], sep='\n')
+"""('Abomasnow', 'Grass')
+('Abra', 'Psychic')
+('Absol', 'Dark')
+('Accelgor', 'Bug')
+('Aerodactyl', 'Rock')"""
+
+## Combining Pokémon names and types 2
+
+# Combine all three lists together
+names_types = [*zip(names,primary_types,secondary_types)]
+
+print(*names_types[:5], sep='\n')
+"""('Abomasnow', 'Grass', 'Ice')
+('Abra', 'Psychic', nan)
+('Absol', 'Dark', nan)
+('Accelgor', 'Bug', nan)
+('Aerodactyl', 'Rock', 'Flying')"""
+
+## Combining Pokémon names and types 3
+
+
+
