@@ -175,3 +175,117 @@ print(unique_to_set, '\n')
 you were able to see that both Ash and Misty have 'Psyduck' and 'Squirtle' in their Pokédex.
 You were also able to see that Ash has 8 Pokémon that Misty does not have."""
 #````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Searching for Pokémon 1
+
+# Convert Brock's Pokédex to a set
+brock_pokedex_set = set(brock_pokedex_set)
+print(brock_pokedex_set)
+"""{'Onix', 'Machop', 'Zubat', 'Vulpix', 'Kabutops', 'Geodude', 'Dugtrio', 'Golem', 'Omastar', 'Tauros'}"""
+
+## Searching for Pokémon 2
+
+# Convert Brock's Pokédex to a set
+brock_pokedex_set = set(brock_pokedex)
+print(brock_pokedex_set)
+
+# Check if Psyduck is in Ash's list and Brock's set
+print('Psyduck' in ash_pokedex)
+print('Psyduck' in brock_pokedex_set)
+"""{'Onix', 'Machop', 'Zubat', 'Vulpix', 'Kabutops', 'Geodude', 'Dugtrio', 'Golem', 'Omastar', 'Tauros'}
+True
+False"""
+
+## Searching for Pokémon 3
+
+# Convert Brock's Pokédex to a set
+brock_pokedex_set = set(brock_pokedex)
+print(brock_pokedex_set)
+
+# Check if Psyduck is in Ash's list and Brock's set
+print('Psyduck' in ash_pokedex)
+print('Psyduck' in brock_pokedex_set)
+
+# Check if Machop is in Ash's list and Brock's set
+print('Machop' in ash_pokedex)
+print('Machop' in brock_pokedex_set)
+"""{'Onix', 'Machop', 'Zubat', 'Vulpix', 'Kabutops', 'Geodude', 'Dugtrio', 'Golem', 'Omastar', 'Tauros'}
+True
+False
+False
+True"""
+
+## Searching for Pokémon 4
+"""---
+Question
+Within your IPython console, use %timeit to compare membership testing for 'Psyduck' in ash_pokedex, 
+'Psyduck' in brock_pokedex_set, 'Machop' in ash_pokedex, and 'Machop' in brock_pokedex_set (a total of four different timings)."""
+
+"""In [1]:
+%timeit 'Psyduck' in ash_pokedex
+%timeit 'Psyduck' in brock_pokedex_set
+%timeit 'Machop' in ash_pokedex
+%timeit 'Machop' in ash_pokedex
+247 ns +- 13.7 ns per loop (mean +- std. dev. of 7 runs, 1000000 loops each)
+53.3 ns +- 2.41 ns per loop (mean +- std. dev. of 7 runs, 10000000 loops each)
+254 ns +- 21.1 ns per loop (mean +- std. dev. of 7 runs, 1000000 loops each)
+285 ns +- 42.3 ns per loop (mean +- std. dev. of 7 runs, 1000000 loops each)"""
+
+# Member testing using a set is faster than using a list in all four cases.
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Gathering unique Pokémon 1
+
+# Use the provided function to collect unique Pokémon names
+uniq_names_func = find_unique_items(names)
+print(len(uniq_names_func))
+#368
+
+## Gathering unique Pokémon 2
+
+# Use find_unique_items() to collect unique Pokémon names
+uniq_names_func = find_unique_items(names)
+print(len(uniq_names_func))
+
+# Convert the names list to a set to collect unique Pokémon names
+uniq_names_set = set(names)
+print(len(uniq_names_set))
+
+# Check that both unique collections are equivalent
+print(sorted(uniq_names_func) == sorted(uniq_names_set))
+"""368
+   368
+   True"""
+
+## Gathering unique Pokémon 3
+
+"""---
+Question
+Within your IPython console, use %timeit to compare the find_unique_items() function with using a set data type to collect unique Pokémon character names in names.
+Which membership testing was faster?"""
+
+# Using a set to collect unique values is faster.
+
+## Gathering unique Pokémon 4
+
+# Use find_unique_items() to collect unique Pokémon names
+uniq_names_func = find_unique_items(names)
+print(len(uniq_names_func))
+
+# Convert the names list to a set to collect unique Pokémon names
+uniq_names_set = set(names)
+print(len(uniq_names_set))
+
+# Check that both unique collections are equivalent
+print(sorted(uniq_names_func) == sorted(uniq_names_set))
+
+# Use the best approach to collect unique primary types and generations
+uniq_types = set(primary_types) 
+uniq_gens = set(generations)
+print(uniq_types, uniq_gens, sep='\n') 
+"""{'Dragon', 'Rock', 'Fire', 'Electric', 'Fairy', 'Ghost', 'Psychic', 'Ground', 'Grass', 'Ice', 'Fighting', 'Dark', 'Poison', 'Bug', 'Water', 'Steel', 'Normal'}
+
+    {1, 2, 3, 4, 5, 6}"""
+"""!!!
+Since a set is defined as a collection of distinct elements, it is an efficient way to collect unique items
+from an existing object. Here you took advantage of a set to find the distinct Pokémon from the sample
+(eliminating duplicate Pokémon) and saw what unique Pokémon types and generations were included in the sample."""
+
