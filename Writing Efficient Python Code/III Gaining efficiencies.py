@@ -447,5 +447,14 @@ print(*highest_hp_pokemon2, sep='\n')
 Use %%timeit (cell magic mode) within your IPython console to compare the runtimes between the original code
 blocks and the new code you developed using NumPy and list comprehension.
 Which approach was the faster?"""
+%%timeit
+poke_zscores = []
+
+for name,hp in zip(names, hps):
+    hp_avg = hps.mean()
+    hp_std = hps.std()
+    z_score = (hp - hp_avg)/hp_std
+    poke_zscores.append((name, hp, z_score))
+#126 ms +- 5.19 ms per loop
 
 # The total time for executing the updated solution using NumPy and list comprehension was faster.
