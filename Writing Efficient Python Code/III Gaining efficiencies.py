@@ -125,12 +125,53 @@ Set theory
 ===========
         - Applied to collections of objects
         >>>>>>>>>> sets
-               0 >>>>>>>>>in 1 >>>>>>>>>>intersection()  2 >>>>>>>>>>difference() 3 >>>>>>>>>>symmetric_difference()  4 >>>>>>>>>>union()
+               0 >>>>>>>>>in 
+               1 >>>>>>>>>>intersection()  2 >>>>>>>>>>difference() 3 >>>>>>>>>>symmetric_difference()  4 >>>>>>>>>>union()
                 
                 0 -> if value exists in a sequence
                 1 -> all elements that are in both sets
                 2 -> all elements in one set but not in other 
-                3 -> all elems in exactly one set
-                4 -> all elems that are in either set
+                3 -> all elems in exactly one set---all differences of both together
+                4 -> all elems that are in either set--- deletes duplicates, merges uniques
                 
+      $$$$$ fisrt convert the list into a set $$$$$$ 
+      list_a = [1,2,3,4]
+      list_b = [5,6,7,4]
+      
+      list_a = set(lsit_a)
+      list_b = set(list_b)
+      set_a.intersection(list_b)
+      # {4}
+      set_a.difference(set_b)
+      # {1,2,3}
+      set_a.symmetric_difference(set_b)
+      # {1,2,3,5,6,7}
+      set_a.union(set_b)
+      # {1,2,3,4,5,6,7}
 *********************************************************************************************************************"""
+## Comparing Pokédexes
+
+# Convert both lists to sets
+ash_set = set(ash_pokedex)
+misty_set = set(misty_pokedex)
+
+# Find the Pokémon that exist in both sets
+both = ash_set.intersection(misty_set)
+print(both, '\n')
+
+# Find the Pokémon that Ash has and Misty does not have
+ash_only = ash_set.difference(misty_set)
+print(ash_only, '\n')
+
+# Find the Pokémon that are in only one set (not both)
+unique_to_set = ash_set.symmetric_difference(misty_set)
+print(unique_to_set, '\n')
+"""{'Squirtle', 'Psyduck'} 
+
+{'Koffing', 'Zubat', 'Rattata', 'Spearow', 'Vulpix', 'Wigglytuff', 'Pikachu', 'Bulbasaur'} 
+
+{'Koffing', 'Zubat', 'Spearow', 'Vulpix', 'Rattata', 'Wigglytuff', 'Tentacool', 'Slowbro', 'Krabby', 'Bulbasaur', 'Pikachu', 'Poliwag', 'Magikarp', 'Vaporeon', 'Starmie', 'Horsea'} """
+"""!!!
+you were able to see that both Ash and Misty have 'Psyduck' and 'Squirtle' in their Pokédex.
+You were also able to see that Ash has 8 Pokémon that Misty does not have."""
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
