@@ -212,3 +212,20 @@ print(yankees_df)
 In what year within your DataFrame did the New York Yankees have the highest run differential?"""
 
 # In 1998 (with a Run Differential of 309)
+
+"""********************************************************************************************************************************************************
+pandas alternative to looping
+================================
+
+>>>>>>>>>>>> .apply() (pandas method) =====applies a function to a df
+      <<<<<<<<<< axis especify ===== must specify axis to apply (0 columns; 1 for rows)
+      <<<<<<<<< lambda funtions ==== can be used with anonymous lambda functions
+      
+  ++
+      # Pandas For not use looping, adding RD column 
+      run_diffs_apply = baseball_df.apply(
+            lambda row: calc_run_diff(row['RS'],row['RA']),
+            axis = 1)
+      baseball_df['RD'] = run_diffs_apply
+      print(baseball_df)
+********************************************************************************************************************************************************"""
