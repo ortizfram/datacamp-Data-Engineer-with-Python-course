@@ -135,7 +135,7 @@ Advanced topics
 # A function that prints all of the prime numbers between 2 and some value n.
 #``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 ## Scraping the NASDAQ
-
+"""view last Nvidia prices"""
 # Use the "stock('NVDA')" context manager
 # and assign the result to the variable "nvda"
 with stock('NVDA') as nvda:
@@ -151,4 +151,23 @@ with stock('NVDA') as nvda:
     Logging $139.61 for NVDA....."""
 """!!!
  Nesting context managers like this allows you to connect to the stock market """
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Changing the working directory
 
+def in_dir(directory):
+  """Change current working directory to `directory`,
+  allow the user to run some code, and change back.
+
+  Args:
+    directory (str): The path to a directory to work in.
+  """
+  current_dir = os.getcwd()
+  os.chdir(directory)
+
+  # Add code that lets you handle errors
+  try:
+    yield
+  # Ensure the directory is reset,
+  # whether there was an error or not
+  finally:
+    os.chdir(current_dir)
