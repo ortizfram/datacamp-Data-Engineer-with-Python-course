@@ -216,7 +216,7 @@ In what year within your DataFrame did the New York Yankees have the highest run
 """********************************************************************************************************************************************************
 pandas alternative to looping
 ================================
-- .apply() method let's yo
+- .apply method allows you to apply a function to a DataFrame without the need to write a for loop.
 - .apply method is much faster than using for loop
 
 >>>>>>>>>>>> .apply() (pandas method) =====apply functions to all rows or columns of a DataFrame by specifying an axis.
@@ -262,3 +262,44 @@ print(textual_playoffs)
 2010    Yes
 2009     No
 2008    Yes"""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Settle a debate with .apply()
+
+# Display the first five rows of the DataFrame
+"""return complete df"""
+print(dbacks_df.head())
+
+# Create a win percentage Series
+"""apply this function to needed rows in the df"""
+"""calc_win_perc : returns wins/games_played rounded with np"""
+win_percs = dbacks_df.apply(lambda row: calc_win_perc(row['W'], row['G']), axis=1)
+print(win_percs, '\n')
+
+# Append a new column to dbacks_df
+"""create new column called WP to store win_percs"""
+dbacks_df['WP'] = win_percs
+print(dbacks_df, '\n')
+
+# Display dbacks_df where WP is greater than 0.50
+"""return WP df greater/equal than 0.50"""
+print(dbacks_df[dbacks_df['WP'] >= 0.50])
+
+"""----Question
+Which manager was correct in their claim?"""
+
+# The manager who claimed the team has not made the playoffs every year they've had a win percentage of 0.50 or greater.
+"""********************************************************************************************************************************************************
+Optimal pandas iterating
+========================
+   ++
+         # Get win values as np pandas
+         wins_np = baseball_df['W'].values
+         
+power of Vectorizing (Broadcasting)
+===================================
+   ++
+         # Calculations of all df values at once using broadcasting and adding new column to df
+         run_diffs_np = baseball_df['RS'].values - baseball_df['RA'].values
+         baseball_df['RD'] = run_diffs_np
+         
+********************************************************************************************************************************************************"""
