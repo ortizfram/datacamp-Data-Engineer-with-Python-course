@@ -126,6 +126,8 @@ In fact, in both of these seasons (2010 and 2012), the San Francisco Giants not 
 """********************************************************************************************************************************************************
 Another iterator method: .itertuples()
 =======================================
+$$$$ Remember, using .itertuples() is just like using .iterrows()
+except it tends to be faster. You also have to use a dot reference when looking up attributes with .itertuples(). $$$$
 
 >>>>>>>>> .itertuples() ====== returns each DataFrame row as a -----special data type called a namedtuple
 <<>>>>>>> indexing syntax ===== uses points to select rows, unlike iterrows(), that uses [][]
@@ -187,3 +189,26 @@ for row in rangers_df.itertuples():
 """!!!
 .itertuples(). Remember, you need to use the dot syntax for referencing an attribute in a namedtuple."""
 #``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Run differentials with .itertuples() 
+
+run_diffs = []
+
+# Loop over the DataFrame and calculate each row's run differential
+"""Collect row RS, RA from yankees_df"""
+for row in yankees_df.itertuples():
+    
+    runs_scored = row.RS
+    runs_allowed = row.RA
+
+    run_diff = calc_run_diff(runs_scored, runs_allowed)
+    
+    run_diffs.append(run_diff)
+   
+# Append new column
+yankees_df['RD'] = run_diffs
+print(yankees_df)
+
+"""----Question
+In what year within your DataFrame did the New York Yankees have the highest run differential?"""
+
+# In 1998 (with a Run Differential of 309)
