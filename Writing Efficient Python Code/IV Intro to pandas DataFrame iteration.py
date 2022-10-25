@@ -95,3 +95,30 @@ Name: 0, dtype: object)
 """!!!
 If using i,row, you can access things from the row using square brackets (i.e., row['Team']). 
 If using row_tuple, you would have to specify which element of the tuple you'd like to access before grabbing the team name (i.e., row_tuple[1]['Team'])."""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Run differentials with .iterrows()
+
+""" 'RS' means runs scored and 'RA' means runs allowed."""
+# Create an empty list to store run differentials
+run_diffs = []
+
+# Write a for loop and **collect runs allowed and runs scored for each row
+for i,row in giants_df.iterrows():
+    runs_scored = row['RS']
+    runs_allowed = row['RA']
+    
+    # Use the provided function to calculate run_diff for each row
+   """def calc_run_diff(runs_scored, runs_allowed):
+          run_diff = runs_scored - runs_allowed
+          return run_diff"""
+    run_diff = calc_run_diff(runs_scored, runs_allowed)
+    
+    # Append each run differential to the output list
+    run_diffs.append(run_diff)
+
+giants_df['RD'] = run_diffs
+"""calculate a metric called the run differential for each season from the year 2008 to 2012."""
+print(giants_df)
+
+"""!!!
+In fact, in both of these seasons (2010 and 2012), the San Francisco Giants not only made the playoffs but also won the World Series!"""
