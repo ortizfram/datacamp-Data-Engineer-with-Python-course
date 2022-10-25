@@ -85,3 +85,70 @@ Writing context managers
         # goodbye
      ++   
 ********************************************************************************************************************************************"""
+## The timer() context manager
+
+# Add a decorator that will make timer() a context manager
+@contextlib.contextmanager
+def timer():
+  """Time the execution of a context block.
+
+  Yields:
+    None
+  """
+  start = time.time()
+  # Send control back to the context block
+  yield None
+  end = time.time()
+  print('Elapsed: {:.2f}s'.format(end - start))
+
+with timer():
+  print('This should take approximately 0.25 seconds')
+  time.sleep(0.25)
+ #``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````   
+## A read-only open() context manager
+
+@contextlib.contextmanager
+def open_read_only(filename):
+  """Open a file in read-only mode.
+
+  Args:
+    filename (str): The location of the file to read
+
+  Yields:
+    file object
+  """
+  read_only_file = open(filename, mode='r')
+  # Yield read_only_file so it can be assigned to my_file
+  yield read_only_file
+  # Close read_only_file
+  read_only_file.close()
+
+with open_read_only('my_file.txt') as my_file:
+  print(my_file.read())
+"""********************************************************************************************************************************************
+Advanced topics
+===============
+********************************************************************************************************************************************"""
+## Context manager use cases
+"""---Which of the following would NOT be a good opportunity to use a context manager?"""
+
+# A function that prints all of the prime numbers between 2 and some value n.
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Scraping the NASDAQ
+
+# Use the "stock('NVDA')" context manager
+# and assign the result to the variable "nvda"
+with stock('NVDA') as nvda:
+  # Open "NVDA.txt" for writing as f_out
+  with open('NVDA.txt', 'w') as f_out:
+    for _ in range(10):
+      value = nvda.price()
+      print('Logging ${:.2f} for NVDA'.format(value))
+      f_out.write('{:.2f}\n'.format(value))
+"""Opening stock ticker for NVDA
+    Logging $139.50 for NVDA
+    Logging $139.54 for NVDA
+    Logging $139.61 for NVDA....."""
+"""!!!
+ Nesting context managers like this allows you to connect to the stock market """
+
