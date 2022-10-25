@@ -122,3 +122,68 @@ print(giants_df)
 
 """!!!
 In fact, in both of these seasons (2010 and 2012), the San Francisco Giants not only made the playoffs but also won the World Series!"""
+
+"""********************************************************************************************************************************************************
+Another iterator method: .itertuples()
+=======================================
+
+>>>>>>>>> .itertuples() ====== returns each DataFrame row as a -----special data type called a namedtuple
+<<>>>>>>> indexing syntax ===== uses points to select rows, unlike iterrows(), that uses [][]
+
+A pandas DataFrame has been loaded into your session called rangers_df. This DataFrame contains the stats 
+('Team', 'League', 'Year', 'RS', 'RA', 'W', 'G', and 'Playoffs')
+for the Major League baseball team named the Texas Rangers (abbreviated as 'TEX').
+********************************************************************************************************************************************************"""
+## Iterating with .itertuples()
+
+# Loop over the DataFrame and print each row
+"""print each row"""
+for row in rangers_df.itertuples():
+  print(row)
+"""Pandas(Index=0, Team='TEX', League='AL', Year=2012, RS=808, RA=707, W=93, G=162, Playoffs=1)
+Pandas(Index=1, Team='TEX', League='AL', Year=2011, RS=855, RA=677, W=96, G=162, Playoffs=1)
+Pandas(Index=2, Team='TEX', League='AL', Year=2010, RS=787, RA=687, W=90, G=162, Playoffs=1)
+Pandas(Index=3, Team='TEX', League='AL', Year=2009, RS=784, RA=740, W=87, G=162, Playoffs=0)....."""
+
+## Iterating with .itertuples() 2
+
+# Loop over the DataFrame and print each row's Index, Year and Wins (W)
+"""indexing some rows"""
+for row in rangers_df.itertuples():
+  i = row.Index
+  year = row.Year
+  wins = row.W
+  print(i, year, wins)
+"""0 2012 93
+   1 2011 96
+   2 2010 90
+   3 2009 87
+   4 2008 79
+   5 2007 75
+   6 2006 80
+   7 2005 79
+   8 2004 89
+   9 2003 71
+   10 2002 72"""
+
+## Iterating with .itertuples() 3
+
+# Loop over the DataFrame and print each row's Index, Year and Wins (W)
+for row in rangers_df.itertuples():
+  i = row.Index
+  year = row.Year
+  wins = row.W
+  
+  # Check if rangers made Playoffs (1 means yes; 0 means no)
+  """if Playoffs ==1 print values from for loop"""
+  if row.Playoffs == 1:
+    print(i, year, wins)
+ """0 2012 93
+   1 2011 96
+   2 2010 90
+   13 1999 95
+   14 1998 88
+   16 1996 90"""
+"""!!!
+.itertuples(). Remember, you need to use the dot syntax for referencing an attribute in a namedtuple."""
+#``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
