@@ -199,3 +199,28 @@ def median(values):
         # d = {'Hello': 'hello'}, s = 'Hello'
         """!!!
         Dictionaries are mutable objects in Python, so the function can directly change it"""
+
+        #`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Best practice for default arguments
+
+# Use an immutable variable for the default argument
+"""if df is none, create one"""
+def better_add_column(values, df=None):
+  """Add a column of `values` to a DataFrame `df`.
+  The column will be named "col_<n>" where "n" is
+  the numerical index of the column.
+
+  Args:
+    values (iterable): The values of the new column
+    df (DataFrame, optional): The DataFrame to update.
+      If no DataFrame is passed, one is created by default.
+
+  Returns:
+    DataFrame
+  """
+  # Update the function to create a default DataFrame
+  """DataFrame is created if the caller didn't pass one."""
+  if df is None:
+      df = pandas.DataFrame()
+  df['col_{}'.format(len(df.columns))] = values
+  return df
