@@ -216,10 +216,11 @@ In what year within your DataFrame did the New York Yankees have the highest run
 """********************************************************************************************************************************************************
 pandas alternative to looping
 ================================
+- .apply() method let's yo
 - .apply method is much faster than using for loop
 
->>>>>>>>>>>> .apply() (pandas method) =====applies a function to a df
-      <<<<<<<<<< axis especify ===== must specify axis to apply (0 columns; 1 for rows)
+>>>>>>>>>>>> .apply() (pandas method) =====apply functions to all rows or columns of a DataFrame by specifying an axis.
+      <<<<<<<<<< axis especifying ===== must specify axis to apply (0 columns; 1 for rows)
       <<<<<<<<< lambda funtions ==== can be used with anonymous lambda functions
       
   ++
@@ -230,3 +231,34 @@ pandas alternative to looping
       baseball_df['RD'] = run_diffs_apply
       print(baseball_df)
 ********************************************************************************************************************************************************"""
+## Analyzing baseball stats with .apply()
+
+# Gather sum of all columns
+"""apply sum to all rays_df columns"""
+stat_totals = rays_df.apply(sum, axis=0)
+print(stat_totals)
+""" RS          3783
+    RA          3265
+    W            458
+    Playoffs       3
+    dtype: int64"""
+
+# Gather total runs scored in all games per year
+total_runs_scored = rays_df[['RS', 'RA']].apply(sum, axis=1)
+print(total_runs_scored)
+"""2012    1274
+2011    1321
+2010    1451
+2009    1557
+2008    1445
+dtype: int64"""
+
+# Convert numeric playoffs to text by applying text_playoffs()
+"""text_playoffs : if playoffs == 1 text = YES, else = no"""
+textual_playoffs = rays_df.apply(lambda row: text_playoffs(row['Playoffs']), axis=1)
+print(textual_playoffs)
+"""2012     No
+2011    Yes
+2010    Yes
+2009     No
+2008    Yes"""
