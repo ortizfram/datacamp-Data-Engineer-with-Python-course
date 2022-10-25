@@ -111,5 +111,9 @@ inspect.getdoc(numpy.fywdkxa)
 """**************************************************************************************************************************************************************
 DRY and "Do One Thing"
 =====================
-
+    - Dry: Don't repeat yourself
+    - Do one thing: funtion for doing 1 thing
+            / more flexible     / easily undertood      / simpler to test        / simpler to debug     / easier to change       
+    / Use functions to avoid repetition
+    - Refactor: improving code by changing it a little bit at a time
 **************************************************************************************************************************************************************"""
