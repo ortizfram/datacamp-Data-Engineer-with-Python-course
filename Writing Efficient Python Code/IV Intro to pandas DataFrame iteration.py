@@ -216,6 +216,7 @@ In what year within your DataFrame did the New York Yankees have the highest run
 """********************************************************************************************************************************************************
 pandas alternative to looping
 ================================
+- .apply method is much faster than using for loop
 
 >>>>>>>>>>>> .apply() (pandas method) =====applies a function to a df
       <<<<<<<<<< axis especify ===== must specify axis to apply (0 columns; 1 for rows)
