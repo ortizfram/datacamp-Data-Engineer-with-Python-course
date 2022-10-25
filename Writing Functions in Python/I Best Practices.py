@@ -98,3 +98,18 @@ print(build_tooltip(range))
 print(build_tooltip(print))
 """!!!
 . But when we want to print the docstring, removing those leading spaces with inspect.getdoc() will look much better."""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Docstrings to the rescue!
+
+"""---Examine each of these functions' docstrings in the IPython shell to determine which of them is actually numpy.histogram()."""
+"""     numpy.leyud(),  numpy.uqka(),   numpy.fywdkxa(),    numpy.jinzyxq()     """
+import inspect
+inspect.getdoc(numpy.fywdkxa)
+'''Compute the histogram of a set of data.'''
+
+# numpy.fywdkxa()
+"""**************************************************************************************************************************************************************
+DRY and "Do One Thing"
+=====================
+
+**************************************************************************************************************************************************************"""
