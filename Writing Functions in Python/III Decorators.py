@@ -96,4 +96,248 @@ print('5 - 2 = {}'.format(subtract(5, 2)))
 Scope
 ======
 
+  >>>>>>>>> global === to change x inside function, so when calling function and when calling x both are the same. local and non-local
+  >>>>>>>>> nonlocal === same but from funciton outside
+**********************************************************************************************************************************************************"""
+## Understanding scope
+
+"""---What four values does this script print?"""
+ # ++  
+      x = 50
+
+      def one():
+        x = 10
+
+      def two():
+        global x
+        x = 30
+
+      def three():
+        x = 100
+        print(x)
+
+      for func in [one, two, three]:
+        func()
+        print(x)
+# ++
+
+# 50, 30, 100, 30
+"""!!!
+one() doesn't change the global x, so the first print() statement prints 50.
+
+two() does change the global x so the second print() statement prints 30.
+
+The print() statement inside the function three() is referencing the x value that is local to three(), so it prints 100.
+
+But three() does not change the global x value so the last print() statement prints 30 again."""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Modifying variables outside local scope
+
+call_count = 0
+
+def my_function():
+  """Add a keyword that lets us update call_count from inside the function."""
+  # Use a keyword that lets us update call_count 
+  global call_count
+  call_count += 1
+  
+  print("You've called my_function() {} times!".format(
+    call_count
+  ))
+  
+for _ in range(20):
+  my_function()
+"""<script.py> output:
+    You've called my_function() 1 times!
+    You've called my_function() 2 times!
+    You've called my_function() 3 times!.....20"""
+
+## Modifying variables outside local scope 2
+
+def read_files():
+  file_contents = None
+  
+  def save_contents(filename):
+    """Add a keyword that lets us modify file_contents from inside save_contents()."""
+    # Add a keyword that lets us modify file_contents
+    nonlocal file_contents
+    if file_contents is None:
+      file_contents = []
+    with open(filename) as fin:
+      file_contents.append(fin.read())
+      
+  for filename in ['1984.txt', 'MobyDick.txt', 'CatsEye.txt']:
+    save_contents(filename)
+    
+  return file_contents
+
+print('\n'.join(read_files()))
+
+## Modifying variables outside local scope 3
+
+def wait_until_done():
+  def check_is_done():
+    # Add a keyword so that wait_until_done() 
+    # doesn't run forever
+    global done
+    if random.random() < 0.1:
+      done = True
+      
+  while not done:
+    check_is_done()
+
+done = False
+wait_until_done()
+
+print('Work done? {}'.format(done))
+
+#  Work done? True
+
+"""**********************************************************************************************************************************************************
+Closures
+========
+
+>>>>>>>> my_func.__closure__ ===== a function object that remembers values in enclosing scopes even if they are not present in memory.
+>>>>>>>>  closure_values = [ my_func.__closure__[i].cell_contents for i in range(2)] ===== get values for closure
+**********************************************************************************************************************************************************"""
+## Checking for closure
+
+def return_a_func(arg1, arg2):
+  def new_func():
+    print('arg1 was {}'.format(arg1))
+    print('arg2 was {}'.format(arg2))
+  return new_func
+    
+my_func = return_a_func(2, 17)
+
+# Show that my_func()'s closure is not None
+print(my_func.__closure__ is not None)
+
+# True
+
+## Checking for closure 2
+"""Show that there are two variables in the closure"""
+
+def return_a_func(arg1, arg2):
+  def new_func():
+    print('arg1 was {}'.format(arg1))
+    print('arg2 was {}'.format(arg2))
+  return new_func
+    
+my_func = return_a_func(2, 17)
+
+print(my_func.__closure__ is not None)
+
+# Show that there are two variables in the closure
+print(len(my_func.__closure__) == 2)
+
+# True
+
+## Checking for closure 3
+"""Get the values of the variables in the closure"""
+
+def return_a_func(arg1, arg2):
+  def new_func():
+    print('arg1 was {}'.format(arg1))
+    print('arg2 was {}'.format(arg2))
+  return new_func
+    
+my_func = return_a_func(2, 17)
+
+print(my_func.__closure__ is not None)
+print(len(my_func.__closure__) == 2)
+
+# Get the values of the variables in the closure
+closure_values = [
+  my_func.__closure__[i].cell_contents for i in range(2)
+]
+print(closure_values)
+print(closure_values == [2, 17])
+
+"""True
+  True
+  [2, 17]
+  True"""
+#`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+## Closures keep your values safe
+
+def my_special_function():
+  print('You are running my_special_function()')
+  
+def get_new_func(func):
+  def call_func():
+    func()
+  return call_func
+
+new_func = get_new_func(my_special_function)
+
+# Redefine my_special_function() to just print "hello"
+def my_special_function():
+  print("hello")
+
+new_func()
+
+# You are running my_special_function()
+
+## Closures keep your values safe 2
+
+def my_special_function():
+  print('You are running my_special_function()')
+  
+def get_new_func(func):
+  def call_func():
+    func()
+  return call_func
+
+new_func = get_new_func(my_special_function)
+
+# Delete my_special_function()
+"""Show that even if you delete my_special_function(), you can still call new_func() without any problems."""
+del(my_special_function)
+
+new_func()
+
+# You are running my_special_function()
+
+## Closures keep your values safe 3
+
+def my_special_function():
+    print('You are running my_special_function()')
+
+
+def get_new_func(func):
+    def call_func():
+        func()
+
+    return call_func
+
+
+# Overwrite `my_special_function` with the new function
+"""you still get the original message even if you overwrite my_special_function() with the new function."""
+my_special_function = get_new_func(my_special_function)
+
+my_special_function()
+
+#     You are running my_special_function()
+"""**********************************************************************************************************************************************************
+Decorators 
+===========
+  - modify behavior of functions
+  
+      @ decorator syntax
+        ----------------
+        ++
+          
+            def double_args(func):
+                def wrapper(a,b):
+                    return func(a*2 , b*2)
+                return wrapper  
+                
+            @double_args
+            def multiply(a,b):
+                return a*b
+                
+            multiply(1,5)
+            
+            # 20
 **********************************************************************************************************************************************************"""
