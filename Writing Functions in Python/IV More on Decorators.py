@@ -192,3 +192,58 @@ print(print_sum_docstring)
 # Hello
 # 30
 # Adds two numbers and prints the sum
+#----
+
+## Measuring decorator overhead
+
+
+@check_everything
+def duplicate(my_list):
+  """Return a new list that repeats the input twice"""
+  return my_list + my_list
+
+t_start = time.time()
+duplicated_list = duplicate(list(range(50)))
+t_end = time.time()
+decorated_time = t_end - t_start
+
+t_start = time.time()
+# Call the original function instead of the decorated one
+duplicated_list = duplicate.__wrapped__(list(range(50)))
+t_end = time.time()
+undecorated_time = t_end - t_start
+
+print('Decorated time: {:.5f}s'.format(decorated_time))
+print('Undecorated time: {:.5f}s'.format(undecorated_time))
+
+# Finished checking inputs
+# Finished checking outputs
+# Decorated time: 1.74689s
+# Undecorated time: 0.00026s
+#----
+
+"""Decorators that take arguments
+=================================
+        >>>>>>>>>   ==== for using a decorator that prints n times eg."""
+#       ++
+                def run_n_times(n):
+                     """define and Return decorator
+                     Returns: function 3 times"""
+                     def decorator(func):
+                        # wrapper that takes a range and applys function in wich you used decorator
+                        def wrapper(*args, **kwargs):
+                                for i in range(n):
+                                      func(*args, **kwargs)
+                        return wrapper
+                     return decorator
+                
+                @run_n_times(3)
+                def print_sum(a,b):
+                        print(a+b)
+                        
+                print_sum(3,5)
+                
+                # 8
+                # 8
+                # 8
+#       ++
