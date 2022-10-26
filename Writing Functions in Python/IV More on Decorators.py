@@ -340,3 +340,6 @@ print(hello_goodbye('Alice'))
 # <b>Hello Alice!</b>
 # <i>Goodbye Alice.</i>
 # </div>
+
+"""Timeout(): a real world example
+================================="""
