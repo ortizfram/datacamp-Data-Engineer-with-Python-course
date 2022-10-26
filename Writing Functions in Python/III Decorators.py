@@ -323,6 +323,7 @@ my_special_function()
 Decorators 
 ===========
   - modify behavior of functions
+  - when you use decorator syntax with the @ symbol you do not include the parentheses after the decorator name.
   
       @ decorator syntax
         ----------------
@@ -367,4 +368,24 @@ my_function(1, 2, 3)
 # my_function was called with a=1, b=2, c=3
 # 6
 #`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
-## 
+##  Defining a decorator
+"""decorator that prints a "before" message before the decorated function is called and prints an "after" message after the decorated function is called"""
+
+def print_before_and_after(func):
+  def wrapper(*args):
+    print('Before {}'.format(func.__name__))
+    # this the actual function itself
+    func(*args)
+    print('After {}'.format(func.__name__))
+  # Return the nested function
+  return wrapper
+
+@print_before_and_after
+def multiply(a, b):
+  print(a * b)
+
+multiply(5, 10)
+
+# Before multiply
+# 50
+# After multiply
