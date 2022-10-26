@@ -247,3 +247,96 @@ print('Undecorated time: {:.5f}s'.format(undecorated_time))
                 # 8
                 # 8
 #       ++
+#----
+
+## Run_n_times()
+
+
+# Make print_sum() run 10 times with the run_n_times() decorator
+@run_n_times(10)
+def print_sum(a, b):
+  print(a + b)
+  
+print_sum(15, 20)
+
+# 35....10times
+
+## Run_n_times() 2
+
+
+# Use run_n_times() to create the run_five_times() decorator
+run_five_times = run_n_times(5)
+
+@run_five_times
+def print_sum(a, b):
+  print(a + b)
+  
+print_sum(4, 100)
+
+# 104....5times
+
+## Run_n_times() 3
+
+
+# modify the built-in print()
+# Modify the print() function to always run 20 times
+print = run_n_times(20)(print)
+
+print('What is happening?!?!')
+
+# What is happening?!?! .... 20times
+#----
+
+## HTML Generator
+
+
+def html(open_tag, close_tag):
+  def decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+      msg = func(*args, **kwargs)
+      return '{}{}{}'.format(open_tag, msg, close_tag)
+    # Return the decorated function
+    return wrapper
+  # Return the decorator
+  return decorator
+
+## HTML Generator 2 
+
+
+# Make hello() return bolded text
+@html('<b>', '</b>')
+def hello(name):
+  return 'Hello {}!'.format(name)
+  
+print(hello('Alice'))
+
+# <script.py> output:
+#    <b>Hello Alice!</b>
+
+## HTML Generator 3
+
+
+# Make goodbye() return italicized text
+@html('<i>', '</i>')
+def goodbye(name):
+  return 'Goodbye {}.'.format(name)
+  
+print(goodbye('Alice'))
+
+# <i>Goodbye Alice.</i>
+
+## HTML Generator 4
+
+
+# Wrap the result of hello_goodbye() in <div> and </div>
+@html('<div>','</div>')
+def hello_goodbye(name):
+  return '\n{}\n{}\n'.format(hello(name), goodbye(name))
+  
+print(hello_goodbye('Alice'))
+
+# <div>
+# <b>Hello Alice!</b>
+# <i>Goodbye Alice.</i>
+# </div>
