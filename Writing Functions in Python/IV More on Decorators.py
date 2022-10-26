@@ -91,8 +91,11 @@ print('foo() was called {} times.'.format(foo.count))
 # foo() was called 2 times.
 
 """Decorators and metadata
-==========================="""
+===========================
+>>>>>>>> from functools import wraps ==== add the metadata from wrapper to the decorated version of print_sum().
+>>>>>>>> @wraps         ==== Decorate wrapper() so that it keeps func()'s metadata"""
 ## Preserving docstrings when decorating functions
+
 
 def add_hello(func):
   def wrapper(*args, **kwargs):
@@ -115,6 +118,7 @@ print(print_sum_docstring)
 # None
 
 ## Preserving docstrings when decorating functions 2
+
 
 # you're printing wrapper docstring , not add hello docstring"""
 def add_hello(func):
@@ -141,3 +145,50 @@ print(print_sum_docstring)
 
 ## Preserving docstrings when decorating functions 3
 
+
+# Import the function you need to fix the problem
+# will allow you to add the metadata from print_sum() to the decorated version of print_sum().
+from functools import wraps
+
+def add_hello(func):
+  def wrapper(*args, **kwargs):
+    """Print 'hello' and then call the decorated function."""
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+  
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+
+## Preserving docstrings when decorating functions 4
+
+
+from functools import wraps
+
+def add_hello(func):
+  # Decorate wrapper() so that it keeps func()'s metadata
+  @wraps(func)
+  def wrapper(*args, **kwargs):
+    """Print 'hello' and then call the decorated function."""
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+  
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+
+# Hello
+# 30
+# Adds two numbers and prints the sum
