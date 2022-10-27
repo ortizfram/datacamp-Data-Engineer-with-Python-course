@@ -92,3 +92,13 @@ Date,Tooth
     2  cd seasonal/
     3  head summer.csv
     4  history"""
+
+## How can I select lines containing specific values?
+""" >>>>>> grep === selects lines according to what they contain"""
+#   ...... grep bicuspid seasonal/winter.csv ---------------prints lines from winter.csv that contain "bicuspid".
+# -c: print a count of matching lines rather than the lines themselves
+# -h: do not print the names of files when searching multiple files
+# -i: ignore case (e.g., treat "Regression" and "regression" as matches)
+# -l: print the names of files that contain matches, not the matches
+# -n: print line numbers for matching lines
+# -v: invert the match, i.e., only show lines that don't match
