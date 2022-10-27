@@ -23,3 +23,11 @@ with an inverted match, to exclude the header line containing the word "Tooth"""
 
 ## How can I combine many commands?
 """Extend this pipeline with a head command to only select the very first tooth name."""
+# $ cut -d , -f 2 seasonal/summer.csv | grep -v Tooth | head -n 1
+
+
+## How can I count the records in a file?
+"""Count how many records in seasonal/spring.csv have dates in July 2017 (2017-07)."""
+"""use grep with a partial date to select the lines and pipe this result into wc(short for "word count") with an appropriate flag to count the lines."""
+# $ grep 2017-07 seasonal/spring.csv | wc -l
+# out| 3
