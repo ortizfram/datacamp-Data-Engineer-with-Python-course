@@ -63,7 +63,7 @@ This chapter will show you how to work with the data in those files. The tools w
 ## How can I select COLUMNS from a file?
 """ >>>>>> cut === select columns."""
          # cut -f 2-5,8 -d , values.csv
-                     #-f(specify columns), -d(delimiter to specify the separator)--because some files may use spaces, tabs, or colons
+                     #-f(FIELDS, specify columns), -d(delimiter to specify the separator)--because some files may use spaces, tabs, or colons
 """---What command will select the first column (containing dates) from the file spring.csv?"""
 """cut -d , -f 1 seasonal/spring.csv
     cut -d, -f1 seasonal/spring.csv"""
