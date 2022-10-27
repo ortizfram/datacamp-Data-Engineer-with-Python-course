@@ -96,9 +96,18 @@ Date,Tooth
 ## How can I select lines containing specific values?
 """ >>>>>> grep === selects lines according to what they contain"""
 #   ...... grep bicuspid seasonal/winter.csv ---------------prints lines from winter.csv that contain "bicuspid".
+"""grep's more common flags:----------"""
 # -c: print a count of matching lines rather than the lines themselves
 # -h: do not print the names of files when searching multiple files
 # -i: ignore case (e.g., treat "Regression" and "regression" as matches)
 # -l: print the names of files that contain matches, not the matches
 # -n: print line numbers for matching lines
 # -v: invert the match, i.e., only show lines that don't match
+"""Print the contents of all of the lines containing the word molar in seasonal/autumn.csv by running a single command while in your home directory. Don't use any flags."""
+# $ grep molar seasonal/autumn.csv
+"""Invert the match to find all of the lines that don't contain the word molar in seasonal/spring.csv. and show their line numbers."""
+# $ grep -v -n molar seasonal/spring.csv
+"""out | 1:Date,Tooth
+2:2017-01-25,wisdom
+3:2017-02-19,canine
+4:2017-02-24,canine....."""
