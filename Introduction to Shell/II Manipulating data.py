@@ -60,5 +60,35 @@ This chapter will show you how to work with the data in those files. The tools w
 # $ tail -n +7 seasonal/spring.csv
 
 
-## How can I select columns from a file?
+## How can I select COLUMNS from a file?
+""" >>>>>> cut === select columns."""
+         # cut -f 2-5,8 -d , values.csv
+                     #-f(specify columns), -d(delimiter to specify the separator)--because some files may use spaces, tabs, or colons
+"""---What command will select the first column (containing dates) from the file spring.csv?"""
+"""cut -d , -f 1 seasonal/spring.csv
+    cut -d, -f1 seasonal/spring.csv"""
+# Either of the above.
 
+
+## What can't cut do?
+"""---What is the output of cut -d : -f 2-4 on the line:"""
+# second:third:
+# |  The trailing colon creates an empty fourth field.
+
+
+## How can I repeat commands?
+""" >>>>>> history === see latest command history."""
+# $ head summer.csv
+# $ cd seasonal/
+# $ !head
+"""head summer.csv
+Date,Tooth
+2017-01-11,canine
+2017-01-18,wisdom
+2017-01-21,bicuspid
+2017-02-02,molar....."""
+# $ history
+"""   1  head summer.csv
+    2  cd seasonal/
+    3  head summer.csv
+    4  history"""
