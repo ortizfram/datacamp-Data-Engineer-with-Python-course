@@ -31,3 +31,18 @@ with an inverted match, to exclude the header line containing the word "Tooth"""
 """use grep with a partial date to select the lines and pipe this result into wc(short for "word count") with an appropriate flag to count the lines."""
 # $ grep 2017-07 seasonal/spring.csv | wc -l
 # out| 3
+
+
+## How can I specify many files at once?
+""" ** wildcards === to specify a list of files with a single expression ---- '*'   """
+"""head to get the first three lines from both seasonal/spring.csv and seasonal/summer.csv"""
+#  head -n 3 seasonal/spring.csv seasonal/summer.csv
+""" out | ==> seasonal/spring.csv <==
+Date,Tooth
+2017-01-25,wisdom
+2017-02-19,canine
+
+==> seasonal/summer.csv <==
+Date,Tooth
+2017-01-11,canine
+2017-01-18,wisdom""" 
