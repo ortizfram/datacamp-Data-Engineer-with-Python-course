@@ -15,7 +15,8 @@ This chapter will show you how to use this power to select the data you want, an
 
 
 ## What's a better way to combine commands?
-""" ** output | use the output -----> '|'== a pipe"""
+""" ** output | use the output -----> '|'== a pipe
+"""
 """Use cut to select all of the tooth names from column 2 of the comma delimited file seasonal/summer.csv, then pipe the result to grep, 
 with an inverted match, to exclude the header line containing the word "Tooth"""
 # $ cut -d , -f 2 seasonal/summer.csv | grep -v Tooth
@@ -34,7 +35,10 @@ with an inverted match, to exclude the header line containing the word "Tooth"""
 
 
 ## How can I specify many files at once?
-""" ** wildcards === to specify a list of files with a single expression ---- '*'   """
+""" ** wildcards === to specify a list of files with a single expression ---- '*' 
+    ** eg.---> cut -d , -f 1 seasonal/*
+    ** eg---> cut -d , -f 1 seasonal/*.csv
+"""
 """head to get the first three lines from both seasonal/spring.csv and seasonal/summer.csv"""
 #  head -n 3 seasonal/spring.csv seasonal/summer.csv
 """ out | ==> seasonal/spring.csv <==
@@ -46,3 +50,6 @@ Date,Tooth
 Date,Tooth
 2017-01-11,canine
 2017-01-18,wisdom""" 
+
+
+## What other wildcards can I use?
