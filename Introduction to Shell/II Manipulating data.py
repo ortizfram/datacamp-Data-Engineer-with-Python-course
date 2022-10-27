@@ -116,3 +116,9 @@ Date,Tooth
 # $ grep incisor -c seasonal/autumn.csv seasonal/winter.csv
 """ out | seasonal/autumn.csv:3
           seasonal/winter.csv:6"""
+
+
+## Why isn't it always safe to treat data as text?
+# $ man paste 
+# $ paste -d -n seasonal/autumn.csv seasonal/winter.csv
+# | The last few rows have the wrong number of columns.
