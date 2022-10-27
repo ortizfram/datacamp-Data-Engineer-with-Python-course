@@ -106,8 +106,13 @@ Date,Tooth
 """Print the contents of all of the lines containing the word molar in seasonal/autumn.csv by running a single command while in your home directory. Don't use any flags."""
 # $ grep molar seasonal/autumn.csv
 """Invert the match to find all of the lines that don't contain the word molar in seasonal/spring.csv. and show their line numbers."""
-# $ grep -v -n molar seasonal/spring.csv
-"""out | 1:Date,Tooth
+# $ grep -n -v molar seasonal/spring.csv
+"""out |1:Date,Tooth
 2:2017-01-25,wisdom
 3:2017-02-19,canine
-4:2017-02-24,canine....."""
+4:2017-02-24,canine
+5:2017-02-28,wisdom"""
+"""Count how many lines contain the word incisor in autumn.csv and winter.csv combined. (Again, run a single command from your home directory.)"""
+# $ grep incisor -c seasonal/autumn.csv seasonal/winter.csv
+""" out | seasonal/autumn.csv:3
+          seasonal/winter.csv:6"""
