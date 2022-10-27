@@ -32,8 +32,33 @@ This chapter will show you how to work with the data in those files. The tools w
 
 
 ## How can I control what commands do?
+"""FLAGS
+---------"""
+""" >>>>>> head -n 10 === first 10 results."""
+# $ head -n 5 seasonal/winter.csv
 
 
+## How can I list everything below a directory?
+""" >>>>>> ls -R  === see every file and directory in the current level, then everything in each sub-directory.
+    >>>>>> ls -F === puts '/' after a directory. puts '*' after runnable program."""
+# $ ls -R -F.:
+"""backup/  bin/  course.txt  people/  seasonal/
+    ./backup:
+
+    ./bin:
+
+    ./people:
+    agarwal.txt
+
+    ./seasonal:
+    autumn.csv  spring.csv  summer.csv  winter.csv"""
 
 
+## How can I get help for a command?
+""" >>>>>> man === (maual) find out what commands DO.---invokes 'less', use [SPACE] to see more [q] to quit"""
+# $ man tail   [SPACE][q]
+# $ tail -n +7 seasonal/spring.csv
+
+
+## How can I select columns from a file?
 
