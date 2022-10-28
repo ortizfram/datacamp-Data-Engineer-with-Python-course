@@ -86,3 +86,13 @@ but for each seasonal file separately. Please use file as the name of the loop v
 ## Why shouldn't I use spaces in filenames?
 # Both of the above.
 # Use single quotes, ', or double quotes, ", around the file names.
+
+
+
+#
+"""Suppose you forget the semi-colon between the echo and head commands in the previous loop, so that you ask the shell to run:
+eg:      for f in seasonal/*.csv; do echo $f head -n 2 $f | tail -n 1; done
+---What will the shell do?."""
+# Print one line for each of the four files.
+
+
