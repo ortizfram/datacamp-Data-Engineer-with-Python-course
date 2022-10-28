@@ -19,3 +19,13 @@ you will see how to go one step further and create new commands of your own.
 #        Wilson
 # cntrl + O : save  then press ENTER
 # cntrl + X : leave file
+
+
+
+## How can I record what I just did?
+"""Copy the files seasonal/spring.csv and seasonal/summer.csv to your home directory."""
+""" >>>>>> cp === copy."""
+# $ cp seasonal/s* ~
+"""Use grep with the -h flag (to stop it from printing filenames) and -v Tooth (to select lines that don't match the header line) 
+to select the data records from spring.csv and summer.csv in that order and redirect the output to temp.csv."""
+""" >>>>>> cp -h === dont print filenames."""
