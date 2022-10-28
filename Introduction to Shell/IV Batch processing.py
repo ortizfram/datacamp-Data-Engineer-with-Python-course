@@ -14,12 +14,14 @@ see how the shell uses variables to store information.
 # set | grep HISTFILESIZE
 
 
+
 ## How can I print a variable's value?
 """      >>>>>> echo || echo $USER find a variable's value."""
                   
 """The variable OSTYPE holds the name of the kind of operating system you are using. Display its value using echo."""
 # $ echo $OSTYPE
 # out | linux-gnu
+
 
 
 ## How else does the shell store information?
@@ -30,6 +32,7 @@ see how the shell uses variables to store information.
 """Use head -n 1 SOMETHING to get the first line from seasonal/winter.csv using the value of the variable testing instead of the name of the file."""
 # $ head -n 1 $testing
 # out | Date,Tooth
+
 
 
 ## How can I repeat a command many times?
@@ -43,11 +46,13 @@ output:  gif
 # $ for filetype in docx odt pdf; do echo $filetype; done
 
 
+
 ## How can I repeat a command once for each file?
 """Modify the wildcard expression to people/* so that the loop prints the names of the files in the people directory
 regardless of what suffix they do or don't have. Please use filename as the name of your loop variable.
 """
 # $ for filename in people/*; do echo $filename; done
+
 
 
 ## How can I record the names of a set of files?
@@ -59,3 +64,19 @@ regardless of what suffix they do or don't have. Please use filename as the name
 # Four: the names of all four seasonal data files.
 
 
+
+## A variable's name versus its value
+"""---If you were to run these two commands in your home directory, what output would be printed?
+         files=seasonal/*.csv
+         for f in files; do echo $f; done."""
+# One line: the word "files".
+# correct : the loop uses files instead of $files, so the list consists of the word "files".
+
+
+
+## How can I run many commands in a single loop?
+""" eg:     for file in seasonal/*.csv; do head -n 2 $file | tail -n 1; done
+Write a loop that prints the last entry from July 2017 (2017-07) in every seasonal file. It should produce a similar output to:
+similar:        grep 2017-07 seasonal/winter.csv | tail -n 1
+but for each seasonal file separately. Please use file as the name of the loop variable, and remember to loop through the list of files seasonal/*.csv"""
+# $ for file in seasonal/*.csv; do grep 2017-07 $file | tail -n 1; done
