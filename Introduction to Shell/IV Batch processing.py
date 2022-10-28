@@ -49,3 +49,13 @@ regardless of what suffix they do or don't have. Please use filename as the name
 """
 # $ for filename in people/*; do echo $filename; done
 
+
+## How can I record the names of a set of files?
+"""     1| asign a var :  datasets=seasonal/*.csv
+        2| display the files' names later:  for filename in $datasets; do echo $filename; done"""
+"""---If you run these two commands in your home directory, how many lines of output will they print?
+         files=seasonal/*.csv
+         for f in $files; do echo $f; done"""
+# Four: the names of all four seasonal data files.
+
+
