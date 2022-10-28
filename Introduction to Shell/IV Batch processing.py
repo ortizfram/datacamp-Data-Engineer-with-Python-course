@@ -80,3 +80,9 @@ Write a loop that prints the last entry from July 2017 (2017-07) in every season
 similar:        grep 2017-07 seasonal/winter.csv | tail -n 1
 but for each seasonal file separately. Please use file as the name of the loop variable, and remember to loop through the list of files seasonal/*.csv"""
 # $ for file in seasonal/*.csv; do grep 2017-07 $file | tail -n 1; done
+
+
+
+## Why shouldn't I use spaces in filenames?
+# Both of the above.
+# Use single quotes, ', or double quotes, ", around the file names.
