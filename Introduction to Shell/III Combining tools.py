@@ -109,12 +109,3 @@ Extend it with a sort command, and use uniq -c to display unique lines with a co
 """Add two more stages to the pipeline that use sort -n and head -n 1 to find the file containing the fewest lines."""
 # $ wc -l seasonal/* | grep -v total | sort -n | head -n 1
 # out |  21 seasonal/autumn.csv
-
-
-## How does the shell store information?
-""" ** environment variables === 
-         HOME	User's home directory	/home/repl
-         PWD	Present working directory	Same as pwd command
-         SHELL	Which shell program is being used	/bin/bash
-         USER	User's ID	repl
-         set   To get a complete list"""
