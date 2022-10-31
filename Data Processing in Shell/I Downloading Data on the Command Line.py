@@ -32,4 +32,14 @@ how to download data files from web servers via the command line. In the process
   
 ## Flags in case of timeouts : 
   """ # Redirect HTTP URL if 300 error occurs   : >>>>>> -L
-      # Resumes previous file transfer if timeout before completition   : >>>>>> -C
+      # Resumes previous file transfer if timeout before completition   : >>>>>> -C   """
+#---------------
+## Using curl documentation
+"""--- Based on the information in the curl manual, which of the following is NOT a supported file protocol ?  :"""
+# OFTP
+
+
+
+## Downloading single file using curl
+# Use curl to download the file from the redirected URL
+# curl -0 https://assets.datacamp.com/production/repositories/4180/datasets/eb1d6a36fa3039e4e00064797e1a1600d267b135/201812SpotifyData.zip
