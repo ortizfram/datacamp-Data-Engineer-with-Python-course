@@ -79,4 +79,13 @@
  ## THEO=======================
  ## Filtering data using csvkit
  ## ---------------------------
- 
+ """  filter data using [column name/position] :  >>>>>> csvcut
+                                                  -n :  return all names
+                                                  -c :  filter by position:  [-c 2,3] or [-c "column_name"]
+                                                  
+      filter data using by row value  :  >>>>>> csvgrep
+      return names of all columns  :  >>>>>> --names or -n
+
+      eg  :  # Return all names of file :
+             csvcut -n Spotify_MusicAttributes.csv
+      
