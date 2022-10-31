@@ -78,3 +78,19 @@ in one or more files, excluding the first line of each."""
 
 
 
+## How can I process a single argument?
+""" >>>>>> $1, $2, and so on === to refer to specific command-line parameters."""
+"""---
+bash get-field.sh seasonal/summer.csv 4 2
+should select the second field from line 4 of seasonal/summer.csv. Which of the following commands should be put in get-field.sh to do that?"""
+# head -n $2 $1 | tail -n 1 | cut -d , -f $3
+
+
+
+## How can one shell script do many things?
+"""edit the script range.sh and replace the two ____ placeholders with $@ and -v so that it lists the names and number of lines in all of the files given on 
+the command line without showing the total number of lines in all files. (Do not try to subtract the column header lines from the files.)"""
+# $ nano range.sh
+# wc -l $@ | grep -v total
+"""add sort -n and head -n 1 in that order to the pipeline in range.sh to display the name and line count of the shortest file given to it."""
+# wc -l $@ | grep -v total | sort -n | head -n 1
