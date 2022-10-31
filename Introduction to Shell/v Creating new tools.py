@@ -48,3 +48,19 @@ to extract the first column from all of the CSV files in seasonal."""
 # cut -d , -f 1 seasonal/*.csv
 # (save and exit)
 # $ bash dates.sh
+
+
+
+## How can I re-use pipes?
+""" ** file full of shell commands is called a *shell script, or sometimes just a "script""""
+"""A file teeth.sh in your home directory has been prepared for you, but contains some blanks. Use Nano to edit the file and replace the 
+two ____ placeholders with seasonal/*.csv and -c so that this script prints a count of the number of times each tooth name appears in the CSV
+files in the seasonal directory."""
+# $ nano teeth.sh
+# $ bash teeth.sh > teeth.out
+# $ cat teeth.out
+# out | 15 bicuspid
+#       31 canine
+#       18 incisor
+#       11 molar
+     17 wisdom
