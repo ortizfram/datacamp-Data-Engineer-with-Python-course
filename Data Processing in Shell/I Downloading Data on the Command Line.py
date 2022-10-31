@@ -1,6 +1,9 @@
 """ 
 how to download data files from web servers via the command line. In the process, we also learn about documentation manuals, option flags, and multi-file processing
 """
+#====================================================
+#           THEORY & EXAMPLES
+#===================================================
 ## Downloading data using curl : 
 """ ** CURL : short Client for URLs, 
               Unix CommandLine Tool 
@@ -76,3 +79,6 @@ how to download data files from web servers via the command line. In the process
             eg. :  wget -bqc [URL]
        ------
     ** PID : unique ID for data download process in case of cancellation    """
+#====================================================
+#           EXERCICES
+#===================================================
