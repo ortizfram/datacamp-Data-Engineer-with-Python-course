@@ -63,4 +63,14 @@ files in the seasonal directory."""
 #       31 canine
 #       18 incisor
 #       11 molar
-#    17 wisdom
+#       17 wisdom
+
+
+
+## How can I pass filenames to scripts?
+"""Edit the script count-records.sh with Nano and fill in the two ____ placeholders with $@ and -l (the letter) respectively so that it counts the number of lines
+in one or more files, excluding the first line of each."""
+# $ nano cout-records.sh
+
+
+
