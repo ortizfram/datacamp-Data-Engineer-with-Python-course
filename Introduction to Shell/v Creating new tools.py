@@ -39,3 +39,12 @@ to select the data records from spring.csv and summer.csv in that order and redi
 
 
 ## How can I save commands to re-run later?
+"""Use nano dates.sh to create a file called dates.sh that contains this command:
+            cut -d , -f 1 seasonal/*.csv
+to extract the first column from all of the CSV files in seasonal."""
+""" >>>>>>> nano filename.sh === create saved command in bash program
+    >>>>>>> bash filename.sh === run saved bash programm"""
+# $ nano dates.sh
+# cut -d , -f 1 seasonal/*.csv
+# (save and exit)
+# $ bash dates.sh
