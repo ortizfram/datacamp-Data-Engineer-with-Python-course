@@ -79,13 +79,34 @@
  ## THEO=======================
  ## Filtering data using csvkit
  ## ---------------------------
- """  filter data using [column name/position] :  >>>>>> csvcut
+ """  return names of all columns  :  >>>>>> --names or -n
+      view documentation  :  >>>>>> -h
+      
+      filter data CSVKIT using [column name/position] :  >>>>>> csvcut
                                                   -n :  return all names
-                                                  -c :  filter by position:  [-c 2,3] or [-c "column_name"]
+                                                  -c :  filter by position:  [-c 2,3] or [-c "column_name","asd"]
                                                   
-      filter data using by row value  :  >>>>>> csvgrep
-      return names of all columns  :  >>>>>> --names or -n
+                                                  ---eg  :  # Return all names of file :
+                                                            csvcut -n Spotify_MusicAttributes.csv    
+                                                            
+      filter data by row value CSVKIT  :  >>>>>> csvgrep
+                                         -m :   exact row value to filter
+                                         -r :   regex patten 
+                                         -f :   path to a file      """
+## EXERCISES=======================
+## Printing column headers with csvkit
+""" Check to confirm name and location of data file"""
+ # ls
+""" Print a list of column headers in data file """
+ # csvcut -n Spotify_MusicAttributes.csv
+"""output | potify_MusicAttributes.csv  backup  bin
+  1: track_id
+  2: danceability
+  3: duration_ms
+  4: instrumentalness
+  5: loudness
+  6: tempo
+  7: time_signature"""
 
-      eg  :  # Return all names of file :
-             csvcut -n Spotify_MusicAttributes.csv
+        
       
