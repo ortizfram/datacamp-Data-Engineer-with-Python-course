@@ -63,4 +63,4 @@ files in the seasonal directory."""
 #       31 canine
 #       18 incisor
 #       11 molar
-     17 wisdom
+#    17 wisdom
