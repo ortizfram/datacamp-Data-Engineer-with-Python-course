@@ -89,3 +89,10 @@ how to download data files from web servers via the command line. In the process
 
 
 ## Downloading single file using wget
+# Fill in the two option flags 
+"""option flag for resuming a partial download./for letting the download occur in the background."""
+  # wget -c -b https://assets.datacamp.com/production/repositories/4180/datasets/eb1d6a36fa3039e4e00064797e1a1600d267b135/201812SpotifyData.zip
+# Verify that the Spotify file has been downloaded
+  # ls 
+# Preview the log file 
+  # cat wget-log
