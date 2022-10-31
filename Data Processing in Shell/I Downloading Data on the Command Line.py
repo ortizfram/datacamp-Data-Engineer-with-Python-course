@@ -96,3 +96,7 @@ how to download data files from web servers via the command line. In the process
   # ls 
 # Preview the log file 
   # cat wget-log
+
+  
+  
+## THEO==========Advanced downloading using Wget
