@@ -70,7 +70,11 @@ files in the seasonal directory."""
 ## How can I pass filenames to scripts?
 """Edit the script count-records.sh with Nano and fill in the two ____ placeholders with $@ and -l (the letter) respectively so that it counts the number of lines
 in one or more files, excluding the first line of each."""
+""" >>>>>> $@ === pass filenames to scripts."""
 # $ nano cout-records.sh
+# tail -q -n +2 $@ | wc -l
+# (save and close)
+# $ bash count-records.sh  seasonal/*.csv > num-records.out
 
 
 
