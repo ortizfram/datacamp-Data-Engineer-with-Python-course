@@ -94,3 +94,39 @@ the command line without showing the total number of lines in all files. (Do not
 # wc -l $@ | grep -v total
 """add sort -n and head -n 1 in that order to the pipeline in range.sh to display the name and line count of the shortest file given to it."""
 # wc -l $@ | grep -v total | sort -n | head -n 1
+""" add a second line to range.sh to print the name and record count of the longest file in the directory as well as the shortest. 
+This line should be a duplicate of the one you have already written, but with sort -n -r rather than sort -n."""
+# wc -l $@ | grep -v total | sort -n | head -n 1
+# wc -l $@ | grep -v total | sort -n -r | head -n 1
+"""Run the script on the files in the seasonal directory using seasonal/*.csv to match all of the files and redirect the output using > to a file called range.out"""
+# $ bash range.sh seasonal/*.csv > range.out
+
+
+
+## How can I write loops in a shell script?
+""" eg : 
+            # Print the first and last data records of each file.
+            for filename in $@
+            do
+                head -n 2 $filename | tail -n 1
+                tail -n 1 $filename
+            done"""
+"""Fill in the placeholders in the script date-range.sh with $filename (twice), head, and tail so that it prints the first and last date from one or more files."""
+# # Print the first and last date from each data file.
+# for filename in $@
+# do
+#     cut -d , -f 1 $filename | grep -v Date | sort | head -n 1
+#     cut -d , -f 1 $filename | grep -v Date | sort | tail -n 1
+# done
+"""Run date-range.sh on all four of the seasonal data files using seasonal/*.csv to match their names, and pipe its output to sort"""
+# $ bash date-range.sh seasonal/*.csv | sort
+
+
+
+## What happens when I don't provide filenames?
+"""---
+Suppose you do accidentally type:
+      head -n 5 | tail -n 3 somefile.txt
+What should you do next?"""
+#| Use Ctrl + C to stop the running head program.
+
