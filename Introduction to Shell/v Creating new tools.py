@@ -5,7 +5,7 @@ you will see how to go one step further and create new commands of your own.
 
 ## How can I edit a file?
 """text editor Nano. If you type 
-      >>>>>> nano filename === it will open/create filename for editing
+      >>>>>> nano filename === it will open/create/edit filename for editing
           ** operations with control-key combinations:
               Ctrl + K: delete a line.
               Ctrl + U: un-delete a line.
@@ -28,4 +28,14 @@ you will see how to go one step further and create new commands of your own.
 # $ cp seasonal/s* ~
 """Use grep with the -h flag (to stop it from printing filenames) and -v Tooth (to select lines that don't match the header line) 
 to select the data records from spring.csv and summer.csv in that order and redirect the output to temp.csv."""
-""" >>>>>> cp -h === dont print filenames."""
+""" >>>>>> grep -h === dont print filenames.
+    >>>>>> > temp.csv === redirect ooutput to temp.csv."""
+# $ grep -h -v Tooth seasonal/s* > temp.csv
+"""Pipe history into tail -n 3 and redirect the output to steps.txt to save the last three commands in a file.
+(You need to save three instead of just two because the history command itself will be in the list.)"""
+""" >>>>>> history tail -3 === give last 2 steps in hestory"""
+# $ history tail -n 3 > steps.txt
+
+
+
+## How can I save commands to re-run later?
