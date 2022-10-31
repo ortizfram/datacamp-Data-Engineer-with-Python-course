@@ -71,7 +71,7 @@ how to download data files from web servers via the command line. In the process
 ## Basic Syntax Wget :  >>>>>> wget [option flags] [URL]
 
 
-""" ** Option Flags unique to wget :
+""" ** Option Flags wget :
         -b : go background after startup
         -q : turn off wget output
         -c : resume broken download     
@@ -82,3 +82,10 @@ how to download data files from web servers via the command line. In the process
 #====================================================
 #           EXERCICES
 #===================================================
+## Installing Wget
+"""---Which of the following is NOT a way to install wget?"""
+# On MacOS, install using pip
+
+
+
+## Downloading single file using wget
