@@ -96,6 +96,8 @@
                                          
                                          ---eg : # Filter for row(s) where track_id = 118GQ70Sp6pMqn6w1oKuki
                                                  csvgrep -c "track_id" -m 118GQ70Sp6pMqn6w1oKuki Spotify_MusicAttributes.csv  """
+#.................................................
+
 ## EXERCISES=======================
 ### Printing column headers with csvkit
 """ Check to confirm name and location of data file"""
@@ -136,7 +138,7 @@
 # csvgrep -c "danceability" -m 0.812 Spotify_MusicAttributes.csv
 
 
-
+## THEO ===========================================
 ### Stacking data and chaining commands with csvkit
 """  stacck up rows from 2 or more files :  >>>>>> csvstack
                                             -g : ...\ group, will insert new columns with values you give (for categories)
@@ -150,3 +152,11 @@
                                             
                                             eg of -g : csvstack -g "rank6","rank7" -n "source"\
                                                        rank6.csv rank7.csv > all_ranks.csv    """
+#........................................................................
+
+## EXERCISES ===================================
+### Stacking files with csvkit
+""" Stack the two files and save results as a new file """
+# csvstack SpotifyData_PopularityRank6.csv SpotifyData_PopularityRank7.csv > SpotifyPopularity.csv
+""" Preview the newly created file """
+# csvlook SpotifyPopularity.csv
