@@ -134,3 +134,19 @@
 # csvgrep -c "track_id" -m 118GQ70Sp6pMqn6w1oKuki Spotify_MusicAttributes.csv
 """ Filter for row(s) where danceability = 0.812 """
 # csvgrep -c "danceability" -m 0.812 Spotify_MusicAttributes.csv
+
+
+
+### Stacking data and chaining commands with csvkit
+"""  stacck up rows from 2 or more files :  >>>>>> csvstack
+                                            -g : ...\ group, will insert new columns with values you give (for categories)
+                                            -n : name group 
+                                             ; : link commands toghether  RUN SEQUENTIALLY
+                                             && : link commands together  RUN IF FIRST SUCCEEDS
+                                             | : uses the output of command
+                                             > : redirects output to an x location
+                                             
+                                            eg:  csvstack rank6.csv rank7.csv > all_ranks.csv
+                                            
+                                            eg of -g : csvstack -g "rank6","rank7" -n "source"\
+                                                       rank6.csv rank7.csv > all_ranks.csv    """
