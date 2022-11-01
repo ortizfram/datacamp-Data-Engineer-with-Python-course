@@ -94,7 +94,7 @@
                                          -r :   regex patten 
                                          -f :   path to a file      """
 ## EXERCISES=======================
-## Printing column headers with csvkit
+### Printing column headers with csvkit
 """ Check to confirm name and location of data file"""
  # ls
 """ Print a list of column headers in data file """
@@ -108,5 +108,14 @@
   6: tempo
   7: time_signature"""
 
-        
-      
+
+
+### Filtering data by column with csvkit
+""" Print a list of column headers in the data """
+# csvcut -n Spotify_MusicAttributes.csv
+""" Print the first column, by position """
+# csvcut -c 1 Spotify_MusicAttributes.csv
+""" Print the first, third, and fifth column, by position """
+# csvcut -c 1,3,5 Spotify_MusicAttributes.csv        
+""" Print the first column, by name """
+# csvcut -c "track_id" Spotify_MusicAttributes.csv      
