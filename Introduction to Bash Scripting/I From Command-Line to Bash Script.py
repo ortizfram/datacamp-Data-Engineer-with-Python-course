@@ -131,3 +131,8 @@ Pane :  #!/bin/bash
 """
 Standard streams & arguments
 
+*** arguments : 
+               >>>>>> $   $1   $2 : to access bash arguments
+                 >>>>>>  $@  or @*  : access all arguments
+                 >>>>>>  $# : give length of arguments 
+"""
