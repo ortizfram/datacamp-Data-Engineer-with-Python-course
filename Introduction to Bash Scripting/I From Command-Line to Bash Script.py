@@ -77,11 +77,53 @@ There is a file in your working directory called server_log_with_todays_date.txt
 -Save your script and run from the console.
         
         
-Pane of script.sh :     #!/bin/bash
+Pane :  #!/bin/bash
 
-                        # Concatenate the file
-                        cat server_log_with_todays_date.txt
+        # Concatenate the file
+        cat server_log_with_todays_date.txt
 
 
-                        # Now save and run!
+        # Now save and run!
+"""
+
+"""
+### Shell pipelines to Bash scripts
+
+Your job is to create a Bash script from a shell piped command which will aggregate to see how many times each team has won.
+
+-Create a single-line pipe to cat the file, cut out the relevant field and aggregate (sort & uniq -c will help!) based on winning team.
+-Save your script and run from the console.
+
+Pane:   #!/bin/bash
+
+        # Create a single-line pipe
+        cat soccer_scores.csv | cut -d "," -f 2 | tail -n +2 | sort | uniq -c
+
+        # Now save and run!
+out: 13 Arda
+      8 Beroe
+      9 Botev
+      8 Cherno
+     17 Dunav
+     15 Etar
+      4 Levski
+      1 Lokomotiv
+"""
+
+"""
+### Extract and edit using Bash scripts
+
+-You will need to create a Bash script that makes use of sed to change the required team names.
+
+-Create a pipe using sed twice to change the team Cherno to Cherno City first, and then Arda to Arda United.
+-Pipe the output to a file called soccer_scores_edited.csv.
+-Save your script and run from the console. Try opening soccer_scores_edited.csv using shell commands to confirm it worked (the first line should be changed)!
+
+Pane :  #!/bin/bash
+
+        # Create a sed pipe to a new file
+        cat soccer_scores.csv | sed 's/Cherno/Cherno City/g' | sed 's/Arda/Arda United/g' > soccer_scores_edited.csv
+
+        # Now save and run!
+
 """
