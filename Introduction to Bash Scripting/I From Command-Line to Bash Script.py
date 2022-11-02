@@ -55,3 +55,33 @@ Terminal : repl:~$ cat two_cities.txt | egrep 'Sydney Carton|Charles Darnay' | w
 Answer : 77
 
 """
+
+"""
+Your first Bash script
+
+>>>>>> which bash  : o check lcoation of bash you're runing
+>>>>>> bash script_name.sh  or  ./script_name.sh: run bash script
+
+*** bash Anatomy : .sh
+
+"""
+
+"""
+### A simple Bash script
+
+For this environment bash is not located at /usr/bash but at /bin/bash. You can confirm this with the command which bash.
+
+There is a file in your working directory called server_log_with_todays_date.txt. 
+-Your task is to write a simple Bash script that concatenates this out to the terminal so you can see what is inside
+-Create a single-line script that concatenates the mentioned file.
+-Save your script and run from the console.
+        
+        
+Pane of script.sh :     #!/bin/bash
+
+                        # Concatenate the file
+                        cat server_log_with_todays_date.txt
+
+
+                        # Now save and run!
+"""
