@@ -12,12 +12,15 @@ your skills and learn about standard streams and feeding arguments to your Bash 
         wc : word or line count (flags -w -l)
         sed : pattern matched string replacement 
         
-        *** shell prectice :
+        *** shell practice :
             - run : grep 'p' fruits.txt
               apple
             - run : grep '[pc]' fruits.txt
               apple, carrot
             - run : sort | uniq -c  ----to count
+            
+            *** Word separation shell syntax : 
+                 eg : repl:~$ cat two_cities.txt | egrep 'Sydney Carton|Charles Darnay'
       
 ** REGEX : regular expressions, vital skill for bash script
 
@@ -41,5 +44,14 @@ Answer : Dunav
 
 """
 ### Searching a book with shell
+
+There is a copy of Charles Dickens's infamous 'Tale of Two Cities' in your home directory called two_cities.txt.
+
+-Use command line arguments such as cat, grep and wc with the right flag to count the number of lines in the book that contain either the
+ character 'Sydney Carton' or 'Charles Darnay'. Use exactly these spellings and capitalizations.
+ 
+Terminal : repl:~$ cat two_cities.txt | egrep 'Sydney Carton|Charles Darnay' | wc -l
+
+Answer : 77
 
 """
