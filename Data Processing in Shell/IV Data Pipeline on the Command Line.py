@@ -78,8 +78,10 @@ Python package installation with pip
           eg: pip install -r requirements.txt
 """
 
-### Understanding pip's capabilities
+
 """
+### Understanding pip's capabilities
+
 -Which of the following statements regarding pip is NOT true?
 
 Instructions
@@ -88,8 +90,10 @@ Instructions
 Answer: pip can only install one Python package at a time
 """
 
-### Installing Python dependencies
+
 """
+### Installing Python dependencies
+
 In this pipeline we will create the requirements.txt file which houses the dependencies we need to install, install the dependencies, 
 and do a quick sanity check to make sure everything is properly set up.
       
@@ -111,8 +115,10 @@ pip install -r requirements.txt
 # Verify that Scikit-Learn is now installed
 pip list
 
-### Running a Python model
+
 """
+### Running a Python model
+
 In this exercise, we'll run a pre-written Python script create_model.py which will output two things: a Python model in a saved
 .pkl file and the predicted scores in a saved .csv file.
 
@@ -189,16 +195,20 @@ Data job automation with cron
               **** month  (1-12)
               ***** day of week (1-7)
 """
-### Understanding cron scheduling syntax
+
 """
+### Understanding cron scheduling syntax
+
 -Which of the following is the correct Crontab syntax for execute the Python model script (model.py) every hour, on the 15 minute of an hour?
     (e.g. 12:15 PM, 1:15 AM, 2:15 AM, etc)?
     
 Answer : 15 * * * * python model.py
 """
 
-### Scheduling a job with crontab
+
 """
+### Scheduling a job with crontab
+
 -Verify that there are currently no CRON jobs currently scheduled via CRONTAB.
 """
 # Verify that there are no CRON jobs currently scheduled
