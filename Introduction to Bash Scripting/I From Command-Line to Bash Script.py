@@ -136,3 +136,40 @@ Standard streams & arguments
                  >>>>>>  $@  or @*  : access all arguments
                  >>>>>>  $# : give length of arguments 
 """
+
+### Using arguments in Bash scripts
+
+# Echo the first and second ARGV arguments
+echo $1 
+echo $2
+
+# Echo out the entire ARGV array
+echo $@
+
+# Echo out the size of ARGV
+echo $#
+
+
+repl:~/workspace$ bash script.sh Bird Fish Rabbit
+        
+"""
+### # Echo the first ARGV argument
+
+-Echo the first ARGV argument so you can confirm it is being read in.
+-cat all the files in the directory /hire_data and pipe to grep to filter using the city name (your first ARGV argument).
+-On the same line, pipe out the filtered data to a new CSV called cityname.csv where cityname is taken from the first ARGV argument.
+-Save your script and run from the console twice (do not use the ./script.sh method). Once with the argument Seoul. Then once with the argument Tallinn.
+"""
+# Echo the first ARGV argument
+echo $1 
+
+# Cat all the files
+# Then pipe to grep using the first ARGV argument
+# Then write out to a named csv using the first ARGV argument
+cat hire_data/* | grep "$1" > "$1".csv
+
+
+repl:~/workspace$ bash script.sh Seoul
+Seoul
+repl:~/workspace$ bash script.sh Tallinn
+Tallinn 
