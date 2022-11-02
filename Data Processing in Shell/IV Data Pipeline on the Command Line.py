@@ -194,6 +194,7 @@ Data job automation with cron
               *** day of month  (1-31)
               **** month  (1-12)
               ***** day of week (1-7)
+              
 """
 
 """
@@ -202,14 +203,15 @@ Data job automation with cron
 -Which of the following is the correct Crontab syntax for execute the Python model script (model.py) every hour, on the 15 minute of an hour?
     (e.g. 12:15 PM, 1:15 AM, 2:15 AM, etc)?
     
-Answer : 15 * * * * python model.py
-"""
+Answer : 15 * * * * python model.
 
+"""
 
 """
 ### Scheduling a job with crontab
 
 -Verify that there are currently no CRON jobs currently scheduled via CRONTAB.
+
 """
 # Verify that there are no CRON jobs currently scheduled
 crontab -l 
@@ -224,4 +226,36 @@ cat hello_world.py
 echo "* * * * * python hello_world.py" | crontab
 
 # Verify that the CRON job has been added
+crontab -l
+
+
+"""
+### Model production on the command line
+
+In this capstone exercise, we will practice how to set up an end-to-end Python script automation process step by step.
+
+Instructions
+100 XP
+Use pip to install the Python dependencies listed in the requirements.txt file.
+
+-Now that the necessary Python dependencies have been installed, run the create_model.py script on the command line.
+-We have verified that the Python model can be run. Next step is to automate this job so it runs every minute. Use CRONTAB to schedule a per minute run of the Python
+ script create_model.py.
+-Print the job scheduled in CRONTAB to verify that the CRON job is scheduled correctly.
+
+"""
+# Preview both Python script and requirements text file
+cat create_model.py
+cat requirements.txt
+
+# Pip install Python dependencies in requirements file
+pip install -r requirements.txt
+
+# Run Python script on command line
+python create_model.py
+
+# Add CRON job that runs create_model.py every minute
+echo "* * * * * python create_model.py" | crontab
+
+# Verify that the CRON job has been scheduled via CRONTAB
 crontab -l
