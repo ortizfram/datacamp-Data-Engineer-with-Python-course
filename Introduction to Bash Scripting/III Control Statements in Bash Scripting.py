@@ -150,3 +150,12 @@ repl:~/workspace$ bash script.sh log1.txt
 	   	echo $x
 		((x+=1))
 	  done		
+"""
+
+"""
+### A simple FOR loop
+
+Instructions
+
+- Use a FOR statement to loop through files that end in .R in inherited_folder/ using a glob expansion.
+- echo out each file name into the console.
