@@ -100,3 +100,44 @@ fi
 repl:~/workspace$ bash script.sh logfiles8.txt
 repl:~/workspace$ bash script.sh logdays.txt  
 repl:~/workspace$ bash script.sh log1.txt
+
+"""
+*** FOR loops & WHILE 
+	 
+ *** syntax
+    for z in 1 2 3
+    do 
+	echo $z
+    done
+
+	    # num range 'brace expansion'
+	    {START..STOP..INCREMENT}
+	    for x in {1..3..2}
+	    do
+		echo $x
+	    done
+
+	    # three expression syntax
+		# -double parenthesis
+		# -{START..STOP..INCREMENT}
+		eg:
+		   for ((x=2;x>=4;x+=2))
+		   do
+		      echo $x
+		   done
+		   -2
+		   -4
+		   
+	   # glob expansions
+	   for book in books/*
+	   do 
+	   	echo $book
+	   done
+	   
+	   # shell-w/in-a-shell to FOR loop
+	   for book in $(ls books/ | grep -i 'air')
+	   do
+	   	echo $book
+	   done
+	   -AirportBook.txt
+	   -FairMarketBook.txt
