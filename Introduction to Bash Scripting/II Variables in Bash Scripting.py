@@ -180,7 +180,7 @@ $$$ BASH DOES NOT USE COMMA SEPARATORS $$$
         a Dictionary in python 
 
         # first declare
-        declare -A city_details 
+        declare -a city_details 
 
         # now fill
         city_details=([c_name]='NY' [Population]=1400000)
@@ -206,4 +206,33 @@ Instructions 1/3
    fill the array as you create it. Be sure to put double quotation marks around each element!
 """
 # Create a normal array with the mentioned elements
-capital_cities=("Sydne" "Albany" "Paris")
+capital_cities=("Sydney" "Albany" "Paris")
+"""
+Instructions 2/3
+
+- Create a normal array called capital_cities. However, use the declare method to create in this exercise.
+- Below, add each city, appending to the array. The cities were Sydney, Albany, and Paris. Remember to use double quotation marks.
+"""
+# Create a normal array with the mentioned elements using the declare method
+# Create a normal array with the mentioned elements using the declare method
+declare -a capital_cities
+
+# Add (append) the elements
+capital_cities+=("Sydney")
+capital_cities+=("Albany")
+capital_cities+=("Paris")
+"""
+Instructions 3/3
+
+- Now you have the array created, print out the entire array using a special array property.
+- Then print out the length of the array using another special property.
+"""
+# The array has been created for you
+capital_cities=("Sydney" "Albany" "Paris")
+
+# Print out the entire array
+echo ${capital_cities[@]}
+
+# Print out the array length
+echo ${#capital_cities[@]}
+    
