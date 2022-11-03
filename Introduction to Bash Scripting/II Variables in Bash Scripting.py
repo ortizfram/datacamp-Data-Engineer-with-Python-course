@@ -174,5 +174,23 @@ $$$ BASH DOES NOT USE COMMA SEPARATORS $$$
                  echo ${my_array[@]}
                  100 113 240 555 66 10
                  
-*** Associative array
+*** Associative array (KAY_VALUE)
+        a Dictionary in python 
+
+        # first declare
+        declare -A city_details 
+
+        # now fill
+        city_details=([c_name]='NY' [Population]=1400000)
+
+        # or single line 
+        declare -A city_details=([keys]=values)
+
+        # index using keys to return value
+        echo ${city_details[c_name]}
+        NY
     
+        *** Access KEYS (!)
+            >>>>>> echo ${!citydetails[@]}
+            c_nama Population
+"""
