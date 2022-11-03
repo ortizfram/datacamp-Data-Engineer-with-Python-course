@@ -131,6 +131,8 @@ repl:~/workspace$ bash script.sh
 The three temperatures were 34, 36, and 4.2
 
 """
+ARRAYS In BASH
+
 $$$ BASH DOES NOT USE COMMA SEPARATORS $$$
 
 *** Create Array in Bash : 
