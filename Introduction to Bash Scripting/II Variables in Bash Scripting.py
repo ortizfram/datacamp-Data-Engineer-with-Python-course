@@ -258,3 +258,48 @@ Instructions 2/3
    Remember you must add square brackets* around the keys!
 - Print out the array to see what you created.
 """
+# Declare associative array with key-value pairs on one line
+declare -A model_metrics=([model_accuracy]=98 [model_name]="knn" [model_f1]=0.82)
+
+# Print out the entire array
+echo ${model_metrics[@]}
+"""
+Instructions 3/3
+
+- Now that you've created an associative array, print out just the keys of this associative array.
+"""
+# An associative array has been created for you
+declare -A model_metrics=([model_accuracy]=98 [model_name]="knn" [model_f1]=0.82)
+
+# Print out just the keys
+echo ${!model_metrics[@]}
+
+"""
+### Climate calculations in Bash
+
+Instructions
+
+- Create an array with the two temp variables as elements.
+- Call an external program to get the average temperature. You will need to sum array elements then divide by 2. Use the scale parameter to ensure this is to 2 decimal places.
+- Append this new variable to your array and print out the entire array.
+- Run your script.
+"""
+# Create variables from the temperature data files
+temp_b="$(cat temps/region_B)"
+temp_c="$(cat temps/region_C)"
+
+# Create an array with these variables as elements
+region_temps=($temp_b $temp_c)
+
+# Call an external program to get average temperature
+average_temp=$(echo "scale=2; (${region_temps[0]} + ${region_temps[1]}) / 2" | bc)
+
+# Append average temp to the array
+region_temps+=($average_temp)
+
+# Print out the whole array
+echo ${region_temps[@]}
+
+    
+repl:~/workspace$ bash script.sh 
+36 4.2 20.10
