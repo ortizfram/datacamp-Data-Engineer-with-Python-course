@@ -159,3 +159,28 @@ Instructions
 
 - Use a FOR statement to loop through files that end in .R in inherited_folder/ using a glob expansion.
 - echo out each file name into the console.
+"""
+# Use a FOR loop on files in directory
+for file in inherited_folder/*.R
+do  
+    # Echo out each file
+    echo $file
+done
+
+"""
+### Correcting a WHILE statement
+
+can you determine where the mistake is? What will happen if it runs?
+
+You can find the code by using cat emp_script.sh to print it to the console.
+
+Instructions
+
+Possible Answers :
+
+ @ There is no mistake, this script will run just fine.
+ @ It will run forever because emp_num isn't incremented inside the loop.
+ @ You cannot cat a .txt file so this will fail.
+ 
+Answer : It will run forever because emp_num isn't incremented inside the loop.
+"""
