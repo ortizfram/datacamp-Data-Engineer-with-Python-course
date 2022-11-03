@@ -87,7 +87,7 @@ Instructions
 - Use an IF statement and grep to check if the sfile variable contains SRVM_ AND vpt inside.
 - Inside the IF statement, move matching files to the good_logs/ directory.
 - Try your script on all of the files in the directory (that is, run it four times - once for each file). It should move only one of them.
-"""
+""" 
 # Create variable from first ARGV element
 sfile=$1
 
@@ -184,3 +184,61 @@ Possible Answers :
  
 Answer : It will run forever because emp_num isn't incremented inside the loop.
 """
+
+"""
+### Cleaning up a directory
+
+Instructions
+
+- Use a FOR statement to loop through (using glob expansion) files that end in .py in robs_files/.
+- Use an IF statement and grep (remember the 'quiet' flag?) to check if RandomForestClassifier is in the file. Don't use a shell-within-a-shell here.
+- Move the Python files that contain RandomForestClassifier into the to_keep/ directory.
+"""
+# Create a FOR statement on files in directory
+for file in robs_files/*.py
+do  
+    # Create IF statement using grep
+    if grep -q 'RandomForestClassifier' $file ; then
+        # Move wanted files to to_keep/ folder
+        mv $file to_keep/
+    fi
+done
+
+
+repl:~/workspace$ cd /home/repl/workspace
+repl:~/workspace$ bash script.sh
+	
+"""
+*** CASE statements
+     *** basic syntax
+	>>>>>> case 'something' in
+	
+        *** regex for pattern
+	    >>>>>> Air* : 'starts w/ Air'
+	    >>>>>> *hat* : 'contains hat'
+	    
+	    ***syntax
+	    	case 'something' in
+			PATTERN1)
+			COMMAND1;;
+			PATTERN2)
+			COMMAND2;;
+			*)
+			DEFAULT COMMAND;;
+		esac
+		
+	    eg: #new case statement
+	    	case $(cat $1) in
+		     *Sydney*)
+		     mv $1 sydney/ ;;
+		     *melbourne*|*brisbane*)
+		     rem $1 ;;
+		     *canberra*)
+		     mv $1 "IMPORTANT_$1" ;;
+		     *)
+		     echo "no cities found!" ;;
+	        esac
+"""
+	    	
+	    	
+		
