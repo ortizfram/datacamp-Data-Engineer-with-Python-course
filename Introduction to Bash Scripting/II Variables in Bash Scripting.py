@@ -139,25 +139,40 @@ $$$ BASH DOES NOT USE COMMA SEPARATORS $$$
                           >>>>>> my_first_array=(1 2 3) 
 *** Returning arrays
 
-    # Array syntax                      
-    my_array=(10 20 30 44)     
-         
-    *** return COMPLETE array : 
-        >>>>>> echo ${my_array[@]} 
-               10 20 30 44
-               
-    *** return array LENGHT :
-        >>>>>> echo ${#my_array[@]}
-               4
-               
-    *** Access array ELEMENTS : 
-        >>>>>> echo ${my_array[2]}
-               30
+        # Array syntax                      
+        my_array=(10 20 30 44)     
+
+        *** return COMPLETE array : 
+            >>>>>> echo ${my_array[@]} 
+                   10 20 30 44
+
+        *** return array LENGHT :
+            >>>>>> echo ${#my_array[@]}
+                   4
+
+        *** Access array ELEMENTS : 
+            >>>>>> echo ${my_array[2]}
+                   30
                
 *** Manipulating arrays
-    my_array=(100 113 240 555 66) 
+
+        my_array=(100 113 240 555 66) 
+
+        *** Changing elements :
+        >>>>>> my_array[1]=999
+               echo ${my_array[1]}
+               999
+
+        *** SLICING:
+        >>>>>> array[@]:N:M    === N:Starting index, M:How many elem return
+        eg:     echo ${my_array[@]:1:3}
+                113 240 555
+
+        *** Appending to Array:
+            >>>>>> array+=(elements)
+            eg:  my_array+=(10)
+                 echo ${my_array[@]}
+                 100 113 240 555 66 10
+                 
+*** Associative array
     
-    # Changing elements using index notation
-    >>>>>> my_array[1]=999
-           echo ${my_array[1]}
-           999
