@@ -116,3 +116,48 @@ The temperature in the file region_A needs to be assigned to the variable temp_a
 -Create three variables from the data in the three files within temps by concatenating the content into a variable using a shell-within-a-shell.
 -Print out the variables to ensure it worked.
 -Save your script and run from the command line.
+
+"""
+# Create three variables from the temp data files' contents
+temp_a=$(cat temps/region_A)
+temp_b=$(cat temps/region_B)
+temp_c=$(cat temps/region_C)
+
+# Print out the three variables
+echo "The three temperatures were $temp_a, $temp_b, and $temp_c"
+
+
+repl:~/workspace$ bash script.sh
+The three temperatures were 34, 36, and 4.2
+
+"""
+$$$ BASH DOES NOT USE COMMA SEPARATORS $$$
+
+*** Create Array in Bash : 
+    - Numerical-indexed : >>>>>> declare -a my_first_array
+                          or
+                          >>>>>> my_first_array=(1 2 3) 
+*** Returning arrays
+
+    # Array syntax                      
+    my_array=(10 20 30 44)     
+         
+    *** return COMPLETE array : 
+        >>>>>> echo ${my_array[@]} 
+               10 20 30 44
+               
+    *** return array LENGHT :
+        >>>>>> echo ${#my_array[@]}
+               4
+               
+    *** Access array ELEMENTS : 
+        >>>>>> echo ${my_array[2]}
+               30
+               
+*** Manipulating arrays
+    my_array=(100 113 240 555 66) 
+    
+    # Changing elements using index notation
+    >>>>>> my_array[1]=999
+           echo ${my_array[1]}
+           999
