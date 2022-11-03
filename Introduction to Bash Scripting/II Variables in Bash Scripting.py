@@ -196,3 +196,14 @@ $$$ BASH DOES NOT USE COMMA SEPARATORS $$$
             >>>>>> echo ${!citydetails[@]}
             c_nama Population
 """
+
+"""
+### Creating an array
+
+Instructions 1/3
+
+- Create a normal array called capital_cities which contains the cities Sydney, Albany and Paris. Do not use the declare method;
+   fill the array as you create it. Be sure to put double quotation marks around each element!
+"""
+# Create a normal array with the mentioned elements
+capital_cities=("Sydne" "Albany" "Paris")
