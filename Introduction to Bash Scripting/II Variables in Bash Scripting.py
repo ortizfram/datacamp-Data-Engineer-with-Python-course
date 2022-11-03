@@ -236,3 +236,25 @@ echo ${capital_cities[@]}
 # Print out the array length
 echo ${#capital_cities[@]}
     
+"""
+### Creating associative arrays
+
+Instructions 1/3
+
+In this exercise we will practice creating and adding to an associative array. 
+We will then access some special properties that are unique to associative arrays. 
+"""
+# Create empty associative array
+declare -A model_metrics
+
+# Add the key-value pairs
+model_metrics[model_accuracy]=98
+model_metrics[model_name]="knn"
+model_metrics[model_f1]=0.82
+"""
+Instructions 2/3
+
+- Create the same associative array (model_metrics) all in one line. (model_accuracy, 98), (model_name, "knn"), (model_f1, 0.82). 
+   Remember you must add square brackets* around the keys!
+- Print out the array to see what you created.
+"""
