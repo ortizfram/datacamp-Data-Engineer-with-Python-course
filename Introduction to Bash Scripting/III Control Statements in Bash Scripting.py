@@ -104,11 +104,11 @@ repl:~/workspace$ bash script.sh log1.txt
 """
 *** FOR loops & WHILE 
 	 
- *** syntax
-    for z in 1 2 3
-    do 
-	echo $z
-    done
+   *** syntax
+	 for z in 1 2 3
+	 do 
+	    echo $z
+	 done
 
 	    # num range 'brace expansion'
 	    {START..STOP..INCREMENT}
@@ -141,3 +141,12 @@ repl:~/workspace$ bash script.sh log1.txt
 	   done
 	   -AirportBook.txt
 	   -FairMarketBook.txt
+	   
+*** WHILE
+	eg:
+	   x=1
+	   while [ $x -le 3 ];
+	   do 
+	   	echo $x
+		((x+=1))
+	  done		
