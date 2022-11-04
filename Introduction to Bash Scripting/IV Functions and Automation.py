@@ -113,6 +113,28 @@ repl:~/workspace$ bash script.sh
 456 out of 632 as a percent is 72.15%
 
 """
+### Sports analytics function
+
+- Create a function called get_number_wins using the function-word method.
+- Create a variable inside the function called win_stats that takes the argument fed into the function to filter the last step of the shell-pipeline presented.
+- Call the function using the city Etar.
+- Below the function call, try to access the win_stats variable created inside the function in the echo command presented.
+"""
+# Create a function
+function get_number_wins () {
+
+  # Filter aggregate results by argument
+  win_stats=$(cat soccer_scores.csv | cut -d "," -f2 | egrep -v 'Winner'| sort | uniq -c | egrep "$1")
+
+}
+
+# Call the function with specified argument
+get_number_wins "Etar"
+
+# Print out the global variable
+echo "The aggregated stats are: $win_stats"
+
+"""
 ### Create a function with a local base variable
 
 An array of numbers you can use for a test of your function would be the daily sales in your organization this week (in thousands):
