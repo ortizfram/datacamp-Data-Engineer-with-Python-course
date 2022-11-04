@@ -162,7 +162,7 @@ The total sum of the test array is 84.84
               ** hour (0-23)
               *** day of month  (1-31)
               **** month  (1-12)
-              ***** day of week (1-7)
+              ***** day of week (0-6) (0 is Sunday)
               
         *** first 'cronjob'
             >>>>>> crontab -i : edit crontab w/ nano
@@ -176,3 +176,15 @@ The total sum of the test array is 84.84
     
 Answer : 15 minutes past every hour on Saturdays and Sundays.
 """
+
+"""
+### Creating cronjobs
+"""
+# Create a schedule for 30 minutes past 2am every day
+30 2 * * * bash script1.sh
+
+# Create a schedule for every 15, 30 and 45 minutes past the hour
+15,30,45 * * * bash script2.sh
+
+# Create a schedule for 11.30pm on Sunday evening, every week
+30 23 * * 0 bash script3.sh
