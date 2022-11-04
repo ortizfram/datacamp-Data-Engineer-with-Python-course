@@ -239,6 +239,44 @@ repl:~/workspace$ bash script.sh
 		     echo "no cities found!" ;;
 	        esac
 """
-	    	
-	    	
-		
+	    		    	
+"""
+### Days of the week with CASE
+
+Instructions
+
+- Build a CASE statement that matches on the first ARGV element.
+- Create a match on each weekday such as Monday, Tuesday etc. using OR syntax on a single line, then a match on each weekend day (Saturday and Sunday) etc.
+   using OR syntax on a single line.
+- Create a default match that prints out Not a day! if none of the above patterns are matched.
+- Save your script and run in the terminal window with Wednesday and Saturday to test.
+"""
+# Create a CASE statement matching the first ARGV element
+case $1 in
+  # Match on all weekdays
+  Monday|Tuesday|Wednesday|Thusday|Friday)
+  echo "It is a Weekday!" ;;
+  # Match on all weekend days
+  Saturday|Sunday)
+  echo "It is a Weekend!" ;;
+  # Create a default
+  *) 
+  echo "Not a day!" ;;
+esac
+
+
+repl:~/workspace$ bash script.sh Wednesday
+It is a Weekday!
+repl:~/workspace$ bash script.sh Saturday
+It is a Weekend!
+
+"""
+### Moving model results with CASE
+
+Instructions
+
+- Use a FOR statement to loop through (using glob expansion) files in model_out/.
+- Use a CASE statement to match on the contents of the file (we will use cat and shell-within-a-shell to get the contents to match against). It must check if the 
+   text contains a tree-based model name and move to tree_models/, otherwise delete the file.
+- Create a default match that prints out Unknown model in FILE where FILE is the filename then run your script.
+"""
