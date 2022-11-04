@@ -188,3 +188,23 @@ Answer : 15 minutes past every hour on Saturdays and Sundays.
 
 # Create a schedule for 11.30pm on Sunday evening, every week
 30 23 * * 0 bash script3.sh
+
+"""
+### Scheduling cronjobs with crontab
+
+Instructions 1/3
+
+1
+Verify there are no existing cronjobs by listing them.
+2
+Use the edit command for crontab (select nano) then schedule extract_data.sh to run with Bash at 2:30am every day.
+3
+Verify the cronjob has been scheduled in the crontab by listing all current scheduled cronjobs.
+"""
+repl:~$ crontab -l
+    # This is your crontab file.
+    # Schedule your crontabs below.
+repl:~$ nano crontab
+    30 2 * * * extract_data.sh
+    # (save,exit) contrl O + contrl X
+repl:~$ crontab -l
