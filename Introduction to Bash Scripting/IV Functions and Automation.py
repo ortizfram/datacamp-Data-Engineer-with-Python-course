@@ -163,3 +163,16 @@ The total sum of the test array is 84.84
               *** day of month  (1-31)
               **** month  (1-12)
               ***** day of week (1-7)
+              
+        *** first 'cronjob'
+            >>>>>> crontab -i : edit crontab w/ nano
+"""
+
+"""
+### Analyzing a crontab schedule
+
+- Can you determine how often the script.sh Bash script will run if the following line is in the user's crontab?
+    15 * * * 6,7 bash script.sh
+    
+Answer : 15 minutes past every hour on Saturdays and Sundays.
+"""
