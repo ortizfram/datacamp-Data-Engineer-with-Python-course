@@ -145,3 +145,21 @@ echo "The total sum of the test array is $total"
 
 repl:~/workspace$ bash script.sh
 The total sum of the test array is 84.84
+
+"""
+*** Scheduling your scripts with Cron
+    -WHY ?
+        regular tasks need to be done daily.
+        optimal use of resources.
+    -CRON ?
+        driven by smt called 'crontab'.
+            this file contains 'cronjobs' that tells what to run and when.
+            
+    crontab -l >>>>>> see current cronjobs
+    
+     *** How to time a cron job : 
+              * minute (0-59)
+              ** hour (0-23)
+              *** day of month  (1-31)
+              **** month  (1-12)
+              ***** day of week (1-7)
