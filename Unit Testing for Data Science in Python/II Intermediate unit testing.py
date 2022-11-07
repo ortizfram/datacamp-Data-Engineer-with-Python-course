@@ -27,4 +27,17 @@ the way you code forever!
                          "of {1}".format(actual,expected)
                          )
              assert actual is expected, message
+             
+    *** with FLOATS we must use pytest.approx
+        eg:
+            assert np.array([0.1 + 0.1 + 0.1 ]) == pytest.approx(np.array([0.3]))
+            
+   *** MULTIPLE ASSERTIONS
+      eg:
+         import pytest
+        
+         def test_on_string_with_one_comma():
+               return_value = convert_to_int("2,081")
+               assert isinstance(return_value, int)
+               assert return_value == 2081
 """
