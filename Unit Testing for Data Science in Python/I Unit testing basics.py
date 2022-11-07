@@ -109,3 +109,15 @@ Tests that you wrote in the previous exercise have been written to a test module
 
 Answer: !pytest test_convert_to_int.py
 """
+
+"""
+### What causes a unit test to fail?
+In the test result report, the character ., as shown below, stands for a passing test. A passing test is good news as it means
+that your function works as expected. The character F stands for a failing test. A failing test is bad news as this means that something is broken.
+
+test_row_to_list.py .F.                                                  [100%]
+-Which of the following describes best why a unit test fails?
+
+Answer: An exception is raised when running the unit test. This could be an AssertionError raised by the assert statement
+or another exception, e.g. NameError, which is raised before the assert statement can run.
+"""
