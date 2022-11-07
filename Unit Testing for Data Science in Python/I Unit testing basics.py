@@ -66,5 +66,25 @@ row_to_list_bugfix("1,463238,765\n")
 
 """
 *** Write a simple unit test using pytest
-    
+    *** test librarys : PYTEST : easiest, most popular, all essential features
+    - create a file: test_function_to_test.py (naming convention)/ test module
+    - import : pytest ,and function name to test 
+    - test function must contain assert
+    eg: 
+        # If assert = True >> pass
+        # If assert = False >> Error and fail
+        
+        def test_for_clean_row():
+            assert row_to_list("2,081\t314,942\n") == \
+            ["2,081", "314,942"]
+        
+        def test_for_missing_area():
+            assert row_to_list("\t293,410\n") is None
+            
+    - Runing unit tests : pytest test_filename.py
+"""
+
+"""
+### Your first unit test using pytest
+
 """
