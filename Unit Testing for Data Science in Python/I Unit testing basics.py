@@ -121,3 +121,33 @@ test_row_to_list.py .F.                                                  [100%]
 Answer: An exception is raised when running the unit test. This could be an AssertionError raised by the assert statement
 or another exception, e.g. NameError, which is raised before the assert statement can run.
 """
+
+"""
+### Spotting and fixing bugs
+instructions 1/2
+Question
+
+-Run the unit test in the test module test_convert_to_int.py in the IPython console. Read the test result report and spot the bug.
+-Which of the following describes the bug in the function convert_to_int(), if any?
+Answer: convert_to_int("2,081") is expected to return the integer 2081, but it is actually returning the string "2081"
+"""
+
+"""
+### Spotting and fixing bugs
+-Fix the convert_to_int() function so that it returns the integer 2081 instead of the string "2081" for the argument "2,081"
+"""
+def convert_to_int(string_with_comma):
+    # Fix this line so that it returns an int, not a str
+    return int(string_with_comma.replace(",", ""))
+  
+"""
+*** More benefits and test types
+    - time saving
+    - for guessing function purpose improving doc: !cat module_name.py
+    - increase trust : verifying that function works
+    - reduce downtime
+    
+    *** integration test : check if multiple units work well together when connected
+    
+    *** end-to-end test : checks whole software at once
+"""
