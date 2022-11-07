@@ -125,3 +125,18 @@ def test_on_six_rows():
     assert actual[0].shape[0] == expected_training_array_num_rows, "The actual number of rows in the training array is not {}".format(expected_training_array_num_rows)
     # Write the assert statement checking testing array's number of rows
     assert actual[1].shape[1] == expected_testing_array_num_rows, "The actual number of rows in the testing array is not {}".format(expected_testing_array_num_rows)
+
+"""
+*** Testing for exceptions instead of return values
+
+   *** with statement : is like a security guard
+   
+       eg:    
+             def test_Value_error_1d_array():
+                  example_arg = np.array([22, 33, 44, 55, 55, 1])
+                  with pytest.raises(ValueError) as exception_info: #store excepti0on
+                        split_into_2d_array(example_arg)
+                  # Check if ValueError contains message
+                  assert exception_info.match("Argument data Array must be two dimentional."
+                                              "Got 1D array instead!.")
+"""
