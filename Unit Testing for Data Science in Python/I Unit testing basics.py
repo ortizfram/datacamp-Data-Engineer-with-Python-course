@@ -101,3 +101,11 @@ from preprocessing_helpers import convert_to_int
 def test_on_string_with_one_comma():
   # Complete the assert statement
   assert convert_to_int("2,081") == 2081
+
+"""
+### Running unit tests
+Tests that you wrote in the previous exercise have been written to a test module test_convert_to_int.py. Try running the tests in the IPython console.
+-What is the correct IPython console command to run the tests in this test module?
+
+Answer: !pytest test_convert_to_int.py
+"""
