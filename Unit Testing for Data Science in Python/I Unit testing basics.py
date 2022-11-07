@@ -87,4 +87,17 @@ row_to_list_bugfix("1,463238,765\n")
 """
 ### Your first unit test using pytest
 
+The convert_to_int() function takes a comma separated integer string as argument, and returns the integer. Therefore, 
+the expected return value of convert_to_int("2,081") is the integer 2081.
+This function is defined in the module preprocessing_helpers.py
 """
+# Import the pytest package
+import pytest
+
+# Import the function convert_to_int()
+from preprocessing_helpers import convert_to_int
+
+# Complete the unit test name by adding a prefix
+def test_on_string_with_one_comma():
+  # Complete the assert statement
+  assert convert_to_int("2,081") == 2081
