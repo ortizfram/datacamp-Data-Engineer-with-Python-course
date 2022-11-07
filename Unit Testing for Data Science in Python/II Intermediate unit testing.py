@@ -44,4 +44,40 @@ the way you code forever!
 
 """
 ### Write an informative test failure message
+- Format the message string so that it shows the actual return value.
+"""
+import pytest
+from preprocessing_helpers import convert_to_int
+
+def test_on_string_with_one_comma():
+    test_argument = "2,081"
+    expected = 2081
+    actual = convert_to_int(test_argument)
+    # Format the string with the actual return value
+    message = "convert_to_int('2,081') should return the int 2081, but it actually returned {0}".format(actual)
+"""
+- Write the assert statement that checks if actual is equal to expected and prints the message message if they are not equal.
+"""
+import pytest
+from preprocessing_helpers import convert_to_int
+
+def test_on_string_with_one_comma():
+    test_argument = "2,081"
+    expected = 2081
+    actual = convert_to_int(test_argument)
+    # Format the string with the actual return value
+    message = "convert_to_int('2,081') should return the int 2081, but it actually returned {0}".format(actual)
+    # Write the assert statement which prints message on failure
+    assert (actual == expected), message
+"""
+Question
+The test that you wrote was written to a test module called test_convert_to_int.py. Run the test in the IPython console and read the test result report.
+- Which of the following is true?
+
+@ The test passes.
+@ The test fails because convert_to_int("2,081") returns the string "2081" and not the integer 2081.
+@ The test fails because convert_to_int("2,081") returns None and not the integer 2081.
+@ The test fails because of a SyntaxError in the test code.
+Answer: 
+The test fails because convert_to_int("2,081") returns None and not the integer 2081
 """
