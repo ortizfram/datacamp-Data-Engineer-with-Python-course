@@ -184,3 +184,118 @@ with pytest.raises(ValueError) as exc_info:
 # Check if the raised ValueError contains the correct message
 assert exc_info.match("Silence me!"")
 
+"""
+### Unit test a ValueError
+1/4
+-Fill in with the correct context manager that checks if split_into_training_and_testing_sets() raises a ValueError when called 
+  on test_argument, which is a NumPy array with a single row
+"""
+import numpy as np
+import pytest
+from train import split_into_training_and_testing_sets
+
+def test_on_one_row():
+    test_argument = np.array([[1382.0, 390167.0]])
+    # Fill in with a context manager for checking ValueError
+    with pytest.raises(ValueError):
+      split_into_training_and_testing_sets(test_argument)
+"""
+2/4
+Complete the with statement so that information about any raised ValueError will be stored in the variable exc_info.
+"""
+import numpy as np
+import pytest
+from train import split_into_training_and_testing_sets
+
+def test_on_one_row():
+    test_argument = np.array([[1382.0, 390167.0]])
+    # Store information about raised ValueError in exc_info
+    with pytest.raises(ValueError) as exc_info:
+      split_into_training_and_testing_sets(test_argument)
+"""
+3/3
+Write an assert statement to check if the raised ValueError contains the correct message stored in the variable expected_error_msg.
+"""
+import numpy as np
+import pytest
+from train import split_into_training_and_testing_sets
+
+def test_on_one_row():
+    test_argument = np.array([[1382.0, 390167.0]])
+    # Store information about raised ValueError in exc_info
+    with pytest.raises(ValueError) as exc_info:
+      split_into_training_and_testing_sets(test_argument)
+    expected_error_msg = "Argument data_array must have at least 2 rows, it actually has just 1"
+    # Check if the raised ValueError contains the correct message
+    assert exc_info.match("Argument data_array must have at least 2 rows, it actually has just 1")
+"""
+4/4
+The test test_on_one_row() was written to the test module test_split_into_training_and_testing_sets.py. 
+- Run the test in the IPython console and read the test result report. Does the test pass or fail?
+"""
+In [1]:!pytest test_split_into_training_and_testing_sets.py
+# The test passes.
+
+"""
+*** The well tested function
+    Pick a few of each category to save time in tests...
+    
+    @ bad arguments : creating intentional ValueErrors; like not splitting in 2d arrays
+    @ special arguments:
+                        @ Boundary values: minus limits it can have. like no less than 2 rows
+                        @ Argument Values
+    @ normal arguments: if do what needs to be done
+"""
+
+"""
+### Testing well: Boundary values
+"""
+# (0, 0), (2, 0) and (1, 1).
+"""
+2/4
+-Assign actual to the return value of row_to_list() on the argument "123\n", which is an instance of the boundary value (0, 0).
+"""
+import pytest
+from preprocessing_helpers import row_to_list
+
+def test_on_no_tab_no_missing_value():    # (0, 0) boundary value
+    # Assign actual to the return value for the argument "123\n"
+    actual = row_to_list("123\n")
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)
+"""
+3/4
+- Complete the assert statement to check if row_to_list() indeed returns None for the instance "123\t4,567\t89\n" of the boundary value (2, 0).
+"""
+import pytest
+from preprocessing_helpers import row_to_list
+
+def test_on_no_tab_no_missing_value():    # (0, 0) boundary value
+    # Assign actual to the return value for the argument "123\n"
+    actual = row_to_list("123\n")
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)
+    
+def test_on_two_tabs_no_missing_value():    # (2, 0) boundary value
+    actual = row_to_list("123\t4,567\t89\n")
+    # Complete the assert statement
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)
+"""
+4/4
+- In the test test_on_one_tab_with_missing_value(), format the failure message with the actual return value.
+"""
+import pytest
+from preprocessing_helpers import row_to_list
+
+def test_on_no_tab_no_missing_value():    # (0, 0) boundary value
+    # Assign actual to the return value for the argument "123\n"
+    actual = row_to_list("123\n")
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)
+    
+def test_on_two_tabs_no_missing_value():    # (2, 0) boundary value
+    actual = row_to_list("123\t4,567\t89\n")
+    # Complete the assert statement
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)
+    
+def test_on_one_tab_with_missing_value():    # (1, 1) boundary value
+    actual = row_to_list("\t4,567\n")
+    # Format the failure message
+    assert actual is None, "Expected: None, Actual: {0}".format(actual)                      
