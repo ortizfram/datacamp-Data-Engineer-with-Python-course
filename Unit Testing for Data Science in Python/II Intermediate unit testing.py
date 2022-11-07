@@ -81,3 +81,22 @@ The test that you wrote was written to a test module called test_convert_to_int.
 Answer: 
 The test fails because convert_to_int("2,081") returns None and not the integer 2081
 """
+
+"""
+### Testing float return values
+-Complete the assert statement to check if get_data_as_numpy_array() returns expected, when called on example_clean_data_file.txt with num_columns set to 2.
+"""
+import numpy as np
+import pytest
+from as_numpy import get_data_as_numpy_array
+
+def test_on_clean_file():
+  expected = np.array([[2081.0, 314942.0],
+                       [1059.0, 186606.0],
+  					           [1148.0, 206186.0]
+                       ]
+                      )
+  actual = get_data_as_numpy_array("example_clean_data.txt", num_columns=2)
+  message = "Expected return value: {0}, Actual return value: {1}".format(expected, actual)
+  # Complete the assert statement
+  assert actual == pytest.approx(expected), message
