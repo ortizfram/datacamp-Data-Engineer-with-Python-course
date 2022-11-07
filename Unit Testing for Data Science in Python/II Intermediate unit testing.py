@@ -130,6 +130,7 @@ def test_on_six_rows():
 *** Testing for exceptions instead of return values
 
    *** with statement : is like a security guard
+        - with    - .match  - as
    
        eg:    
              def test_Value_error_1d_array():
@@ -140,3 +141,46 @@ def test_on_six_rows():
                   assert exception_info.match("Argument data Array must be two dimentional."
                                               "Got 1D array instead!.")
 """
+
+"""
+### Practice the context manager
+Instructions 1/4
+- Complete the with statement by filling in with a context manager that will silence the ValueError raised in the context.
+"""
+import pytest
+
+# Fill in with a context manager that will silence the ValueError
+with pytest.raises(ValueError):
+    raise ValueError
+""" 
+Instructions 2/4
+- Complete the with statement with a context manager that raises Failed if no OSError is raised in the context.
+"""
+import pytest
+
+try:
+    # Fill in with a context manager that raises Failed if no OSError is raised
+    with pytest.raises(OSError):
+        raise ValueError
+except:
+    print("pytest raised an exception because no OSError was raised in the context.")
+""" 
+Instructions 3/4
+- Extend the with statement so that any raised ValueError is stored in the variable exc_info.
+"""
+import pytest
+
+# Store the raised ValueError in the variable exc_info
+with pytest.raises(ValueError) as exc_info:
+    raise ValueError("Silence me!")
+"""
+ Instructions 4/4
+- Write an assert statement to check if the raised ValueError contains the message "Silence me!".
+"""
+import pytest
+
+with pytest.raises(ValueError) as exc_info:
+    raise ValueError("Silence me!")
+# Check if the raised ValueError contains the correct message
+assert exc_info.match("Silence me!"")
+
