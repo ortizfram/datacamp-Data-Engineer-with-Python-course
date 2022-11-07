@@ -151,3 +151,24 @@ def convert_to_int(string_with_comma):
     
     *** end-to-end test : checks whole software at once
 """
+
+"""
+### Benefits of unit testing
+- The CEO is unsure, and asks you about the benefits that unit testing might bring. In your response, which of the following benefits should you include?
+1@ Time savings, leading to faster development of new features.
+2@ Better user experience due to faster code execution.
+3@ Improved documentation, which will help new colleagues understand the code base better.
+4@ More user trust in the software product.
+5@ Better user experience due to improved visualizations.
+6@ Better user experience due to reduced downtime.
+
+Answer: 1, 3, 4 and 6.
+"""
+
+"""
+### Unit tests as documentation
+-Having read the unit tests, can you guess what mystery_function() does?
+    !cat mystery_function.py
+    
+    Answer: It converts data in a data file into a NumPy array.
+"""
