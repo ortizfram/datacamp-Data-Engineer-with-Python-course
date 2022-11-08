@@ -314,5 +314,64 @@ Question
 #|
 """
 \*** Continuous integration and code coverage
-      
-      
+
+     \BADGES/
+     
+        -> build status badge (build/passing)
+            # runs all tests automatically whenever we push a commit to GitHub
+            # shows whether tests passing or failing
+            >>>>>> passing : 'ESTABLE CODE'
+            >>>>>> failing : 'INESTABILITY'
+          
+             ## we use travis CI (CI server)
+            
+                 (-1 create a config file.
+                      |repository root
+                      | |-- src
+                      | |-- tests
+                      | |-- .travis.yml
+                      |__
+
+                        ## contents of : travis.yml
+                            |  language: python
+                            |  python:
+                            |      - "3.6"
+                            |  install: 
+                            |      - pip install -e .
+                            |  script:
+                            |      - pytest tests
+                            |___
+
+                  (-2 push file to GitHub.
+                      | git add .travis.tml
+                        git push origin master
+                      |__
+
+                  (-3 install the Travis CI app
+                      -go to mkt place
+                      -allow app access to repos
+                      -login in Travis CI page with GitHub
+                      
+        -> code coverage badge
+            # percentage of code tested when runing test-suite
+            ## high perc. indicates well tested
+            
+                (-1 Modify Travis.yml config file
+                     |  language: python
+                            |  python:
+                            |      - "3.6"
+                            |  install: 
+                            |      - pip install -e .
+                            |      - pip install pytest-cov codecov   #install packages for cov report
+                            |  script:
+                            |      - pytest --cov=src tests           # point to src directory
+                            |  after_success:
+                            |     - codecov
+                            |___
+                            
+                (-2 Install codecov from mkt place github
+                
+                (-3 show badge in github
+                    - go to settings in codecov page, badge
+                    - paste Markdown code in github readme file in repo
+"""
