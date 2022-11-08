@@ -114,7 +114,7 @@ Question
 #|
 #|
 """
-\*** Mocking
+  \ Mocking /
      |      #-> replace bugged files w/ MagicMock() file only in testing
      L> test a function independently from dependencies
       (-1 install packages:  
@@ -179,3 +179,10 @@ def test_on_raw_data(self, raw_and_clean_data_file, mocker):
 !pytest -k "TestPreprocess"
 !pytest -k "TestConvertToInt"
 # Answ: Some tests for convert_to_int() fail but the test for preprocess() pass
+#|
+#|
+"""
+\ testing models /
+
+     > Testing on linear data
+     > 
