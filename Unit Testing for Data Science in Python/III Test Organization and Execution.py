@@ -375,3 +375,13 @@ Question
                     - go to settings in codecov page, badge
                     - paste Markdown code in github readme file in repo
 """
+#|
+#|
+### Build failing
+"""-What can you, as a user, conclude from this badge?"""
+# Answ: The package has bugs, which is either causing installation to error out or some of the unit tests in the test suite to fail.
+#|
+#|
+### What does code coverage mean?
+"""-What does it mean?"""
+# Answ: The test suite tests about 85% of the application code
