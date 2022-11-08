@@ -183,4 +183,23 @@ Question
           ______
       
       > expected failures but CONDiTIONALLY
-      
+      # skip test conditionally
+      >>>>>> skipif
+      eg:|
+            class TestConverToInt(object):
+                @pytest.mark.skipif(reason="Using TDD, train model is not implemented")
+                def test_with_no_comma(self):
+                    '''only runs py 2.7 or lower'''
+                    test_argument = "756"
+                    expected = 756
+                    actual = convert_to_int(test_argument)
+                    message= unicode("Expected 2081, Actual: {0}".format(actual))
+         |         assert actual == expected, message
+          _______
+       > show reason
+       >>>>>> pytest -r  -rs : reason for skipping
+       > show test xfailed w/ short reason 
+       >>>>>> pytest -rx
+       > using both for seeing both reasons
+       >>>>>> pytest -rsx 
+"""
