@@ -68,14 +68,39 @@ class TestSplitIntoTrainingAndTestingSets(object):
         assert exc_info.match(expected_error_msg)
 """
   \Mastering test execution/
-      > runing all tests together
+      -> runing all tests together
       |eg: 
           cd tests
           pytest
       # we might do this: after commit is pushed to code-base
-      > flag to stop after first failing test
+      
+      -> flag to stop after first failing test
       >>>>>> pytest -x
-      > runing tests in a test module
+      
+      -> runing tests in a test module
       >>>>>> pytest data/test_preprocessing_helpers.py
-.....      
+      
+      -> runing only particular test class 
+      # node ID (of a test class)
+      >>>>>> <path to test module>::<test class name>
+      # node ID (of an unit test)
+      >>>>>> <path to test module>::<test class name>::<unit test name>
+      
+        --> run test class using Node ID
+        # runs all class tests
+        >>>>>> !pytest data/test_preprocessing_helpers.py::TestRowToList
+        
+        --> run unit test using Node ID
+        # only runs a single test 
+        >>>>>> !pytest data/test_preprocessing_helpers.py::TestRowToList::test_on_one_tab_with_missing_value  
+
+      ---> runing using keyword expressions
+      ## fastest way of runing
+      # (-k) runs all test whose Node ID matches 'pattern' 
+      -k >>>>>> pytest -k "TestSplitIntoTrainingAndTestingSets" 
+      ## we can also write a part-name of the class as long as is unique
+      
+      .---> Supports Logical Operators
+      # do all testSplit except 'test_on_one_row'
+      >>>>>> pytest -k "TestSplit and not test_on_one_row"
 """
