@@ -54,3 +54,10 @@ def test_on_clean_file(clean_data_file):
     # Pass the clean data file path yielded by the fixture as the first argument
     actual = get_data_as_numpy_array(clean_data_file, 2)
     assert actual == pytest.approx(expected), "Expected: {0}, Actual: {1}".format(expected, actual) 
+#|
+#|
+### Write a fixture for an empty data file
+"""Instructions 1/2
+-In the setup, assign the variable file_path to the correct string.
+-After the setup, yield the variable file_path so that the test can use it.
+-In the teardown, remove the file."""
