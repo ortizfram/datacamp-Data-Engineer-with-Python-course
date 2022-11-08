@@ -1,0 +1,10 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -e .
+  - pip install codecov pytest-cov
+script:
+  - pytest --cov=src tests
+after_success:
+  - codecov
