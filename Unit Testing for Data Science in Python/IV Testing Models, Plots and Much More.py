@@ -132,3 +132,25 @@ Question
 -Define a function convert_to_int_bug_free() which takes one argument called comma_separated_integer_string.
 -Assign return_values to the dictionary holding the correct return values in the context of the raw data file used in the test.
 -Return the correct return value by looking up the dictionary return_values for the key comma_separated_integer_string."""
+# Define a function convert_to_int_bug_free
+def convert_to_int_bug_free(comma_separated_integer_string):
+    # Assign to the dictionary holding the correct return values 
+    return_values = {"1,801": 1801, "201,411": 201411, "2,002": 2002, "333,209": 333209, "1990": None, "782,911": 782911, "1,285": 1285, "389129": None}
+    # Return the correct result using the dictionary return_values
+    return return_values[comma_separated_integer_string]
+#|
+#|
+### Mock a dependency
+"""Instructions 1/4
+-In the test test_on_raw_data(), add the correct argument that enables the use of the mocking fixture."""
+# Add the correct argument to use the mocking fixture in this test
+def test_on_raw_data(self, raw_and_clean_data_file, mocker):
+    raw_path, clean_path = raw_and_clean_data_file
+"""Instructions 2/4
+-Replace the dependency "data.preprocessing_helpers.convert_to_int" with the bug-free version convert_to_int_bug_free() by using the correct method and side effect"""
+# Add the correct argument to use the mocking fixture in this test
+def test_on_raw_data(self, raw_and_clean_data_file, mocker):
+    raw_path, clean_path = raw_and_clean_data_file
+    # Replace the dependency with the bug-free mock
+    convert_to_int_mock = mocker.patch("data.preprocessing_helpers.convert_to_int",
+                                    side_effect = convert_to_int_bug_free)
