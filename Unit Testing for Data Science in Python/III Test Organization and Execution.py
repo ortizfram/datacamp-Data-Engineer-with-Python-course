@@ -42,6 +42,7 @@ your own project. Complete this chapter and become a unit testing wizard!
                   def test_on_two_tab_missing_value(self):  #Always put self arg 
 """
 #|
+#|
 ### Place test modules at the correct location
 """In the package, there is a Python module plots.py, which contain functions related to plotting. These functions should be tested in a test module test_plots.py.
 -According to pytest guidelines, where should you place this test module within the project structure?"""
@@ -104,3 +105,34 @@ class TestSplitIntoTrainingAndTestingSets(object):
       # do all testSplit except 'test_on_one_row'
       >>>>>> pytest -k "TestSplit and not test_on_one_row"
 """
+#|
+#|
+### One command to run them all
+"""Instructions 1/4
+Question
+-In the IPython console, what is the correct command for running all tests contained in the tests folder?"""
+# you are already in test folder 
+!pytest
+#|
+"""Instructions 2/4
+Question
+-When you run all tests with the command !pytest, how many of them pass and how may fail?"""
+!pytest
+# Passing: 15, Failing: 1
+#|
+"""instructions 3/4
+Question
+-Assuming that you simply want to answer the binary question "Are all tests passing" without wasting time and resources, what is the correct command to 
+ run all tests till the first failure is encountered?"""
+!pytest -x
+#|
+"""Instructions 4/4
+Question
+-When you ran the tests using the !pytest -x command, how many tests ran in total before test execution stopped because of the first failing test?"""
+#15
+#|
+#|
+### Running test classes
+"""Instructions 1/4
+-Fill in with a float between 0 and 1 so that num_training is approximately 3/4
+ of the number of rows in data_array."""
