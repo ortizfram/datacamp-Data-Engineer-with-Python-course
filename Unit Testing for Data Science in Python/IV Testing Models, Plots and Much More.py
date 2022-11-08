@@ -82,3 +82,7 @@ def test_on_empty_file(self, empty_file):
     expected = np.empty((0, 2))
     actual = get_data_as_numpy_array(empty_file, 2)
     assert actual == pytest.approx(expected), "Expected: {0}, Actual: {1}".format(expected, actual)
+#|
+"""Instructions 2/2
+Question
+- run the test test_on_empty_file(). What is the outcome?"""
