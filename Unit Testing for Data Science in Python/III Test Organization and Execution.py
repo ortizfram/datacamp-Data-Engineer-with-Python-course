@@ -164,3 +164,23 @@ Question
 Question
 -What is the correct command to run the tests in TestSplitIntoTrainingAndTestingSets using keyword expressions?"""
 !pytest -k "SplitInto"
+#|
+#|
+"""
+\*** Expected failures and conditional skipping/
+    
+      > marking tests a 'expected to fail' @
+      >>>>>> xfail
+      ## could happen when function is not implemented but has tests, it will give an error. but it's good
+      # important! : test would be reported as failed, but it'll pass
+      eg:|
+           import pytest
+           
+           class TestTrainModel(object):
+           @pytest.mark.xfail
+           def test_on_linear_data(self):
+         | ...
+          ______
+      
+      > expected failures but CONDiTIONALLY
+      
