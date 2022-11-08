@@ -32,3 +32,10 @@ to test matplotlib plots. By the end of this chapter, you will be ready to test 
                       yield data
                       # Do Teardown here  (happends when has finished executing)
 """
+#|
+#|
+### Use a fixture for a clean data file
+"""Instructions
+-Add the correct decorator that would turn clean_data_file() into a fixture.
+-Pass an argument to the test test_on_clean_file() so that it uses the fixture.
+-Pass the clean data file path yielded by the fixture as the first argument to the function get_data_as_numpy_array()."""
