@@ -198,9 +198,9 @@ Question
           _______
        > show reason
        >>>>>> pytest -r  -rs : reason for skipping
-       > show test xfailed w/ short reason 
+       > reason for expected failures in the test result report
        >>>>>> pytest -rx
-       > using both for seeing both reasons
+       > reason for both skipped tests and tests that are expected to fail 
        >>>>>> pytest -rsx 
 """
 #|
@@ -293,3 +293,26 @@ class TestGetDataAsNumpyArray(object):
         actual = get_data_as_numpy_array("example_clean_data.txt", num_columns=2)
         message = "Expected return value: {0}, Actual return value: {1}".format(expected, actual)
         assert actual == pytest.approx(expected), message
+#|
+#|
+### Reasoning in the test result report
+"""Instructions 1/3
+Question
+-What is the command that would only show the reason for expected failures in the test result report?"""
+# Answ: !pytest -rx
+#|
+"""2/3
+Question
+-What is the command that would only show the reason for skipped tests in the test result report?"""
+# Answ: !pytest -rs.
+#|
+"""3/3
+Question
+-What is the command that would show the reason for both skipped tests and tests that are expected to fail in the test result report?"""
+# Answ: !pytest -rsx.
+#|
+#|
+"""
+\*** Continuous integration and code coverage
+      
+      
