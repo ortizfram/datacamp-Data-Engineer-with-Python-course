@@ -203,3 +203,45 @@ Question
        > using both for seeing both reasons
        >>>>>> pytest -rsx 
 """
+#|
+#|
+### Mark a test class as expected to fail
+"""Instructions 1/3
+Question
+-Run the tests in the test class TestModelTest in the IPython console. What is the outcome?"""
+!pytest models/test_train.py::TestModelTest
+# Answer: The tests fail with NameError since the function model_test() has not yet been defined
+#|
+"""Instructions 2/3
+-Mark the whole test class TestModelTest as "expected to fail"."""
+# Mark the whole test class as "expected to fail"
+@pytest.mark.xfail
+class TestModelTest(object):
+    def test_on_linear_data(self):
+        test_input = np.array([[1.0, 3.0], [2.0, 5.0], [3.0, 7.0]])
+        expected = 1.0
+        actual = model_test(test_input, 2.0, 1.0)
+        message = "model_test({0}) should return {1}, but it actually returned {2}".format(test_input, expected, actual)
+        assert actual == pytest.approx(expected), message
+        
+    def test_on_one_dimensional_array(self):
+        test_input = np.array([1.0, 2.0, 3.0, 4.0])
+        with pytest.raises(ValueError) as exc_info:
+            model_test(test_input, 1.0, 1.0)
+#|
+"""Instructions 3/3
+-Add the following reason for the expected failure: "Using TDD, model_test() has not yet been implemented"."""
+# Add a reason for the expected failure
+@pytest.mark.xfail(reason="Using TDD, model_test() has not yet been implemented")
+class TestModelTest(object):
+    def test_on_linear_data(self):
+        test_input = np.array([[1.0, 3.0], [2.0, 5.0], [3.0, 7.0]])
+        expected = 1.0
+        actual = model_test(test_input, 2.0, 1.0)
+        message = "model_test({0}) should return {1}, but it actually returned {2}".format(test_input, expected, actual)
+        assert actual == pytest.approx(expected), message
+        
+    def test_on_one_dimensional_array(self):
+        test_input = np.array([1.0, 2.0, 3.0, 4.0])
+        with pytest.raises(ValueError) as exc_info:
+            model_test(test_input, 1.0, 1.0)
