@@ -136,3 +136,31 @@ Question
 """Instructions 1/4
 -Fill in with a float between 0 and 1 so that num_training is approximately 3/4
  of the number of rows in data_array."""
+import numpy as np
+
+def split_into_training_and_testing_sets(data_array):
+    dim = data_array.ndim
+    if dim != 2:
+        raise ValueError("Argument data_array must be two dimensional. Got {0} dimensional array instead!".format(dim))
+    num_rows = data_array.shape[0]
+    if num_rows < 2:
+        raise ValueError("Argument data_array must have at least 2 rows, it actually has just {0}".format(num_rows))
+    # Fill in with the correct float
+    num_training = int(0.5 * data_array.shape[0])
+    permuted_indices = np.random.permutation(data_array.shape[0])
+    return data_array[permuted_indices[:num_training], :], data_array[permuted_indices[num_training:], :]
+#|
+"""Instructions 2/4
+Question
+-What is the correct command to run all the tests in this test class using node IDs?"""
+!pytest models/test_train.py::TestSplitIntoTrainingAndTestingSets
+#|
+"""instructions 3/4
+Question
+-What is the correct command to run only the previously failing test test_on_six_rows() using node IDs?"""
+!pytest models/test_train.py::TestSplitIntoTrainingAndTestingSets::test_on_six_rows
+#|
+"""Instructions 4/4
+Question
+-What is the correct command to run the tests in TestSplitIntoTrainingAndTestingSets using keyword expressions?"""
+!pytest -k "SplitInto"
