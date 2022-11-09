@@ -67,3 +67,20 @@ push_data = BashOperator(
     task_id='pushdata_task',
     bash_command='push_data.sh',
     dag=analytics_dag)
+#|
+#|
+"""
+\ Airflow tasks /
+  >>>>>> upstream :before
+  >>>>>> downstream : after
+  
+    | set upstream or downstream tasks |
+    
+    task1 << task2  
+    # means: task1 => downstream task2
+    task1 >> task2  
+    # means: task1 => upstream task2 
+"""
+#|
+#|
+### Define order of BashOperators
