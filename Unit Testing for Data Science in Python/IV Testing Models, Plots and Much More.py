@@ -320,3 +320,30 @@ Question
                         !pytest  -k "test_plot_for_linear_data" --mpl
                         ## if not identical , test will fail
 """
+#|
+#|
+### Generate the baseline image
+import pytest
+import numpy as np
+
+from visualization.plots import get_plot_for_best_fit_line
+
+class TestGetPlotForBestFitLine(object):
+    # Add the pytest marker which generates baselines and compares images
+    @pytest.mark.mpl_image_compare
+    def test_plot_for_almost_linear_data(self):
+        slope = 5.0
+        intercept = -2.0
+        x_array = np.array([1.0, 2.0, 3.0])
+        y_array = np.array([3.0, 8.0, 11.0])
+        title = "Test plot for almost linear data"
+        # Return the matplotlib figure returned by the function under test
+        return get_plot_for_best_fit_line(slope, intercept, x_array, y_array, title)
+-----
+pytest --mpl-generate-path /home/repl/workspace/project/tests/visualization/baseline -k "test_plot_for_almost_linear_data"
+#|
+#|
+### Run the tests for the plotting function
+"""Instructions
+-Run the tests in this test class in the console. Because it's a shell console and not an IPython one, you don't need to use the !
+at the beginning of your command. You should see two failures."""
