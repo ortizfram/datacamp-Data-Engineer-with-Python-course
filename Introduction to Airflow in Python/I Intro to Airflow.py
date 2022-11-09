@@ -38,4 +38,15 @@ airflow run etl_pipeline download_file 2020-01-08
 #|
 #|
 ### Examining Airflow commands
-"""-Which of the following is NOT an Airflow sub-command?"""
+"""-Which of the following is NOT an Airflow sub-command?
+
+    | get airflow documentation |
+    
+    airflow -h
+    
+-list_dags
+-edit_dag
+-test
+-scheduler
+"""
+# Answ: edit_dag
