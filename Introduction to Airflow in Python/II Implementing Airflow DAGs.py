@@ -266,3 +266,11 @@ dag = DAG('update_dataflows', default_args=default_args, schedule_interval='30 1
 #|
 #|
 ### Deciphering Airflow schedules
+"""understand exactly how intervals relate to each other, whether it's a cron format, timedelta object, or a preset.
+-Order the schedule intervals from least to greatest amount of time."""
+# ANSW: (least to most) 
+# *****, timedelta(minutes=5), @hourly, * 0,12 * * *, timedelta(days=1), @weekly
+#|
+#|
+### Troubleshooting DAG runs
+# ANSW: The `schedule_interval` has not yet passed since the `start_date`.
