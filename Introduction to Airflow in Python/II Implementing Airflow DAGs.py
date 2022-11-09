@@ -108,3 +108,73 @@ pull_data << initialize_process
 pull_data >> clean >> run_ml_pipeline
 generate_reports << run_ml_pipeline"""
 # ANSW: init, pull, clean, run pipe, report 
+#|
+#|
+### Troubleshooting DAG dependencies
+"""
+List the DAGs.
+Decipher the error message.
+Use cat workspace/dags/codependent.py to view the Python code.
+Determine which of the following lines should be removed from the Python code. You may want to consider the last line of the file."""
+airflow list_dags
+cat workspace/dags/codependent.py
+# ANSW: task3 >> task1 #should be removed
+#|
+#|
+"""
+\ Additional operators /
+
+    | PythonOperator eg: |
+    
+    from airflow.operatosr.python_operators import PythonOperator
+    
+    def printme():
+        print("This goes in logs")
+    
+    python_task=PythonOperator(
+        task_id='simple_print',
+        python_callable=printme,
+        dag=example_dag
+    )
+   
+\ Arguments /
+
+  # supports to tasks
+    -positional
+    -keyword
+  
+  | op_kwargs eg: |
+  
+  def sleep(lenght_of_time):
+      time.sleep(lenght_of_time)
+      
+  sleep_task = PythonOperator(
+      task_id='sleep',
+      python_callable=sleep,
+      op_kwargs={'lenght_of_time':5},
+      dag=example_dag
+  )
+"""
+#|
+#|
+### Using the PythonOperator
+# Define the method
+def pull_file(URL, savepath):
+    r = requests.get(URL)
+    with open(savepath, 'wb') as f:
+        f.write(r.content)    
+    # Use the print method for logging
+    print(f"File pulled from {URL} and saved to {savepath}")
+    
+# Import the PythonOperator class
+from airflow.operators.python_operator import PythonOperator
+
+# Create the task
+pull_file_task = PythonOperator(
+    task_id='pull_file',
+    # Add the callable
+    python_callable=pull_file,
+    # Define the arguments
+    op_kwargs={'URL':'http://dataserver/sales.json', 'savepath':'latestsales.json'},
+    dag=process_sales_dag
+)
