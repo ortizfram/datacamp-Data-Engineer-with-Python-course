@@ -71,6 +71,7 @@ push_data = BashOperator(
 #|
 """
 \ Airflow tasks /
+
   >>>>>> upstream :before
   >>>>>> downstream : after
   
@@ -84,3 +85,26 @@ push_data = BashOperator(
 #|
 #|
 ### Define order of BashOperators
+# Define a new pull_sales task
+pull_sales = BashOperator(
+    task_id='pullsales_task',
+    bash_command='wget https://salestracking/latestinfo?json',
+    dag=analytics_dag
+)
+
+# Set pull_sales to run prior to cleanup
+pull_sales >> cleanup
+
+# Configure consolidate to run after cleanup
+consolidate << cleanup
+
+# Set push_data to run last
+consolidate >> push_data
+#|
+#|
+### Determining the order of tasks
+"""which order the defined tasks run. The code in question shows the following:
+pull_data << initialize_process
+pull_data >> clean >> run_ml_pipeline
+generate_reports << run_ml_pipeline"""
+# ANSW: init, pull, clean, run pipe, report 
