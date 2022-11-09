@@ -146,5 +146,34 @@ dag = DAG( 'refresh_data', default_args=default_args )
 #|
 #|
 ### Airflow web interface
+"""Which airflow command would you use to start the webserver on port 9090?"""
+airflow webserver -h  # see documentation
+-------
+airflow webserver -p 9090
+#|
+#|
+### Navigating the Airflow UI
+"""Which of the following events have NOT run on your Airflow instance?
+
+-cli_scheduler
+-cli_webserver
+-cli_worker"""
+# -browse   -logs 
+# Answ: cli_worker
+#|
+#|
+### Examining DAGs with the Airflow UI
+"""she would like to know which operator is NOT in use with the DAG called update_state, as your team is trying to verify the
+components used in production workflows.
+-Remember to select the operator NOT used in this DAG.
+
+
+BashOperator
+PythonOperator
+JdbcOperator
+SimpleHttpOperator"""
+# -go inside update_state name
+# -graph view
+# ANSW: JdbcOperator
 
   
