@@ -223,3 +223,100 @@ def test_on_perfect_fit():
 #|
 #|
 ### Testing on circular data
+"""case where it is easy to guess the value of r2 is when the model does not fit the testing dataset at all. In this case,  takes its lowest possible value 0.0. """
+"""Your job is to write a test test_on_circular_data() for the function model_test() that performs this sanity check."""
+"""Instructions 1/4
+-Assign test_argument to a 8X2 NumPy array holding the circular testing data shown in the plot, starting with (1.0, 0.0) and moving anticlockwise."""
+def test_on_circular_data(self):
+    theta = pi/4.0
+    # Complete the NumPy array holding the circular testing data
+    test_argument = np.array([[1.0, 0.0], [cos(theta), sin(theta)],
+                              [0.0, 1.0],
+                              [cos(3 * theta), sin(3 * theta)],
+                              [-1.0, 0.0],
+                              [cos(5 * theta), sin(5 * theta)],
+                              [0.0, -1.0],
+                              [cos(7 * theta), sin(7 * theta)]]
+                             )
+#|
+"""Instructions 2/4
+-Fill in with the slope and intercept of the straight line shown in the plot."""
+def test_on_circular_data(self):
+    theta = pi/4.0
+    # Assign to a NumPy array holding the circular testing data
+    test_argument = np.array([[1.0, 0.0], [cos(theta), sin(theta)],
+                              [0.0, 1.0],
+                              [cos(3 * theta), sin(3 * theta)],
+                              [-1.0, 0.0],
+                              [cos(5 * theta), sin(5 * theta)],
+                              [0.0, -1.0],
+                              [cos(7 * theta), sin(7 * theta)]]
+                             )
+    # Fill in with the slope and intercept of the straight line
+    actual = model_test(test_argument, slope=0.0, intercept=0.0)
+#|
+"""Instructions 3/4
+-Remembering that model_test() returns a float, complete the assert statement to check if model_test() returns the expected value of  in this special case."""
+def test_on_circular_data(self):
+    theta = pi/4.0
+    # Assign to a NumPy array holding the circular testing data
+    test_argument = np.array([[1.0, 0.0], [cos(theta), sin(theta)],
+                              [0.0, 1.0],
+                              [cos(3 * theta), sin(3 * theta)],
+                              [-1.0, 0.0],
+                              [cos(5 * theta), sin(5 * theta)],
+                              [0.0, -1.0],
+                              [cos(7 * theta), sin(7 * theta)]]
+                             )
+    # Fill in with the slope and intercept of the straight line
+    actual = model_test(test_argument, slope=0.0, intercept=0.0)
+    # Complete the assert statement
+    assert actual == pytest.approx(0.0)
+#|
+"""Instructions 4/4
+Question
+-The tests test_on_perfect_fit() and test_on_circular_data() that you wrote in the last two exercises has been written to the test class
+ TestModelTest in the test module models/test_train.py. Run the test class in the IPython console. What is the outcome?"""
+!pytest -k "TestModelTest"
+# Answ: The sanity checks are all passing.
+#|
+#|
+"""
+\ testing plots /
+            
+            # Using > matplotlib for visualizations
+            
+          -> plots.py : inside visualization/ inside src/
+          
+          -> testing strategy for plots
+            - one-time baseline
+                 > (pytest plugin) pytest-mpl 
+                       # for image comparisons
+                       # knows how to ignore OS related differences
+                       # makes easy to generate baseline images
+                         > pip install pytest-mpl
+                                                  
+            - testing
+                 eg:|
+                        import pytest
+                        import numpy as np
+                        from visualization import get_plot_for_best_fit
+                        
+                        @pytest.mark.mpl_image_compare  # baseline generation and comparison
+                        def test_plot_for_linear_data():
+                              slope= 2.0
+                              intercept= 1.0
+                              x_array= np.array([1.0, 2.0, 3.0]) # linear data set
+                              y_array= np.array([3.0, 5.0, 7.0])
+                              title= "Test plot for linear data"
+                              return get_plot_for_best_fit_line(slope, intercept, x_array, y_array, title)
+                      |_______
+                      
+                     > generate a baseline image
+                        eg:| !pytest -k "test_plot_for_linear_data"
+                                     --mpl-generate-path
+                                     visualization/baseline
+                     > run the test :
+                        !pytest  -k "test_plot_for_linear_data" --mpl
+                        ## if not identical , test will fail
+"""
