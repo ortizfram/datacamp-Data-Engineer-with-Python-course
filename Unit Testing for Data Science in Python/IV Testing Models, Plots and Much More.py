@@ -347,3 +347,23 @@ pytest --mpl-generate-path /home/repl/workspace/project/tests/visualization/base
 """Instructions
 -Run the tests in this test class in the console. Because it's a shell console and not an IPython one, you don't need to use the !
 at the beginning of your command. You should see two failures."""
+pytest -k "TestGetPlotForBestFitLine" --mpl
+#|
+#|
+### Fix the plotting function
+"""Instructions 1/2
+Fill in the axis labels xlabel and ylabel so that they match the baseline plot (plot 1/2)."""
+import matplotlib.pyplot as plt
+import numpy as np
+
+def get_plot_for_best_fit_line(slope, intercept, x_array, y_array, title):
+    fig, ax = plt.subplots()
+    ax.plot(x_array, y_array, ".")
+    ax.plot([0, np.max(x_array)], [intercept, slope * np.max(x_array) + intercept], "-")
+    # Fill in with axis labels so that they match the baseline
+    ax.set(xlabel='area (square feet)', ylabel='price (dollars)', title=title)
+    return fig
+"""nstructions 2/2
+Question
+-Now that you have fixed the function, run all the tests in the tests directory, remembering that the current working directory in
+ the IPython console is tests. What is the outcome?"""
