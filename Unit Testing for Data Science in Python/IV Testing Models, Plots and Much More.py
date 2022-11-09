@@ -185,4 +185,41 @@ def test_on_raw_data(self, raw_and_clean_data_file, mocker):
 \ testing models /
 
      > Testing on linear data
-     > 
+            >>>>>> from scipy.stats import linregress
+            >>>>>> slope
+            >>>>>> intercept
+            
+     > Testing model performance
+       # indicates how well model performs on unseen data
+       # 1= perfect fit , 0= there's no fit
+       eg:|
+             def model_test(testing_set, slope, intercept):
+                  '''return r2 of fit'''
+            
+"""
+#|
+#|
+### Testing on linear data
+"""in this special case, model_test() should return 1.0 if the model's slope and intercept match the testing set, because 1.0 is usually the highest 
+possible value that r2 can take.
+=Instructions
+-Assign the variable test_argument to a NumPy array holding the perfectly linear testing data printed out in the IPython console.
+-Assign the variable expected to the expected value of  in the special case of a perfect fit.
+-Fill in with the model's slope and intercept that matches the testing set.
+-Remembering that actual is a float, complete the assert statement to check if actual returned by model_test() is equal to the expected return value expected."""
+import numpy as np
+import pytest
+from models.train import model_test
+
+def test_on_perfect_fit():
+    # Assign to a NumPy array containing a linear testing set
+    test_argument = np.array([[1.0,	3.0], [2.0,	5.0], [3.0,	7.0]])
+    # Fill in with the expected value of r^2 in the case of perfect fit
+    expected = 1.0 
+    # Fill in with the slope and intercept of the model
+    actual = model_test(test_argument, slope=2.0, intercept=1.0)
+    # Complete the assert statement
+    assert actual == pytest.approx(expected), "Expected: {0}, Actual: {1}".format(expected, actual)
+#|
+#|
+### Testing on circular data
