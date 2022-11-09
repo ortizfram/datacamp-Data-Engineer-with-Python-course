@@ -367,3 +367,5 @@ def get_plot_for_best_fit_line(slope, intercept, x_array, y_array, title):
 Question
 -Now that you have fixed the function, run all the tests in the tests directory, remembering that the current working directory in
  the IPython console is tests. What is the outcome?"""
+!pytest
+# Answ: All 25 tests pass.
