@@ -241,9 +241,28 @@ pull_file_task >> parse_file_task >> email_manager_task
                 ** hour (0-23)
                 *** day of month  (1-31)
                 **** month  (1-12)
-                ***** day of week (1-7)
+                ***** day of week (1-7) (0 is Sunday)
                 
                 @hourly
                 @daily
                 @weekly
 """
+#|
+#|
+### Schedule a DAG via Python
+# Update the scheduling arguments as defined
+default_args = {
+  'owner': 'Engineering',
+  'start_date': datetime(2019, 11, 1),
+  'email': ['airflowresults@datacamp.com'],
+  'email_on_failure': False,
+  'email_on_retry': False,
+  'retries': 3,
+  'retry_delay': timedelta(minutes=20)
+}
+
+# Use the cron syntax to configure a schedule of every Wednesday at 12:30pm.
+dag = DAG('update_dataflows', default_args=default_args, schedule_interval='30 12 * * 3')
+#|
+#|
+### Deciphering Airflow schedules
