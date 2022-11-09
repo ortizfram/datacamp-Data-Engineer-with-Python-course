@@ -124,3 +124,16 @@ airflow list_dags
 #|
 #|
 ### Troubleshooting DAG creation
+"""Instructions
+
+Use the airflow shell command to determine which DAG is not being recognized correctly.
+After you determine the broken DAG, open the file and fix any Python errors.
+Once modified, verify that the DAG now appears within Airflow's output."""
+airflow list_dags
+----------
+from airflow.models import DAG # fixed part
+default_args = {
+  'owner': 'jdoe',
+  'email': 'jdoe@datacamp.com'
+}
+dag = DAG( 'refresh_data', default_args=default_args )
