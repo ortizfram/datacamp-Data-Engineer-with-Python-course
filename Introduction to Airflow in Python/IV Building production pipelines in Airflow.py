@@ -181,4 +181,22 @@ email_task = EmailOperator(task_id='email_task',
 """
 \ branching /
 
-    ...
+    > BranchPythonOperator
+    > from airflow.operator.python_operator import BranchPythonOperator
+    # takes a python callable to return next task_id to follow
+    
+    | eg: |
+    
+    def branch_test(**kwargs):
+        if int(kwargs['ds_nodash']) % 2 ==0:
+            return 'even_day_task'
+        else:
+            return 'odd_day_task'
+            
+    branch_task = BranchPythonOperator(task_id='branch_task',dag=dag,
+            provide_context=True,
+            python_callable=branch_test)
+            
+    start_tast >> branch_task >> even_day_task >> even_day_task2
+    branch_task >> odd_day_task >> odd_day_task2
+"""
