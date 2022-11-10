@@ -185,7 +185,7 @@ email_task = EmailOperator(task_id='email_task',
     > from airflow.operator.python_operator import BranchPythonOperator
     # takes a python callable to return next task_id to follow
     
-    | eg: |
+    | BranchPythonOperator eg: |
     
     def branch_test(**kwargs):
         if int(kwargs['ds_nodash']) % 2 ==0:
@@ -218,3 +218,62 @@ branch_task = BranchPythonOperator(task_id='branch_task', dag=branch_dag,
 # Define the dependencies
 branch_dag >> current_year_task
 branch_dag >> new_year_task
+#|
+#|
+### Branch troubleshooting
+"""determine the most likely reason that the branching operator is ineffective."""
+# The dependency is missing between the `branch_task` and `even_day_task` and `odd_day_task
+#|
+#|
+"""
+    | operator reminder |
+    
+       . BashOperator - expects 'bash_command'
+       . PythonOperator - expects 'python_callable'
+       . BranchPythonOperator - expects 'python_callable','provide_context=True'     # callable must accept '**kwargs'
+       . FileSensor - requieres 'filepath' , might need 'mode' , or 'poke_interval' attributes
+       
+   | help(<Airflow object>) |
+   
+    help(BashOperator)
+"""
+#|
+#|
+### Creating a production pipeline #1
+'''
+Answer :
+-run command in terminal type airflow test etl_update sense_file -1
+'''
+from airflow.models import DAG
+from airflow.contrib.sensors.file_sensor import FileSensor
+
+# Import the needed operators
+from airflow.operators.bash_operator import BashOperator
+from airflow.operators.python_operator import PythonOperator
+from datetime import date, datetime
+
+
+def process_data(**context):
+    file = open('/home/repl/workspace/processed_data.tmp', 'w')
+    file.write(f'Data processed on {date.today()}')
+    file.close()
+
+
+dag = DAG(dag_id='etl_update', default_args={
+          'start_date': datetime(2020, 4, 1)})
+
+sensor = FileSensor(task_id='sense_file',
+                    filepath='/home/repl/workspace/startprocess.txt',
+                    poke_interval=5,
+                    timeout=15,
+                    dag=dag)
+
+bash_task = BashOperator(task_id='cleanup_tempfiles',
+                         bash_command='rm -f /home/repl/*.tmp',
+                         dag=dag)
+
+python_task = PythonOperator(task_id='run_processing',
+                             python_callable=process_data,
+                             dag=dag)
+
+sensor >> bash_task >> python_task
