@@ -59,3 +59,37 @@ you’ll learn how to save yourself time using Airflow components such as sensor
 #|
 #|
 ### Sensory deprivation
+"""The DAG is waiting for the file salesdata_ready.csv to be present."""
+#|
+#|
+"""
+\ airflow executors /
+
+ # run tasks
+ # diff exec. handle diff runings
+ 
+> SequentialExecutor
+  # default Airflow executor
+  # one task at a time
+  # useful for debugging
+  # not recommended for production
+> LocalExecutor
+  # runs on sungle system
+  # treat tasks as processes
+  # parallelism defined by user (unlimited, limited)
+  # utilize all resources of given host system
+> CeleryExecutor
+  # use CeleryBackend as task manager
+  # multiple work sys can be defined
+  # more difficult to setup and configure
+  # powerful for organizations w/ extensive workflows
+
+  | determine executors |
+
+    way1:
+      - via airflow.cfg file
+      - look for executor= line
+    way2:
+      - via first line of : airflow list_dags
+        INFO - Using SequentialExecutor
+"""
