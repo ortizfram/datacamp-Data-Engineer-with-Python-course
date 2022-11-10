@@ -149,3 +149,7 @@ clean_task = BashOperator(task_id='cleandata_task',
                           bash_command=templated_command,
                           params={'filenames': filelist},
                           dag=cleandata_dag)
+#|
+#|
+### Understanding parameter options
+# ANSW: Using specific tasks allows better monitoring of task state and possible parallel execution.
