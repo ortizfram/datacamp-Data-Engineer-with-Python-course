@@ -85,23 +85,37 @@ clean_task2 << clean_task
 \ more advanced templates /
 
     | eg: |
-    
-    templated_command = '''
-    {% for filename in params.filenames %}
-        echo "Reading {{filename}}"
-    {% endfor %}
-    '''
-    
-    t1= BashOperator(task_id='template_task',
-              bash_command=templated_command,
-              params={'filenames':['file1.txt','file2.txt']},
-              dag=example_dag)
-    
+
+        templated_command = '''
+        {% for filename in params.filenames %}
+            echo "Reading {{filename}}"
+        {% endfor %}
+        '''
+
+        t1= BashOperator(task_id='template_task',
+                  bash_command=templated_command,
+                  params={'filenames':['file1.txt','file2.txt']},
+                  dag=example_dag)
+
     | variables |
     
-    Execution date: {{ ds }}
-    Execution date, no dashes: {{ ds_nodash }}
-    Previous execution date: {{ prev_ds }}
-    Prev execution date no dashes: {{ prev_ds_nodash }}
-    DAG object : {{ dag }}
-    airflow config object: {{ conf }}
+        > Execution date: 
+             {{ ds }}
+        > Execution date, no dashes: 
+             {{ ds_nodash }}
+        > Previous execution date: 
+             {{ prev_ds }}
+        > Prev execution date no dashes:
+             {{ prev_ds_nodash }}
+        > DAG object : 
+             {{ dag }}
+        > airflow config object:
+             {{ conf }}
+    
+    | Macros |
+    
+        > {{ macros.datetime }}
+        > {{ macros.timedelta }}
+        > {{ macros.uuid }}
+        > {{ macros.ds_add('2020-04-15', 5) }}  : modify days from date,  RETURNS: 2020-04-20
+"""
