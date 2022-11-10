@@ -168,6 +168,10 @@ precheck >> generate_report_task
       ## diffucult to find errors in a DAG
         airflow list_dags
         python3 dagfile.py
+        
+    | configure airflow.cfg |
+    
+     airflow/airflow.cfg
 """
 #|
 #|
@@ -177,3 +181,80 @@ head airflow/airflow.cfg
 #|
 #|
 ### Missing DAG
+"""Answer :
+1. Open execute_report_dag.py
+2. Modification line 2 and remove #
+3. move file to dags
+4. airflow list_dags"""
+python3 execute_report_dag.py
+#----------
+from airflow.models import DAG
+from airflow.operators.bash_operator import BashOperator # from here you take out the # symbol
+from airflow.contrib.sensors.file_sensor import FileSensor
+from datetime import datetime
+
+report_dag = DAG(
+    dag_id = 'execute_report',
+    schedule_interval = "0 0 * * *"
+)
+
+precheck = FileSensor(
+    task_id='check_for_datafile',
+    filepath='salesdata_ready.csv',
+    start_date=datetime(2020,2,20),
+    mode='poke',
+    dag=report_dag)
+
+generate_report_task = BashOperator(
+    task_id='generate_report',
+    bash_command='generate_report.sh',
+    start_date=datetime(2020,2,20),
+    dag=report_dag
+)
+
+precheck >> generate_report_task
+#|
+#|
+"""
+\ SLAs and reporting in Airflow /
+
+  \ SLAs /
+
+    > Service Level Agreement
+    # amont of time a DAG take to run 
+    # SLA Miss :  task or DAG take more time than expected
+      - if SLA missed : -mail sent and stored in log 
+      - view sla misses in the web UI [Brows][SLA Misses]
+
+   | Define SLAs |
+    
+     # use sla argument in the task
+     task1 = BashOperator(
+                        bash_command='runcode.sh',
+                        sla=timedelta(seconds=30),
+                        dag=dag)
+
+     # on default_args dictionary
+     default_args={
+       'sla': timedelta(seconds=30),
+       'start_date': datetime(2020, 2, 20)
+     }
+    
+    dag = DAG('sla_dag', default_args=default_args)
+    
+    | timedelta object |
+    
+      > in datetime (library)
+      > access via : from datetime import timedelta
+      > args : seconds, minutes, hours, days, weeks. 
+
+    | General Reporting |
+
+      # within DAGs MailOperator
+      default_args={
+        'email' : ['airflowalerts@datacamp.com'],
+        'email_on_failure' : True,
+        'email_on_retry' : False,
+        'email_on_success' : True
+      }
+"""
