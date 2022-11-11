@@ -72,3 +72,6 @@ filterB = flights.dest == "PDX"
 
 # Filter the data, first by filterA then by filterB
 selected2 = temp.filter(filterA).filter(filterB)
+#|
+#|
+### Selecting II
