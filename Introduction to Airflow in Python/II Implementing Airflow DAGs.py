@@ -30,6 +30,15 @@ basics of implementing Airflow DAGs. Through hands-on activities, you’ll learn
                     - PythonCallable: 
                     - provide_contex=True / False
                     - op_kwargs={"db_engines": db_engines}
+                    
+      EmailOperator:
+                # import EmailOperator:
+                  > from airflow.operators.email_operator import EmailOperator
+                # arguments:
+                    - to='manager@datacamp.com',
+                    - subject='Latest sales JSON',
+                    - html_content='Attached is the latest sales JSON file as requested.',
+                    - files='parsedfile.json'
   ----------------------------
   | Bash Operator types |
   
