@@ -9,6 +9,9 @@ pyspark.sql module, which provides optimized data queries to your Spark session.
 | pyspark methods : manipulation |
 
       -  spark.table()  ->  create df containing values of table in the .catalog
+      -  .filter()      ->  like a cut for SQL   
+                     > flights.filter("air_time > 120").show()              # return values cut  #(SQL string)
+                     > flights.filter(flights.air_time > 120).show()        # return bool
 """
 #|
 #|
