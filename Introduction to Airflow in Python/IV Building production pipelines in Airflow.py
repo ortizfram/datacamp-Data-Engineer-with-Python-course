@@ -313,3 +313,6 @@ python_task = PythonOperator(task_id='run_processing',
                              dag=dag)
 
 sensor >> bash_task >> python_task
+#|
+#|
+### Adding the final changes to your pipeline
