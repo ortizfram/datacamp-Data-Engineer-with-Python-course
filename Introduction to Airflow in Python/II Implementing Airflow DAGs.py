@@ -28,6 +28,7 @@ basics of implementing Airflow DAGs. Through hands-on activities, you’ll learn
                   > from airflow.operatosr.python_operators import PythonOperator
                 # arguments:
                     - PythonCallable: 
+                    - provide_contex=True / False
                     - op_kwargs={"db_engines": db_engines}
   ----------------------------
   | Bash Operator types |
