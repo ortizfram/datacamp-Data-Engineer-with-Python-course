@@ -12,6 +12,12 @@ pyspark.sql module, which provides optimized data queries to your Spark session.
       -  .filter()      ->  like a cut for SQL   
                      > flights.filter("air_time > 120").show()              # return values cut  #(SQL string)
                      > flights.filter(flights.air_time > 120).show()        # return bool
+                     
+      -  .select()    ->  returns only the columns you specify
+        |            > selectNoStr = flights.select(flights.origin, flights.dest, flights.carrier)
+        |            > selectStr = flights.select("tailnum", "origin", "dest")
+        |             
+      -  .withColumn()  ->   returns all columns in addition to the defined.
 """
 #|
 #|
@@ -52,3 +58,17 @@ long_flights2.show()
 #|
 #|
 ### Selecting
+# Select the first set of columns
+selected1 = flights.select("tailnum", "origin", "dest")
+
+# Select the second set of columns
+temp = flights.select(flights.origin, flights.dest, flights.carrier)
+
+# Define first filter
+filterA = flights.origin == "SEA"
+
+# Define second filter
+filterB = flights.dest == "PDX"
+
+# Filter the data, first by filterA then by filterB
+selected2 = temp.filter(filterA).filter(filterB)
