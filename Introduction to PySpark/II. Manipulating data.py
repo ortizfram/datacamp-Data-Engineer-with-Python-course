@@ -23,5 +23,16 @@ flights.show() # head() is default
 flights = flights.withColumn('duration_hrs', flights.air_time /60)
 #|
 #|
-"""
-\ SQL in a nutshell /
+### SQL in a nutshell
+"""Which of the following queries returns a table of tail numbers and destinations for flights that lasted more than 10 hours?"""
+# ANSW: SELECT dest, tail_num FROM flights WHERE air_time > 600;
+#|
+#|
+### SQL in a nutshell (2)
+"""What information would this query get?"""
+"""         SELECT AVG(air_time) / 60 FROM flights
+            GROUP BY origin, carrier;           """
+# ANSW: The average length of each airline's flights from SEA and from PDX in hours.
+#|
+#|
+### Filtering Data
