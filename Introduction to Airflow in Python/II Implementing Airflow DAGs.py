@@ -22,7 +22,14 @@ basics of implementing Airflow DAGs. Through hands-on activities, you’ll learn
                 # arguments:
                     - filepath='salesdate.csv',
                     - poke_interval=45  # time between checks
-
+              might - mode
+                # FileSensor arguments:
+                    mode : 'how to check for the condition'
+                        mode='poke' : 'default, run repeatedly'
+                        mode='reschedule' : 'give task slot and try again, or run other task while waiting'
+                    poke_interval   : 'wait between checks'
+                    timeout   : 'how long to wait before failing task'
+                    
       PythonOperator:
                 # import pythonOperator:
                   > from airflow.operatosr.python_operators import PythonOperator
@@ -39,6 +46,13 @@ basics of implementing Airflow DAGs. Through hands-on activities, you’ll learn
                     - subject='Latest sales JSON',
                     - html_content='Attached is the latest sales JSON file as requested.',
                     - files='parsedfile.json'
+                    
+      BranchPythonOperator:              
+                # import BranchPythonOperator
+                  > from airflow.operator.python_operator import BranchPythonOperator
+                # arguments:
+                    - python_callable=year_check,
+                    - provide_context=True
   ----------------------------
   | Bash Operator types |
   
