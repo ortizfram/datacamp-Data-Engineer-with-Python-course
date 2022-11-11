@@ -16,7 +16,7 @@ pyspark.sql module, which provides optimized data queries to your Spark session.
       -  .select()    ->  returns only the columns you specify
         |            > selectNoStr = flights.select(flights.origin, flights.dest, flights.carrier)
         |            > selectStr = flights.select("tailnum", "origin", "dest")
-        |             
+        |            > flights.selectExpr("origin", "dest", "tailnum", "distance/(air_time/60) as avg_speed")
       -  .withColumn()  ->   returns all columns in addition to the defined.
 """
 #|
@@ -75,3 +75,12 @@ selected2 = temp.filter(filterA).filter(filterB)
 #|
 #|
 ### Selecting II
+# Define avg_speed
+avg_speed = (flights.distance/(flights.air_time/60)).alias("avg_speed")
+
+# Select the correct columns
+speed1 = flights.select("origin", "dest", "tailnum", avg_speed)
+
+# Create the same table using a SQL expression
+speed2 = flights.selectExpr(
+    "origin", "dest", "tailnum", "distance/(air_time/60) as avg_speed")
