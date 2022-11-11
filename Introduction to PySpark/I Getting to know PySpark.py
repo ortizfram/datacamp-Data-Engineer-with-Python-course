@@ -41,7 +41,9 @@ how Spark manages data and how can you read and write tables from Python.
     -  .show() ->   print
     -  .sql() ->  run a query ( <takes> queried 'string' <returns> DataFrame results )
     -  .toPandas() ->   returns corresponding 'pandas' DataFrame
-
+    -  .createDataFrame() ->     <takes> pandas DataFrame and <returns>  Spark DataFrame. (temp)
+    -  .createTempView()  ->    add to the catalog, but as temporary (in session)
+    -  .createOrReplaceTempView("temp")  ->   creates temp table if didn't already or updates
 """
 #|
 #|
@@ -118,3 +120,17 @@ print(pd_counts.head())
 #|
 #|
 ### Put some Spark in your data
+# Create pd_temp
+pd_temp = pd.DataFrame(np.random.random(10))
+
+# Create spark_temp from pd_temp
+spark_temp = spark.createDataFrame(pd_temp)
+
+# Examine the tables in the catalog
+print(spark.catalog.listTables())
+
+# Add spark_temp to the catalog
+spark_temp.createOrReplaceTempView("temp")
+
+# Examine the tables in the catalog again
+print(spark_temp)
