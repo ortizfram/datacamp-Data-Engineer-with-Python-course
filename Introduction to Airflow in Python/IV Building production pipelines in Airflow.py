@@ -240,10 +240,6 @@ branch_dag >> new_year_task
 #|
 #|
 ### Creating a production pipeline #1
-'''
-Answer :
--run command in terminal type airflow test etl_update sense_file -1
-'''
 from airflow.models import DAG
 from airflow.contrib.sensors.file_sensor import FileSensor
 
@@ -277,3 +273,10 @@ python_task = PythonOperator(task_id='run_processing',
                              dag=dag)
 
 sensor >> bash_task >> python_task
+
+#-------------------------
+airflow test etl_update sense_file -1       #-1 instead of a specific date.
+# startprocess.txt is missing so create it
+touch 'startprocess.txt'
+# re-run
+airflow test etl_update sense_file -1  
