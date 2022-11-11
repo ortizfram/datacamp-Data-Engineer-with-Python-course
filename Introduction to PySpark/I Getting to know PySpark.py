@@ -31,10 +31,15 @@ how Spark manages data and how can you read and write tables from Python.
 
 | SparkSession attributes |
 
-     - catalog: extract and view table data
-              . listTables() -> returns column names in cluster as list
-                > spark.catalog.listTables()
-                
+      # always <SparkSessionName>.
+     - catalog: ( extract and view table data )
+              -  .listTables() 
+                            # returns column names in cluster as list
+                            > spark.catalog.listTables()
+                            
+     -  .read()    # read different data sources into Spark DataFrames
+                   > spark.read.csv(file_path, header=True)
+                      
 | SparkSession methods |
 
      # always <SparkSessionName>.
@@ -134,3 +139,14 @@ spark_temp.createOrReplaceTempView("temp")
 
 # Examine the tables in the catalog again
 print(spark_temp)
+#|
+#|
+### Dropping the middle man
+# Don't change this file path
+file_path = "/usr/local/share/datasets/airports.csv"
+
+# Read in the airports data
+airports = spark.read.csv(file_path, header=True) # to view column names
+
+# Show the data
+airports.show()
