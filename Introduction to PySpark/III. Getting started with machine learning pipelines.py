@@ -78,7 +78,9 @@ model_data = model_data.filter("arr_delay is not NULL and dep_delay is not NULL 
             carr_indexer = StringIndexer(inputCol='carrier',outputCol='carrier_index')
     2 > encode w/ 'OneHotEncoder'.
             carr_encoder = OneHotEncoder(inputCol='carrier_index',outputCol='carrier_fact')
-    - 'Pipeline' will take care of the rest.
+    3 > 'Pipeline' will take care of the rest.
+            # Fit and transform the data
+            piped_data = flights_pipe.fit(model_data).transform(model_data)
     -----------------------
       > 'VectorAssembler'  -> combine all of the columns containing our features into a single column
                           inputCol= ['column_name1','c2','c3']
@@ -119,5 +121,21 @@ vec_assembler = VectorAssembler(inputCols=["month", "air_time", "carrier_fact", 
       > stages
          
 """
+#|
+#|
 ### Create the pipeline
+# Import Pipeline
+from pyspark.ml import Pipeline
 
+# Make the pipeline
+flights_pipe = Pipeline(stages=[dest_indexer, dest_encoder, carr_indexer, carr_encoder, vec_assembler])
+#|
+#|
+### Test vs. Train
+""" why important to set 'model evaluation'?"""
+# ANSW: By evaluating your model with a test set you can get a good idea of performance on new data.
+#|
+#|
+### Transform the data
+# Fit and transform the data
+piped_data = flights_pipe.fit(model_data).transform(model_data)
