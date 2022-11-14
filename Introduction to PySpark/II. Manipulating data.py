@@ -18,6 +18,18 @@ pyspark.sql module, which provides optimized data queries to your Spark session.
         |            > selectStr = flights.select("tailnum", "origin", "dest")
         |            > flights.selectExpr("origin", "dest", "tailnum", "distance/(air_time/60) as avg_speed")
       -  .withColumn()  ->   returns all columns in addition to the defined.
+                        ->   create new df column
+            -  .withColumnRenamed
+                        -> rename columns
+      
+      -  GroupedData 
+      |
+      -  .agg()        -> pass an aggregate column expression that uses any of the aggregate functions from the pyspark.sql.functions submodule.
+                        # Import pyspark.sql.functions as F
+                        > import pyspark.sql.functions as F
+            - F.stddev  -> estandard deviation
+            
+      -  .join()       -> takes three arguments. 1.the second DataFrame to join, 2. on == key column(s) as a string, 3. how == specifies kind of join how="leftouter"
 """
 #|
 #|
@@ -84,3 +96,72 @@ speed1 = flights.select("origin", "dest", "tailnum", avg_speed)
 # Create the same table using a SQL expression
 speed2 = flights.selectExpr(
     "origin", "dest", "tailnum", "distance/(air_time/60) as avg_speed")
+#|
+#|
+### Aggregating
+# Find the shortest flight from PDX in terms of distance
+#  Perform the filtering by referencing the column directly, not passing a SQL string.
+flights.filter(flights.origin == "PDX").groupBy().min('distance').show()
+
+# Find the longest flight from SEA in terms of air time
+flights.filter(flights.origin == 'SEA').groupBy().max('air_time').show()
+#|
+#|
+### Aggregating II
+# Average duration of Delta flights
+flights.filter(flights.carrier == "DL").filter(flights.origin == "SEA").groupBy().avg("air_time").show()
+
+# Total hours in the air
+flights.withColumn("duration_hrs", flights.air_time/60).groupBy().sum("duration_hrs").show()
+#|
+#|
+### Grouping and Aggregating I
+# Group by tailnum
+by_plane = flights.groupBy("tailnum")
+
+# Number of flights each plane made
+by_plane.count().show()
+
+# Group by origin
+by_origin = flights.groupBy("origin")
+
+# Average duration of flights from PDX and SEA
+by_origin.avg("air_time").show()
+#|
+#|
+### Grouping and Aggregating II
+# Import pyspark.sql.functions as F
+import pyspark.sql.functions as F
+
+# Group by month and dest
+by_month_dest = flights.groupBy('month','dest')
+
+# Average departure delay by month and destination
+by_month_dest.avg('dep_delay').show()
+
+# Standard deviation of departure delay
+by_month_dest.agg(F.stddev('dep_delay')).show() # stddev = standard deviation
+#|
+#|
+### joining
+"""Which of the following is not true?
+
+Joins combine tables.
+Joins add information to a table.
+Storing information in separate tables can reduce repetition.
+There is only one kind of join."""
+# ANSW: There is only one kind of join.
+#|
+#|
+### Joining II
+# Examine the data
+print(airports.show())
+
+# Rename the faa column
+airports = airports.withColumnRenamed('faa', 'dest')
+
+# Join the DataFrames
+flights_with_airports = flights.join(airports, on='dest', how='leftouter')
+
+# Examine the new DataFrame
+print(flights_with_airports.show())
