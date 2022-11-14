@@ -74,8 +74,10 @@ model_data = model_data.filter("arr_delay is not NULL and dep_delay is not NULL 
    > pyspark.ml.features submodule
     'one-hot vectors'      -> all elements are zero except for at most one element, which has a value of one (1).
     
-    - create a 'StringIndexer'
-    - encode w/ 'OneHotEncoder'
+    1 > create a 'StringIndexer'.
+            carr_indexer = StringIndexer(inputCol='carrier',outputCol='carrier_index')
+    2 > encode w/ 'OneHotEncoder'.
+            carr_encoder = OneHotEncoder(inputCol='carrier_index',outputCol='carrier_fact')
     - 'Pipeline' will take care of the rest.
 """
 #|
@@ -86,3 +88,11 @@ model_data = model_data.filter("arr_delay is not NULL and dep_delay is not NULL 
 #|
 #|
 ### Carrier
+# Create a StringIndexer
+carr_indexer = StringIndexer(imputCol='carrier',outputCol='carrier_index')
+
+# Create a OneHotEncoder
+carr_encoder = OneHotEncoder(imputCol='carrier_index',outputCol='carrier_fact')
+#|
+#|
+### Destination
