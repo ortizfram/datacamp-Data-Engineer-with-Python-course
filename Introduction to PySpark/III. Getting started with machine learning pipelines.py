@@ -112,4 +112,12 @@ dest_encoder = OneHotEncoder(inputCol='dest_index',outputCol='dest_fact')
 vec_assembler = VectorAssembler(inputCols=["month", "air_time", "carrier_fact", "dest_fact", "plane_age"], outputCol='features')
 #|
 #|
-###
+""" \ create pipelines  /
+      
+      > Import Pipeline
+         from pyspark.ml import pipeline
+      > stages
+         
+"""
+### Create the pipeline
+
