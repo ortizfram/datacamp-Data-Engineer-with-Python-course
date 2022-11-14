@@ -24,3 +24,9 @@ for bucket in response['Buckets']:
   
   	# Print the Name for each bucket
     print(bucket['Name'])
+    
+''' out: 
+gim-staging
+gim-processed
+gim-test
+'''
