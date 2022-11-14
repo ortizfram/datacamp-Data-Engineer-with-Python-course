@@ -1,0 +1,41 @@
+| BUCKETS |
+
+    . destok folders
+    . own permission policies
+    . website storage
+    . generate logs ab activity
+    
+    |  S3 components-Objects  |
+
+       contain ANYTTHING : music, csv, image, video, log file
+
+|  What can we do w/ buckets ?  |
+
+    create, list, delete buckets
+    
+|  CREATE A BUCKET  |
+
+    # create boto3 client
+    import boto3
+              
+              s3 = boto3.client('s3',
+                                region_name='us-east-1',
+                                aws_access_key_id = AWS_KEY_ID,
+                                aws_secret_access_key = AWS_SECRET)
+                                
+    # create bucket and his name
+    # names must be unique
+    bucket = s3.create_bucket(Bucket='grid-requests')
+    
+|  Buecket ~ METHODS  |
+
+    > list buckets
+      bucket_response = s3.list_buckets()
+      
+      # get buckets dictionary
+      buckets = bucket_respons['Buckets']
+      print(buckets)
+      
+    > delete buckets
+      bucket_response = s3.delete_bucket('grid-requests')
+      
