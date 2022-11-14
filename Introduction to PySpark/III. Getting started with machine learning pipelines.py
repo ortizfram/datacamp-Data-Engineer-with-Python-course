@@ -139,3 +139,9 @@ flights_pipe = Pipeline(stages=[dest_indexer, dest_encoder, carr_indexer, carr_e
 ### Transform the data
 # Fit and transform the data
 piped_data = flights_pipe.fit(model_data).transform(model_data)
+#|
+#|
+### Split the data
+# Split the data into training and test sets
+# training with 60% of the data, and test with 40%
+training, test = piped_data.randomSplit([.6, .4])
