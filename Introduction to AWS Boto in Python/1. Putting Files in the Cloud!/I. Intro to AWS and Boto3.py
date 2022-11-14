@@ -3,7 +3,7 @@
 From learning how AWS works to creating S3 buckets and uploading files to them. You will master the basics of setting up AWS and uploading files to the cloud!
 |||||
 
-|  INITIALIZE S3 CLIENT  |
+|  INITIALIZE BOTO3 CLIENT  |
 
   -> Boto 3 : 
               import boto3
