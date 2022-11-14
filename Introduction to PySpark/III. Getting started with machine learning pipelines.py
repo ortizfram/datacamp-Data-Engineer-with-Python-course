@@ -66,3 +66,23 @@ model_data = model_data.withColumn("label", model_data.is_late.cast('integer'))
 
 # Remove missing values w/ SQL string
 model_data = model_data.filter("arr_delay is not NULL and dep_delay is not NULL and air_time is not NULL and plane_year is not NULL")
+#|
+#|
+"""
+\  Strings and Factors  /
+
+   > pyspark.ml.features submodule
+    'one-hot vectors'      -> all elements are zero except for at most one element, which has a value of one (1).
+    
+    - create a 'StringIndexer'
+    - encode w/ 'OneHotEncoder'
+    - 'Pipeline' will take care of the rest.
+"""
+#|
+#|
+###
+"""Why do you have to encode a categorical feature as a one-hot vector?"""
+# ANSW: Spark can only model numeric features.
+#|
+#|
+### Carrier
