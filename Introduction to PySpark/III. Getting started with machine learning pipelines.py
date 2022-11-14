@@ -50,3 +50,11 @@ model_data = model_data.withColumn("month", model_data.month.cast('integer'))
 model_data = model_data.withColumn("plane_year", model_data.plane_year.cast('integer'))
 #|
 #|
+### Create a new column
+# Create the column plane_age
+# Create the column plane_age
+model_data = model_data.withColumn(
+    "plane_age", model_data.year - model_data.plane_year)
+#|
+#|
+###
