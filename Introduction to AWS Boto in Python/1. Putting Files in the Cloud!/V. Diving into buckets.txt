@@ -29,6 +29,9 @@
     
 |  Buecket ~ METHODS  |
 
+    > create bucket
+      bucket = s3.create_bucket(Bucket='grid-requests')
+
     > list buckets
       bucket_response = s3.list_buckets()
       
