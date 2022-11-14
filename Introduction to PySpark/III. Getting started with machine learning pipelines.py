@@ -79,6 +79,10 @@ model_data = model_data.filter("arr_delay is not NULL and dep_delay is not NULL 
     2 > encode w/ 'OneHotEncoder'.
             carr_encoder = OneHotEncoder(inputCol='carrier_index',outputCol='carrier_fact')
     - 'Pipeline' will take care of the rest.
+    -----------------------
+      > 'VectorAssembler'  -> combine all of the columns containing our features into a single column
+                          inputCol= ['column_name1','c2','c3']
+                          outputCol= 'features'
 """
 #|
 #|
@@ -104,3 +108,8 @@ dest_encoder = OneHotEncoder(inputCol='dest_index',outputCol='dest_fact')
 #|
 #|
 ### Assemble a vector
+# Make a VectorAssembler
+vec_assembler = VectorAssembler(inputCols=["month", "air_time", "carrier_fact", "dest_fact", "plane_age"], outputCol='features')
+#|
+#|
+###
