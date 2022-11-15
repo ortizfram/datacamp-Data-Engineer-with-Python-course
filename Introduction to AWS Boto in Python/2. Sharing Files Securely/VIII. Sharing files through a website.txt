@@ -1,0 +1,27 @@
+| HTML tables in pandas |
+
+    > Convert df to HTML
+      df.to_html('table_agg.html')
+    > Just certain columns to HTML
+      df.to_html('table_agg.html',
+                  render_links=True,
+                  columns=['service_name', 'request_count', 'info_link'],
+                  border= 0)
+                  
+|  upload HTML file to S3  |
+
+    s3.upload_file(
+              Filename='./table_agg.html',
+              Bucket='x',
+              Key='table.html',
+              ExtraArgs={
+                  'ContentType': 'text/html',  # image/png
+                  'ACL': 'public-read'
+              })
+              
+              |  INNA MEDIA TYPES  |
+              
+                  text/html
+                  image/png
+                  application/pdf
+                  text/csv
