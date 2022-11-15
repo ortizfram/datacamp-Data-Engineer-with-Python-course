@@ -1,0 +1,21 @@
+|  PUBLISHING TO A TOPIC  |
+
+    response = sns.publish(
+      TopicArn = 'arn:aws: sns: us-east-1:320333787981 :city_alerts',
+      Message= 'Body text of SMS or e-mail',  # not visible for text msg
+      Subject = 'Subject Line for Email')
+      
+|  SENDING CUSTOM MESSAGES  |
+
+    num-of_reports = 157
+    response = client.publish (
+        TopicArn = 'arn:aws : sns: US-east-1:320333787981: city_alerts ',
+        Message = 'There are {} reports outstanding'.format(num_of-reports),
+        Subject= 'Subject Line for Email'
+        
+|  SINGLE SMS  |
+
+    response = sns.publish(
+        PhoneNumber = '+13121233211',
+        Message = 'Body text of SMS or e-mail')
+        
