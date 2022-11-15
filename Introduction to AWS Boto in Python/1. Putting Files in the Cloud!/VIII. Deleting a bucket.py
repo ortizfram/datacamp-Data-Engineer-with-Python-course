@@ -14,6 +14,7 @@ Instructions
 - Print each 'Buckets' 'Name'.
 
 """
+
 # Delete the gim-test bucket
 s3.delete_bucket(Bucket='gim-test')
 
@@ -22,4 +23,4 @@ response = s3.list_buckets()
 
 # Print each Buckets Name
 for bucket in response['Buckets']:
-    print(bucket['name'])
+    print(bucket['Name'])
