@@ -38,3 +38,15 @@
             SubscriptionArn='arn:aws:sns:us-east-1:3121333277766:city_alerts:as23sdf:234sddf32:4444'
             )
     
+|  DELETE MULTIPLE SUBSCRIPTIONS  |
+
+          # get list of subscriptions
+          response = sns.list_subscription_by_topic(
+             TopicArn='arn:aws:sns:us-east-1:3121333277766:city_alerts')
+          subs= response['Subscription']
+          
+          # Unsubscribe SMS Subscription
+          for sub in subs:
+                    if sub['Protocol'] == 'sms':
+                       sns.unsubscribe(sub['SubscriptionArn'])
+          
