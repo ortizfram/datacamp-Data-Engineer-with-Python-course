@@ -1,0 +1,30 @@
+|  differences Bucket/Object  |
+
+    Bucket: 
+            - name
+            - name is STRING
+            - unique name in all S3
+            - contains many objects
+            
+    Object:
+            - has a KEY
+            - Name is full path from bucket root
+            - Unique KEY in bucket
+            - can only be in one parent bucket
+            
+    1 > create boto3 client
+    2 > upload files to a bucket:
+          s3.upload_file(
+                  Filename='grid_request_2020_15_11.csv',
+                  Bucket='grid-request',
+                  key='grid_request_2020_15_11.csv')    # what we name obj. in S3
+    3 > List objects in a bucket
+          response = s3.list_objects(
+                          Bcuket='grid-requests',
+                          MaxKeys=2,                    # limit response
+                          Prefix='grid_requests_2019')
+          print(response)
+    4 > delete object in bucket:
+          s3.delete_object(
+                      Bucket='grid_requests',
+                      Key='grid_requests_2018')
