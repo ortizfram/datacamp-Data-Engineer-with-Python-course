@@ -18,3 +18,18 @@ _ Concatenate all DataFrames in df_list.
 _ Preview the DataFrame.
 
 """
+df_list = [] 
+
+# Load each object from s3
+for file in request_files:
+    s3_day_reqs = s3.get_object(Bucket='gid-requests', 
+                                Key=file['Key'])
+    # Read the DataFrame into pandas, append it to the list
+    day_reqs = pd.read_csv(s3_day_reqs['Body'])
+    df_list.append(day_reqs)
+
+# Concatenate all the DataFrames in the list
+all_reqs = pd.concat(df_list)
+
+# Preview the DataFrame
+all_reqs.head()
