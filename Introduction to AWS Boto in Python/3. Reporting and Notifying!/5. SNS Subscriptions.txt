@@ -1,0 +1,40 @@
+|  CREATE SMS SUBCRIPTION  |
+
+          1. > INITIALIZE boto3 SNS CLIENT
+                 sns = boto3.client('sns',
+                                        region_name='us-east-1',
+                                        aws_access_key_id=AWS_KEY_ID,
+                                        aws_secret_access_key=AWS_SECRET)
+
+          2. > PASS SNS SUBSCRIBE WITH TOPICARN
+                response = sns.subscribe(
+                            TopicArn = 'arn:aws:sns:us-east-1:3121333277766:city_alerts',
+                            Protocol= 'SMS',
+                            EndPoint='+123112354')     # phone number
+                      
+|  CREATE EMAIL SUBSCRIPTION  |
+
+          2. > PASS SNS SUBSCRIBE WITH TOPICARN
+                # will see pending confirmation cause he has to click the link
+                response = sns.subscribe(
+                            TopicArn = 'arn:aws:sns:us-east-1:3121333277766:city_alerts',
+                            Protocol= 'EMAIL',
+                            EndPoint='max@maximize.com')     # email
+
+|  LIST SUBSCRIPTIONS BY TOPIC  |
+
+          sns.list_subscriptions_by_topic(
+            TopicArn='arn:aws:sns:us-east-1:3121333277766:city_alerts'
+            )
+      
+|  LIST ALL SUBSCRIPTIONS  |
+
+
+          sns.list_subscriptions()['Subscriptions']
+          
+|  DELETE SUBSCRIPTION  |
+
+          sns.unsubscribe(
+            SubscriptionArn='arn:aws:sns:us-east-1:3121333277766:city_alerts:as23sdf:234sddf32:4444'
+            )
+    
