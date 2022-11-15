@@ -25,3 +25,25 @@
                   image/png
                   application/pdf
                   text/csv
+                  
+|  Generating index page  |
+        
+        # create column link that contains website url+ key
+        base_url="https://datacamp-website"
+        objects_df['Link'] = base_url + objects_df['Key']
+        
+        # Write df to html
+        objects_df.to_html('report_listening.html',
+                            columns=['Link','LastModified','Size'],
+                            rende_links=True)
+
+|  Uploading index page  |
+
+        s3.upload_file(
+                Filename='./report_listing.html',
+                Bucket='x',
+                Key='index.html',
+                ExtraArgs={
+                    'ContentType':'text/html',
+                    'ACL': 'public-read'}
+         )
