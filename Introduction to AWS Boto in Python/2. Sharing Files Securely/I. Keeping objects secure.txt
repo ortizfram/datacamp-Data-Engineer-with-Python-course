@@ -1,0 +1,32 @@
+You will learn how set files to be public or private, and cap off what you learned by generating web-based reports!
+
+|  AWS PERMISSION SYS  |
+
+    # Multi-user environments
+    . IAM : attaching policies to users
+    . Bucket Policies: gives control on bucket and Object within it
+    # 
+    . ACL : permission on specific obj within a bucket 
+            (entity attached)
+            
+           - public
+
+                  > put ACL to uploaded obj:
+                    s3.put_object_acl(Bucket='', Key='puthole.csv', 
+                                      ACL='public-read')
+                  > ACL but w/ ExtraArgs:
+                    s3.upload_file(Bucket='x',Filename='asd.csv',Key='asd.csv',
+                                   ExtraArgs={'ACL':'public-read'})
+                  > accessing public objects:
+                    # https://{bucket}.{key}
+                    https://grid-requests.2019/potholes.csv
+                  > generate public obj. URL
+                    url='https://{}.{}'.format(
+                        "grid-requests",
+                        "2019/putholes.csv")
+                  > read URL into pandas
+                    df = pd.read_csv(url)
+           - private 
+           
+    . Presigned URL: temporary access to obj
+    
