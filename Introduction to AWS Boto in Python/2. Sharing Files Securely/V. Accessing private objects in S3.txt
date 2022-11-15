@@ -1,1 +1,38 @@
-
+    > accessing private files  
+      obj = s3.get_object(Bucket='x', Key='2019/asdads.csv')
+      print(obj)
+    > Read 'StreamingBody' into Pandas
+      pd.read_csv(obj['Body'])
+      
+    > Generate pre-signed URL
+      share_url = s3.generate_presigned_url(
+                   ClientMethod='get_object',
+                   ExpiresIn=3600,
+                   Params={'Bucket':'grid-requests','Key':'potholes.csv'}
+        > open into Pandas
+          pd.read_csv(share_url)
+    
+    > Load multiple files into 1 df
+      df_list=[]
+      
+      # request the list of csv's from S3 w/ Prefix
+      response = s3.lis_objects(Bucket='x', Prefix='2019/')
+      
+      # get response contents
+      request_files= response["Contents"]
+      
+      # iterate over each obj
+      for file in request_files:
+          obj = s3.get_object(Bucket='x', Key=file['Key'])
+          
+          # Read it as df
+          obj_df = pd.read_csv(obj['Body'])
+          
+          # Append df to a list
+          df_list.append(obj_df)
+          
+      # Concatenate all df in a list
+      df = pd.concat(df_list)
+      
+      # preview df
+      df.head()
