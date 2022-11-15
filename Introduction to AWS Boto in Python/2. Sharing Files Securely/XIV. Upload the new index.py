@@ -17,3 +17,18 @@ _ The HTML file should only contain 'Link', 'LastModified', and 'Size' columns.
 _ Overwrite the 'index.html' on S3 by uploading the new version of the file.
 
 """
+# Write objects_df to an HTML file
+objects_df.to_html('report_listing.html',
+    # Set clickable links
+    render_links=True,
+	# Isolate the columns
+    columns=['Link', 'LastModified', 'Size'])
+
+# Overwrite index.html key by uploading the new file
+s3.upload_file(
+  Filename='./report_listing.html', Key='index.html', 
+  Bucket='gid-reports',
+  ExtraArgs = {
+    'ContentType': 'text/html', 
+    'ACL': 'public-read'
+  })
