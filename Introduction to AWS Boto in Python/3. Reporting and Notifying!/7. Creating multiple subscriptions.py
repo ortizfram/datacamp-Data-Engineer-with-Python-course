@@ -19,3 +19,17 @@ _ List subscriptions for the 'streets_critical' Topic and convert them to a Data
 _ Preview the DataFrame.
 
 """
+# For each email in contacts, create subscription to street_critical
+for email in contacts['Email']:
+  sns.subscribe(TopicArn = str_critical_arn,
+                # Set channel and recipient 
+                Protocol = 'email', #channel
+                Endpoint = email)   # recipient
+
+# List subscriptions for streets_critical topic, convert to DataFrame
+response = sns.list_subscriptions_by_topic(
+  TopicArn = str_critical_arn)
+subs = pd.DataFrame(response['Subscriptions'])
+
+# Preview the DataFrame
+subs.head()
