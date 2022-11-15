@@ -1,0 +1,28 @@
+every topic has 
+-> ARN: (amazon resource name)
+
+|  create SNS Topic  |
+
+        1. > INITIALIZE CLIENT:
+              sns = boto3.client('sns',
+                                  region_name='us-east-1',
+                                  aws_access_key_id=AWS_KEY_ID,
+                                  aws_secret_access_key=AWS_SECRET)
+
+        2. > CREATE TOPIC:
+              response = sns.create_topic(Name='city_alerts')
+
+              # store ARN key in variable
+              topic_arn= response['TopicArn']
+
+        2. > SHORTCUT. CREATE TOPIC & GRAB TOPICARN 
+             sns.create_topic(Name='city_alerts')['TopicArn']
+         
+|  list topics  |
+
+    response= sns.list_topics()
+    
+|  delete topic  |
+
+    # pass topic Arn
+    sns.delete_topic(TopicArn='arn:aws:sns:us-east-1:3121333277766:city_alerts')
