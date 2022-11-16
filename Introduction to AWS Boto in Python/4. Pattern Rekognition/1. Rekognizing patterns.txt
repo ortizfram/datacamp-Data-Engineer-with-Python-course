@@ -1,0 +1,57 @@
+- detects objects from images
+- extract text from image
+
+|  why not build our own  ?  |
+
+            - Rekognition : 
+                            . quick but good
+                            . keep code simple
+                            . rekognize many things
+            - Buil a model :
+                            . custom requirements
+                            . security implications
+                            . large volumes
+
+
+        1. > CREATE CLIENT: 
+              client = boto3.client('rekognition')
+
+        2. > INITIALIZE S3
+              s3= boto3.client(
+                    's3', region_name='us-east-1',
+                    aws_access_key_id=AWS_KEY_ID, aws_secret_access_key=AWS_SECRET)
+
+        3. > UPLOAD FILE
+              s3.upload_file(
+                  Filename='report.jpg', Key='repot.jpg',
+                  Bucket='datacamp-img')
+
+        4. > INITIATE REKOGNITION CLIENT:
+              rekog = boto3.client(
+                  'rekognition',
+                  region_name='us-east-1',
+                  aws_access_key_id=AWS_KEY_ID, aws_secret_access_key=AWS_SECRET)
+              
+|  OBJECT DETECTION  |
+
+        5. > DETECT:
+              response= rekog.detect_labels(
+                          Image={'S3Object':{
+                                      'Bucket': 'datacamp-img',
+                                      'Name': 'report.jpg'
+                                      },
+                                  MaxLabels=10,
+                                  MinConfidence=95
+                          )
+                      
+|  TEXT DETECTION  |
+
+        5. > DETECT:
+              response = rekog.detect_text (
+                      Image={'S3Object':
+                        {
+                          Bucket': 'datacamp-img',
+                          Name': 'report.jpg'
+                        }
+                      }
+              )
