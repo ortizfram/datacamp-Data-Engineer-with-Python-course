@@ -1,0 +1,52 @@
+|  Translating textx  |
+
+    1. > INITIALIZE BOTO3 CLIENT 'translate':
+          translate = boto3.client(
+                        'translate',
+                        region_name='us-east-1',
+                        aws_access_key_id=AWS_KEY_ID, aws_secret_access_key=AWS_SECRET)
+                        
+    2. > TRANSLATE TEXT:
+          response = translate.translate_text(
+                        Text='Hello, how are you ?',
+                        SourceLanguageCode='auto',
+                        TargetLanguageCode='es')
+                        
+    2. > TRANSLATE TEXT ONELINER: (directly from response)
+          translated_text = translate.translate_text(
+                Text='Hello, how are you?',
+                SourceLanguageCode='auto',
+                TargetLanguageCode='es')['TranslatedText']
+                
+|  Detect Language  |
+
+    1. > INITIALIZE BOTO3 CLIENT 'comprehend' : 
+          comprehend = boto3.client(
+              'comprehend',
+              region_name='us-east-1',
+              aws_access_key_id=AWS_KEY_ID, aws_secret_access_key=AWS_SECRET)
+              
+    2. > DETECT DOMINANT LANGUAGE:
+          response = comprehend.detect_dominant_language(
+              Text='Hay basura por todas partes a lo largo de la carretera')
+              
+|  Sentiment Results  |
+    
+    . Neutral     --- Confidence 0.9
+    . Positive
+    . Negative
+    . Mixed
+    
+|  Detect text Sentiment  |
+
+   2. > DETECT SENTIMENT:
+      response = comprehend.detect_sentiment(
+          Text='Datacamp students are Amazing.',
+          LanguageCode='en')
+          
+   2. > DETECT SENTIMENT ONELINER (from response):
+        sentiment = comprehend.detect_sentiment(
+            Text='Franco is Amazing.',
+            LanguageCode='en')['Sentiment']
+
+    
