@@ -1,0 +1,28 @@
+|  most common datatypes  |
+
+    . text
+    . varchar(x) : max of n characters
+    . char(x) : fixed-lenght string of n characters
+    . boolean : TRUE or 1, FALSE or 0, NULL
+    
+    - date, time, timestamp: date-time calculatons
+    - numeric : 3.134 
+    - integer: 3 -3
+    
+|  specifying numeric eg: |
+
+    grades numeric(3, 2)  # 3 digits, 2of those after comma # eg: 5,43
+    
+|  ALTER table and column after creation eg:  |
+
+    ALTER TABLE students
+    ALTER COLUMN name
+    TYPE varchar(50);
+    
+|  ALTER turning into INT and rounding  eg:  |
+
+    ALTER TABLE students
+    ALTER COLUMN average_grade
+    TYPE integer
+    USING ROUND(average_grade)
+    # from 5,54 to 6
