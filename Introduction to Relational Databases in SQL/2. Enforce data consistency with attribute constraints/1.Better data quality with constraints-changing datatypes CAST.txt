@@ -1,0 +1,16 @@
+1. attribute contraints : datatypes on columns
+2. key contraints : primary keys
+3. Referential integrity contraints : foreign keys
+
+WHY contraints ?
+-----------------
+    
+    . give data struture
+    . help w/ consistency and data quality
+    . data quality : business advantage/ data science prerequisite
+    . PostgreSQL helps w/ enforcing
+    
+|  changing dataTypes  |
+      
+    # change wind_speed from 'text' to 'integer'
+    SELECT temperature * CAST(wind_speed AS integer)
