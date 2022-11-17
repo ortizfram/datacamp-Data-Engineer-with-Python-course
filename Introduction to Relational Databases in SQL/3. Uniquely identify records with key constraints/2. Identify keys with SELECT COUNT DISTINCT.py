@@ -15,7 +15,7 @@ Instructions
 """
 #-- Try out different combinations 
 #-- Identify keys w/ SELECT COUNT DISTINCT
-SELECT COUNT(DISTINCT(firstname, lastname)) 
+SELECT COUNT(DISTINCT(firstname, lastname))  # SUPER-KEY
 FROM professors;
 '''
 count
