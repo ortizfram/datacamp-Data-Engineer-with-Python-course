@@ -1,0 +1,26 @@
+-> NOT NULL : not empty (obligatory)
+
+|  set not null after creation  |
+
+    ALTER TABLE students
+    ALTER COLUMN phone
+    SET NOT NULL;
+    
+|  ELiminate NOT NULL after creation  |
+
+    ALTER TABLE students
+    ALTER COLUMN ssn
+    DROP NOT NULL;
+    
+-> UNIQUE
+
+|  SET unique when creating  |
+    
+    CREATE TABLE table_name(
+      column_name UNIQUE);
+      
+|  SET UNIQUE AFTER CREATION  |
+
+    ALTER TABLE table_name
+    ADD CONSTRAINT some_name UNIQUE(column_name);
+     
