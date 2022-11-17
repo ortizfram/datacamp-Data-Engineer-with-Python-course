@@ -1,0 +1,11 @@
+|   N:M relationsheep  |
+
+    . create table
+    . add foreign keys for every connected table
+    . add additional attributes
+    
+      >   CREATE TABLE affiliations (
+            professor_id integer REFERENCES professors (id),
+            organization_id varchar (256) REFERENCES organizations (1d),
+            function varchar (256)
+          );
