@@ -1,0 +1,10 @@
+> INFORMATION_SCHEMA
+
+|  DATATYPES from one table:  |
+
+    SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = 'Address';
+    
+|  DATATYPES from all tables  |  
+
+    SELECT * FROM INFORMATION_SCHEMA.COLUMNS;
