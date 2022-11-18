@@ -1,0 +1,11 @@
+|  How should we organize data?  |
+
+      . Schemas : how data be logically organized
+      . Normalization : may data have minimal or redundant dependency?
+      . Views : what joins more often?
+      . Access Control : who and which levels of accesses
+      . DBMS : pick SQL or noSQL
+      
+      # Depends on the intended use of data
+      
+| approaches to dataprocessing  |
