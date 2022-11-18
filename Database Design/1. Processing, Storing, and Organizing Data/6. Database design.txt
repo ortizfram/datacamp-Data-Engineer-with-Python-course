@@ -1,0 +1,9 @@
+
+    -> Database design : . determines how data is logically stored
+                         . how it would be read and updated
+                         . uses database models 
+                         
+      -> Database model :  high leve specifications  for db structure   
+                              - most pupular : relational db
+                              - other : noSQL model, object-oriented model, network model
+                        
