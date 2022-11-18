@@ -24,10 +24,9 @@ FROM professors
 JOIN affiliations
 ON affiliations.professor_id = professors.id
 #-- Group by the university ids of professors
-GROUP BY professors.id 
+GROUP BY professors.university_id 
 ORDER BY count DESC;
 
 '''count	university_id
-18	ETH
-18	UGE
-18	EPF'''
+     579	  EPF
+     273	  USG...'''
