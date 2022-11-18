@@ -1,0 +1,9 @@
+|  Dealing w/ violations  |
+
+    >  ON DELETE 
+  
+      . NO ACTION throw an error
+      . CASCADE : delete all refencing records
+      . RESTRICT : Throw an error
+      . SET NULL : set referencing column to null
+      . SET DEFAULT : set referencing column to default value
