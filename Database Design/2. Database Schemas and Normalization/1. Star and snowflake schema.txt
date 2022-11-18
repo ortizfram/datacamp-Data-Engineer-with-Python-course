@@ -1,0 +1,4 @@
+
+
+      SNOWFLAKE SCHEMAS ------ NORMALIZE -> open in cascade data 
+      STAR CHEMAS --- ------- DO NOT
