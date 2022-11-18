@@ -42,7 +42,7 @@ CREATE TABLE route(
 #-- Create a week dimension table
 CREATE TABLE week(
 	week_id INTEGER PRIMARY KEY,
-    week int NOT NULL,
+    week integer NOT NULL,
     month VARCHAR(160) NOT NULL,
-    year int NOT NULL
+    year integer NOT NULL
 );
