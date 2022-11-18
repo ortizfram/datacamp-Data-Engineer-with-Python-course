@@ -9,3 +9,12 @@
       # Depends on the intended use of data
       
 | approaches to dataprocessing  |
+
+      -> OLTP : Online Transaction Processing
+                  - has data from past hour
+                  - data inserted and updated more often
+                  - Uses Operational database
+      -> OLAP : Online Analytical Processing
+                  - helps business decision making
+                  - Queries larges amounts of data
+                  - Uses Data-warehouse
