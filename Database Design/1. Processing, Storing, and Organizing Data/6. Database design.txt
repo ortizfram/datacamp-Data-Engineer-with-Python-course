@@ -1,15 +1,28 @@
+|  database design  |
 
     -> Database design : . determines how data is logically stored
                          . how it would be read and updated
                          
-                         
-      uses
-      -> Database model :  high leve specifications  for db structure   
-                              - most pupular : relational db
-                              - other : noSQL model, object-oriented model, network model
-                              
-      uses
-      -> Database schemas :  blueprint of the db
-                                . defines tables, fields, indexes, views
-                                . when inserting data in relational db, schemas must be respected
+
+          uses
+          -> Database model :  high leve specifications  for db structure   
+                                  - most pupular : relational db
+                                  - other : noSQL model, object-oriented model, network model
+
+          uses
+          -> Database schemas :  blueprint of the db
+                                    . defines tables, fields, indexes, views
+                                    . when inserting data in relational db, schemas must be respected
                         
+|  models of data model  |
+
+        - conceptual data model : describes entities, relationships and attributes
+                       / tools / : data structure diagrams, 
+                          / eg / :entity-relational diagrams, UML diagrams
+            
+        - logical data model : defines tables, columns, relationships
+                       / tools / : db models and schemas
+                          / eg / : relational model and star schema
+                          
+        - physaical data model : describes physical storage
+                       / tools / : partitions, CPUs, indexes, backup sys, tablespaces
